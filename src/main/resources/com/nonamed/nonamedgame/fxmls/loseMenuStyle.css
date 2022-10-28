@@ -1,0 +1,20 @@
+.buttonMenu{
+    -fx-background-color: rgb(62, 62, 60);
+    -fx-background-radius: 20;
+    -fx-text-fill: WHITE;
+}
+.buttonTryAgain{
+    -fx-background-color: rgb(62, 62, 60);
+    -fx-background-radius: 20;
+    -fx-text-fill: WHITE;
+}
+.buttonMenu:hover {
+    -fx-background-color: rgb(197, 102, 79);
+    -fx-text-fill: BLACK;
+}
+.buttonTryAgain:hover {
+    -fx-background-color: rgb(163, 213, 113);
+    -fx-text-fill: BLACK;
+}
+
+

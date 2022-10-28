@@ -1,4 +1,4 @@
-package com.nonamed.nonamedgame.scenas;
+package com.nonamed.nonamedgame.scenes;
 
 import com.nonamed.nonamedgame.App;
 import com.nonamed.nonamedgame.utils.MyLogUtil;
@@ -8,13 +8,13 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public final class MainMenu {
+public final class WinMenu {
 
-    private final FXMLLoader FXML_LOADER = new FXMLLoader(App.class.getResource("mainMenu.fxml"));
+    private final FXMLLoader FXML_LOADER = new FXMLLoader(App.class.getResource("fxmls/winMenu.fxml"));
     private Pane pane;
-    public Scene mainMenuScene;
+    public Scene winMenuScene;
 
-    public MainMenu() {
+    public WinMenu() {
         initScene();
     }
 
@@ -22,9 +22,9 @@ public final class MainMenu {
         try {
             pane = FXML_LOADER.load();
         } catch (IOException ioe) {
-//            MyLogUtil.logErr(this, ioe);
+            MyLogUtil.logErr(this, ioe);
         }
-        mainMenuScene = new Scene(pane);
+        winMenuScene = new Scene(pane);
     }
 
 }

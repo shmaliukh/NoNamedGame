@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="278.0" fitWidth="260.0" layoutX="752.0" layoutY="285.0" pickOnBounds="true"
+                   preserveRatio="true" style="-fx-image: url(&quot;/darkSideBase.png&quot;);;"/>
+    </children>
+</Pane>

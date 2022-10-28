@@ -7,6 +7,6 @@ module com.nonamed.nonamedgame {
 
     opens com.nonamed.nonamedgame to javafx.fxml;
     exports com.nonamed.nonamedgame;
-    exports com.nonamed.nonamedgame.scenas;
-    opens com.nonamed.nonamedgame.scenas to javafx.fxml;
+    exports com.nonamed.nonamedgame.scenes;
+    opens com.nonamed.nonamedgame.scenes to javafx.fxml;
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.nonamed.nonamedgame.scenes.SettingsMenuController">
+    <children>
+        <Button fx:id="exitButton" layoutX="400.0" layoutY="482.0" mnemonicParsing="false"
+                onAction="#onMainMenuButtonClick" prefHeight="100.0" prefWidth="400.0" text="Main menu"
+                AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
+            <font>
+                <Font size="50.0"/>
+            </font>
+        </Button>
+        <Text layoutX="514.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+            <font>
+                <Font size="50.0"/>
+            </font>
+        </Text>
+        <Slider fx:id="speedSlider" layoutX="318.0" layoutY="168.0" majorTickUnit="2.0" max="10.0" min="1.0"
+                minorTickCount="1" onMouseReleased="#onSpeedSliderAction" prefHeight="37.0" prefWidth="534.0"
+                showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0"/>
+        <Text layoutX="92.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero speed">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Text fx:id="speedValueText" layoutX="878.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="109.16235996457954">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Slider fx:id="heroDamageSlider" layoutX="318.0" layoutY="221.0" majorTickUnit="2.0" max="10.0" min="1.0"
+                minorTickCount="1" onMouseReleased="#onHeroDamageSliderAction" prefHeight="37.0" prefWidth="534.0"
+                showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0"/>
+        <Text layoutX="92.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero damage">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Text fx:id="heroDamageText" layoutX="878.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="109.16235996457954">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Slider fx:id="heroHealthSlider" blockIncrement="500.0" layoutX="318.0" layoutY="271.0" majorTickUnit="1000.0"
+                max="10000.0" min="500.0" minorTickCount="1" onMouseReleased="#onHeroHealthSliderAction"
+                prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"
+                value="500.0"/>
+        <Text layoutX="92.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero health">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Text fx:id="heroHealthText" layoutX="878.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="109.16235996457954">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Slider fx:id="enemySpeedSlider" layoutX="318.0" layoutY="321.0" majorTickUnit="2.0" max="10.0" min="1.0"
+                minorTickCount="1" onMouseReleased="#onEnemySpeedSliderAction" prefHeight="37.0" prefWidth="534.0"
+                showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0"/>
+        <Text layoutX="92.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy speed">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+        <Text fx:id="enemySpeedText" layoutX="878.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="109.16235996457954">
+            <font>
+                <Font size="34.0"/>
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
