@@ -1,7 +1,9 @@
 package com.nonamed.nonamedgame;
 
 import com.nonamed.nonamedgame.scenes.MainMenu;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends javafx.application.Application {
     public static boolean isAbleToUseEscButton = false;
@@ -16,8 +18,9 @@ public class App extends javafx.application.Application {
     public void start(Stage primaryStage) {
         stage = primaryStage;
         stage.setTitle("Hackathon test game (noNamed)");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setFullScreen(true);
-
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new MainMenu().mainMenuScene);
 
 

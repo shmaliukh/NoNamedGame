@@ -23,6 +23,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     protected void onSettingsButtonClick() {
+//        App.stage.getScene().setRoot(new SettingsMenu().pane);
         App.stage.setScene(new SettingsMenu().settingsMenuScene);
     }
 

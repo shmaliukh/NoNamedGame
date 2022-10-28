@@ -25,7 +25,6 @@ import java.util.concurrent.ThreadLocalRandom;
 @Getter
 public final class GameWorldHandler implements Serializable {
 
-
     public static String MISSION_1 = "   Goal: " +
             "\n* kill " + Config.HERO_ENEMY_GOAL + " enemy" +
             "\n* find " + Config.HERO_KEY_GOAL + " keys";
@@ -40,7 +39,7 @@ public final class GameWorldHandler implements Serializable {
             "\n* kill enemies" +
             "\n✔ find " + Config.HERO_KEY_GOAL + " keys";
 
-    public static HeroPerson HERO ;
+    public static HeroPerson HERO = new HeroPerson("Кличко", 200, 200);
     public List<AbstractPerson> personArrayList = new ArrayList<>();
     public List<ImageView> keyArrayList = new ArrayList<>();
     public List<BaseObject> baseObjectArrayList = new ArrayList<>();
@@ -50,21 +49,15 @@ public final class GameWorldHandler implements Serializable {
 
     Rectangle homeBorder;
     private int idToSet = 0;
-    private GameWorld gameWorld = new GameWorld();
+    private GameWorld gameWorld;
     private AnimationTimer timer;
 
     public GameWorldHandler() {
+        gameWorld = new GameWorld();
         initTimer();
         addMissionText();
-        HERO = new HeroPerson("Клично", 200, 200);
-        addHeroHomeImageView();
-        //addKeyHomeImageView(100, 500);
-        gameWorld.registerObject(HERO.getGroup());
 
-        addPersonToScene(HERO);
-        //addPersonToScene(new DarkPerson(500, 400));
-        //addPersonToScene(new DarkPerson(200, 400));
-        //addPersonToScene(new DarkPerson(100, 800));
+        gameWorld.registerObject(HERO.getGroup());
     }
 
     private void addHeroHomeImageView() {

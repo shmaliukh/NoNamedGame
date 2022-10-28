@@ -10,8 +10,8 @@ import java.io.IOException;
 
 public final class SettingsMenu {
 
-    private final FXMLLoader FXML_LOADER = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
-    private Pane pane;
+    public final FXMLLoader FXML_LOADER = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
+    public Pane pane;
     public Scene settingsMenuScene;
 
     public SettingsMenu() {
