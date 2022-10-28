@@ -2,26 +2,25 @@ package com.nonamed.nonamedgame.game_objects.micro;
 
 import com.nonamed.nonamedgame.App;
 import com.nonamed.nonamedgame.Config;
-import com.nonamed.nonamedgame.game_objects.Hud;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import lombok.Getter;
 
 import static com.nonamed.nonamedgame.Config.*;
-import static com.nonamed.nonamedgame.StaticData.HERO_HEIGHT;
-import static com.nonamed.nonamedgame.StaticData.HERO_WIDTH;
-import static com.nonamed.nonamedgame.game_objects.Hud.energyLine;
+import static com.nonamed.nonamedgame.StaticData.*;
+import static com.nonamed.nonamedgame.scenes.GameWorldHandler.HERO;
 import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
 
 @Getter
 public class HeroPerson extends AbstractPerson {
 
-    int energy;
+    boolean fightLeft = false ;
+    boolean fightRight = false ;
 
-    public static final Image IMAGE_RIGHT = new Image("heroLevel1Right.png");
-    public static final Image IMAGE_LEFT = new Image("heroLevel1Left.png");
+    int energy;
 
     public static final int WINDOW_WIDTH_CENTER = WINDOW_WIDTH / 2 - HERO_WIDTH / 2;
     public static final int WINDOW_HEIGHT_CENTER = WINDOW_HEIGHT / 2 - HERO_HEIGHT / 2;
@@ -45,7 +44,8 @@ public class HeroPerson extends AbstractPerson {
 
     @Override
     protected void setUpPersonPicturesGroup() {
-        initImageView("heroLevel1.png");
+        imageView = new ImageView(USIK_ANIMATED);
+        group.getChildren().add(imageView);
         initNameText();
         initHealthLine(HERO_HEALTH, Color.GREEN);
     }
@@ -94,7 +94,18 @@ public class HeroPerson extends AbstractPerson {
     protected void upDatePerson() {
         speed = Config.HERO_SPEED;
         --energy;
+        if(fightLeft){
+            imageView.setImage(USIK_FIGHT_LEFT);
+            HERO.fightLeft = false;
+        }
+        else if(fightRight){
+            imageView.setImage(USIK_FIGHT_RIGHT);
+            HERO.fightRight = false;
+        } else {
+            imageView.setImage(USIK_ANIMATED);
+        }
         upDateAllPersonImages(HERO_HEALTH);
+
     }
 
 
@@ -129,7 +140,7 @@ public class HeroPerson extends AbstractPerson {
 //                }
             }
             upDatePerson();
-            imageView.setImage(IMAGE_RIGHT);
+//            imageView.setImage(IMAGE_RIGHT);
         }
         else if (isLEFT) {
             if (getPosX() > 0) {
@@ -139,8 +150,8 @@ public class HeroPerson extends AbstractPerson {
 //                }
             }
             upDatePerson();
-            imageView.setImage(IMAGE_LEFT);
         }
+
 
 
 

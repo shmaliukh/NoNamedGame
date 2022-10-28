@@ -1,11 +1,12 @@
 package com.nonamed.nonamedgame.game_objects.micro;
 
 import com.nonamed.nonamedgame.Config;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import static com.nonamed.nonamedgame.Config.NAME_LIST;
 import static com.nonamed.nonamedgame.Config.RANDOM;
+import static com.nonamed.nonamedgame.StaticData.SVINO_PES_ANIMATED;
 import static com.nonamed.nonamedgame.scenes.GameWorldHandler.HERO;
 
 public class DarkPerson extends AbstractPerson {
@@ -27,7 +28,8 @@ public class DarkPerson extends AbstractPerson {
 
     @Override
     protected void setUpPersonPicturesGroup() {
-        initImageView("darkSidePerson.png");
+        imageView = new ImageView(SVINO_PES_ANIMATED);
+        group.getChildren().add(imageView);
         initNameText();
         initHealthLine(DEFAULT_HEALTH_FOR_DARK_SIDE, Color.RED);
     }
@@ -37,12 +39,19 @@ public class DarkPerson extends AbstractPerson {
         if (group.getBoundsInParent().intersects(HERO.getGroup().getBoundsInParent())) {
             health -= HERO.getDamage();
             HERO.setHealth(HERO.getHealth() - damage);
+            System.out.println(posX - HERO.getPosX());
+            if (posX - HERO.getPosX() > 0) {
+                HERO.fightRight = true;
+            } else {
+                HERO.fightLeft = true;
+            }
             //System.out.println(health);
             if (health < 0) {
                 timer.stop();
             }
 
         }
+
     }
 
     protected void upDatePerson() {
@@ -53,10 +62,8 @@ public class DarkPerson extends AbstractPerson {
     public void moveToTarget(int targetPosX, int targetPosY) {
         if (posX < targetPosX) {
             setPosX(getPosX() - speed);
-            imageView.setImage(new Image("darkSidePersonRight.png"));
         } else {
             setPosX(getPosX() + speed);
-            imageView.setImage(new Image("darkSidePersonLeft.png"));
         }
         upDatePerson();
         if (posY < targetPosY) {

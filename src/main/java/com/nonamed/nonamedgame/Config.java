@@ -23,6 +23,7 @@ public final class Config {
     public static int DARK_PERSON_SPEED = 3;
     public static int VOLUME = 80;
 
+
     public static final Random RANDOM = new Random();
 
     public static List<String> NAME_LIST = new ArrayList<>();
