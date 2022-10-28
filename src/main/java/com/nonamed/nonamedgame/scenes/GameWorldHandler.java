@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.nonamed.nonamedgame.Config.RANDOM;
+import static com.nonamed.nonamedgame.game_objects.Hud.hudGroup;
+
 @Getter
 public final class GameWorldHandler implements Serializable {
 
@@ -40,25 +43,29 @@ public final class GameWorldHandler implements Serializable {
             "\n✔ find " + Config.HERO_KEY_GOAL + " keys";
 
     public static HeroPerson HERO = new HeroPerson("Кличко", 896, 476);
+    public static GameWorld gameWorld = new GameWorld();
+
+    static {
+        gameWorld.registerObject(HERO.getGroup());
+        gameWorld.registerObject(hudGroup);
+    }
+
     public List<AbstractPerson> personArrayList = new ArrayList<>();
     public List<ImageView> keyArrayList = new ArrayList<>();
     public List<BaseObject> baseObjectArrayList = new ArrayList<>();
     Text missionText = new Text();
     ImageView homeImageView;
     ImageView keyImageView = new ImageView();
-
     Rectangle homeBorder;
     private int idToSet = 0;
-    public static GameWorld gameWorld = new GameWorld();
-    static {
-        gameWorld.registerObject(HERO.getGroup());
-    }
-
     private AnimationTimer timer;
 
     public GameWorldHandler() {
         initTimer();
         addMissionText();
+
+//        HERO = new HeroPerson("Кличко", 896, 476);
+
     }
 
     private void addHeroHomeImageView() {
@@ -106,6 +113,7 @@ public final class GameWorldHandler implements Serializable {
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+
                 if (!keySpawn.isAlive() && !gameWorld.getGamePane().getChildren().contains(keyImageView)) {
                     Config.IS_KEY_GOAL = true;
                     setUpGoalText();
@@ -185,7 +193,7 @@ public final class GameWorldHandler implements Serializable {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        addPersonToScene(new DarkPerson(800, 450));
+                        addPersonToScene(new DarkPerson(RANDOM.nextInt(Config.WORLD_WIDTH), RANDOM.nextInt(Config.WORLD_HEIGHT)));
                     }
                 });
             }

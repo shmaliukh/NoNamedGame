@@ -21,14 +21,10 @@ public class App extends javafx.application.Application {
     public void start(Stage primaryStage) {
         stage = primaryStage;
         stage.setTitle("Hackathon test game (noNamed)");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setFullScreen(true);
-        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+//        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.setFullScreen(true);
+//        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new MainMenu().mainMenuScene);
-
-
-
-
 
 
         stage.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {

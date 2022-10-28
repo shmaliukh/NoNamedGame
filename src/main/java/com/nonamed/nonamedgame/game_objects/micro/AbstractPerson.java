@@ -1,6 +1,7 @@
 package com.nonamed.nonamedgame.game_objects.micro;
 
 import com.nonamed.nonamedgame.game_objects.BaseObject;
+import com.nonamed.nonamedgame.game_objects.Hud;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -9,6 +10,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import lombok.Getter;
 import lombok.Setter;
+
+import static com.nonamed.nonamedgame.game_objects.Hud.hudGroup;
+import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
 
 @Getter
 @Setter
@@ -64,6 +68,9 @@ public abstract class AbstractPerson extends BaseObject {
     protected void upDateAllPersonImages(int maxHealth) {
         group.setLayoutX(getPosX());
         group.setLayoutY(getPosY());
+        Hud.updateGroup();
+
+
         healthLine.setEndX(calcHealthPosXEnd(maxHealth));
     }
 

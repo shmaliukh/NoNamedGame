@@ -2,18 +2,23 @@ package com.nonamed.nonamedgame.game_objects.micro;
 
 import com.nonamed.nonamedgame.App;
 import com.nonamed.nonamedgame.Config;
+import com.nonamed.nonamedgame.game_objects.Hud;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import static com.nonamed.nonamedgame.Config.*;
 import static com.nonamed.nonamedgame.StaticData.HERO_HEIGHT;
 import static com.nonamed.nonamedgame.StaticData.HERO_WIDTH;
+import static com.nonamed.nonamedgame.game_objects.Hud.energyLine;
 import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
 
+@Getter
 public class HeroPerson extends AbstractPerson {
 
+    int energy;
 
     public static final Image IMAGE_RIGHT = new Image("heroLevel1Right.png");
     public static final Image IMAGE_LEFT = new Image("heroLevel1Left.png");
@@ -29,6 +34,7 @@ public class HeroPerson extends AbstractPerson {
         this.name = name;
         this.health = HERO_HEALTH;
         this.damage = HERO_DAMAGE;
+        this.energy = 5000;
         this.posX = posX;
         this.posY = posY;
 
@@ -87,6 +93,7 @@ public class HeroPerson extends AbstractPerson {
 
     protected void upDatePerson() {
         speed = Config.HERO_SPEED;
+        --energy;
         upDateAllPersonImages(HERO_HEALTH);
     }
 
@@ -99,7 +106,7 @@ public class HeroPerson extends AbstractPerson {
 //                if(worldLayoutY > 0 && getPosX() >= WINDOW_HEIGHT_CENTER) {
                     gameWorld.getGamePane().setLayoutY(worldLayoutY + speed);
 //                }
-                System.out.println(getPosY() + " " + worldLayoutY);
+
             }
             upDatePerson();
         }
@@ -125,7 +132,6 @@ public class HeroPerson extends AbstractPerson {
             imageView.setImage(IMAGE_RIGHT);
         }
         else if (isLEFT) {
-            System.out.println(getPosX());
             if (getPosX() > 0) {
                 setPosX(getPosX() - speed);
 //                if (worldLayoutX <= 0  && getPosX() <= WINDOW_WIDTH_CENTER){
@@ -135,6 +141,10 @@ public class HeroPerson extends AbstractPerson {
             upDatePerson();
             imageView.setImage(IMAGE_LEFT);
         }
+
+
+
+
     }
 
 }

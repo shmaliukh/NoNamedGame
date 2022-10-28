@@ -16,6 +16,7 @@ public final class Config {
     public static int HERO_SPEED = 5;
     public static int HERO_DAMAGE = 5;
     public static int HERO_HEALTH = 10000;
+    public static int HERO_ENERGY = 10000;
     public static int HERO_ENEMY_GOAL = 7;
     public static int HERO_KEY_GOAL = 4;
     public static boolean IS_KEY_GOAL = false;
