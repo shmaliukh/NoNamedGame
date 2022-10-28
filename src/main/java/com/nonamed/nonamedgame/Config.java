@@ -1,10 +1,17 @@
 package com.nonamed.nonamedgame;
 
+import javafx.stage.Screen;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public final class Config {
+
+    public static int WINDOW_HEIGHT = 1080;
+    public static int WINDOW_WIDTH = 1920;
+    public static int WORLD_HEIGHT = 2560;
+    public static int WORLD_WIDTH = 5120;
 
     public static int HERO_SPEED = 5;
     public static int HERO_DAMAGE = 5;

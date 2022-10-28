@@ -39,7 +39,7 @@ public final class GameWorldHandler implements Serializable {
             "\n* kill enemies" +
             "\n✔ find " + Config.HERO_KEY_GOAL + " keys";
 
-    public static HeroPerson HERO = new HeroPerson("Кличко", 200, 200);
+    public static HeroPerson HERO = new HeroPerson("Кличко", 896, 476);
     public List<AbstractPerson> personArrayList = new ArrayList<>();
     public List<ImageView> keyArrayList = new ArrayList<>();
     public List<BaseObject> baseObjectArrayList = new ArrayList<>();
@@ -53,7 +53,6 @@ public final class GameWorldHandler implements Serializable {
     static {
         gameWorld.registerObject(HERO.getGroup());
     }
-
 
     private AnimationTimer timer;
 
@@ -100,9 +99,7 @@ public final class GameWorldHandler implements Serializable {
         Thread keySpawn = getKeySpawn();
 
         App.isAbleToUseEscButton = true;
-
         gameThread(keySpawn);
-
     }
 
     private void gameThread(Thread keySpawn) {
