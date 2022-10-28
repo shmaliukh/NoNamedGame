@@ -8,11 +8,13 @@ import javafx.scene.Scene;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+
 public class PauseMenuController implements Initializable {
 
     @FXML
     protected void onContinueButtonClick() {
-        Scene continueGameScene = new GameWorldHandler().getGameWorld().getGameScene();
+        Scene continueGameScene = gameWorld.getGameScene();
         App.stage.setScene(continueGameScene);
     }
 
@@ -24,7 +26,7 @@ public class PauseMenuController implements Initializable {
 
     @FXML
     protected void onRetryButtonClick() {
-        Scene gameScene = new GameWorldHandler().getGameWorld().getGameScene();
+        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
         App.stage.setScene(gameScene);
     }
 

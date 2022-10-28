@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+
 public class MainMenuController implements Initializable {
 
     @FXML
@@ -17,7 +19,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     protected void onNewGameButtonClick() {
-        Scene gameScene = new GameWorldHandler().getGameWorld().getGameScene();
+        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
         App.stage.setScene(gameScene);
     }
 

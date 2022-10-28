@@ -4,13 +4,16 @@ import com.nonamed.nonamedgame.App;
 import com.nonamed.nonamedgame.Config;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import static com.nonamed.nonamedgame.Config.HERO_DAMAGE;
 import static com.nonamed.nonamedgame.Config.HERO_HEALTH;
+import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
 
 public class HeroPerson extends AbstractPerson {
+
 
     public HeroPerson(String name, int posX, int posY) {
         this.name = name;
@@ -81,19 +84,23 @@ public class HeroPerson extends AbstractPerson {
     public void move() {
         if (isUP) {
             setPosY(getPosY() - speed);
+            gameWorld.getGamePane().setLayoutY(gameWorld.getGamePane().getLayoutY() + speed);
             upDatePerson();
         }
         if (isDOWN) {
             setPosY(getPosY() + speed);
+            gameWorld.getGamePane().setLayoutY(gameWorld.getGamePane().getLayoutY() - speed);
             upDatePerson();
         }
         if (isRIGHT) {
             setPosX(getPosX() + speed);
+            gameWorld.getGamePane().setLayoutX(gameWorld.getGamePane().getLayoutX() - speed);
             upDatePerson();
             imageView.setImage(new Image("heroLevel1Right.png"));
         }
         if (isLEFT) {
             setPosX(getPosX() - speed);
+            gameWorld.getGamePane().setLayoutX(gameWorld.getGamePane().getLayoutX() + speed);
             upDatePerson();
             imageView.setImage(new Image("heroLevel1Left.png"));
         }

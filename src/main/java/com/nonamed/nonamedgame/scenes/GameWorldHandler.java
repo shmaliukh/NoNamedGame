@@ -49,15 +49,17 @@ public final class GameWorldHandler implements Serializable {
 
     Rectangle homeBorder;
     private int idToSet = 0;
-    private GameWorld gameWorld;
+    public static GameWorld gameWorld = new GameWorld();
+    static {
+        gameWorld.registerObject(HERO.getGroup());
+    }
+
+
     private AnimationTimer timer;
 
     public GameWorldHandler() {
-        gameWorld = new GameWorld();
         initTimer();
         addMissionText();
-
-        gameWorld.registerObject(HERO.getGroup());
     }
 
     private void addHeroHomeImageView() {
@@ -94,45 +96,16 @@ public final class GameWorldHandler implements Serializable {
     }
 
     private void initTimer() {
-        Thread enemySpawn = new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                //System.out.println("Spawn enemy");
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        addPersonToScene(new DarkPerson(800, 450));
-                    }
-                });
-            }
-        });
-        enemySpawn.start();
-        Thread keySpawn = new Thread(() -> {
-            for (int i = 0; i < Config.HERO_KEY_GOAL; i++) {
-                try {
-                    Thread.sleep(7000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                System.out.println("Key spawn");
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        addKeyHomeImageView(ThreadLocalRandom.current().nextInt(50, 1100 + 1), ThreadLocalRandom.current().nextInt(50, 620 + 1));
-                    }
-                });
-            }
-
-
-        });
-        keySpawn.start();
+        spawnEnemies();
+        Thread keySpawn = getKeySpawn();
 
         App.isAbleToUseEscButton = true;
 
+        gameThread(keySpawn);
+
+    }
+
+    private void gameThread(Thread keySpawn) {
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -178,7 +151,49 @@ public final class GameWorldHandler implements Serializable {
             }
         };
         timer.start();
+    }
 
+    private Thread getKeySpawn() {
+        Thread keySpawn = new Thread(() -> {
+            for (int i = 0; i < Config.HERO_KEY_GOAL; i++) {
+                try {
+                    Thread.sleep(7000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("Key spawn");
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        addKeyHomeImageView(ThreadLocalRandom.current().nextInt(50, 1100 + 1), ThreadLocalRandom.current().nextInt(50, 620 + 1));
+                    }
+                });
+            }
+
+
+        });
+        keySpawn.start();
+        return keySpawn;
+    }
+
+    private void spawnEnemies() {
+        Thread enemySpawn = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                //System.out.println("Spawn enemy");
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        addPersonToScene(new DarkPerson(800, 450));
+                    }
+                });
+            }
+        });
+        enemySpawn.start();
     }
 
 

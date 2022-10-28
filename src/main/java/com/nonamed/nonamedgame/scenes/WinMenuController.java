@@ -18,7 +18,7 @@ public class WinMenuController implements Initializable {
 
     @FXML
     protected void onRetryButtonClick() {
-        Scene gameScene = new GameWorldHandler().getGameWorld().getGameScene();
+        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
         App.stage.setScene(gameScene);
     }
 

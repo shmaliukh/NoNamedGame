@@ -1,7 +1,10 @@
 package com.nonamed.nonamedgame;
 
 import com.nonamed.nonamedgame.scenes.MainMenu;
+import com.nonamed.nonamedgame.scenes.PauseMenu;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -28,11 +31,11 @@ public class App extends javafx.application.Application {
 
 
 
-//        stage.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {
-//            if (keyEvent.getCode() == KeyCode.ESCAPE && isAbleToUseEscButton) {
-//                stage.setScene(new PauseMenu().loseMenuScene);
-//            }
-//        }));
+        stage.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ESCAPE && isAbleToUseEscButton) {
+                stage.setScene(new PauseMenu().loseMenuScene);
+            }
+        }));
 
 
         stage.show();
