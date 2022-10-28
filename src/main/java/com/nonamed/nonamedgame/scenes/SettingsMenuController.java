@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
 
+import java.io.ObjectInputFilter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,8 +34,7 @@ public class SettingsMenuController implements Initializable {
 
     @FXML
     protected void onSpeedSliderAction() {
-//        ObjectInputFilter.Config.HERO_SPEED = speedSlider.valueProperty().getValue().intValue();
-        // FIXME !!!!!!!!!!! set up hero speed
+        Config.HERO_SPEED = speedSlider.valueProperty().getValue().intValue();
         speedValueText.setText(Config.HERO_SPEED + "");
     }
 

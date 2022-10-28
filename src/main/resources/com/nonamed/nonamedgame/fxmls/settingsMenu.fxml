@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.nonamed.nonamedgame.scenes.SettingsMenuController">
     <children>

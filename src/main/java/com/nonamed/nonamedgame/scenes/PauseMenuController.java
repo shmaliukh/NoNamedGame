@@ -24,7 +24,7 @@ public class PauseMenuController implements Initializable {
 
     @FXML
     protected void onRetryButtonClick() {
-        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
+        Scene gameScene = new GameWorldHandler().getGameWorld().getGameScene();
         App.stage.setScene(gameScene);
     }
 
