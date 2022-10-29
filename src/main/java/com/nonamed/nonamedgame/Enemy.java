@@ -13,8 +13,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.nonamed.nonamedgame.App.HERO;
-import static com.nonamed.nonamedgame.App.gameWorldObjects;
+import static com.nonamed.nonamedgame.App.*;
 
 public class Enemy {
 
@@ -171,57 +170,53 @@ public class Enemy {
 
     }
 
-    public String objectCollisionDetectWithEnemy(){
+    public void objectCollisionDetectWithEnemy(){
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
             if (this.enemyBodyCollisionRectangle.getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
-                return "wrong-way";
+                enemy.groupEnemy.setOpacity(0);
             }
         }
-        return "good-way";
+        enemy.groupEnemy.setOpacity(1);
     }
 
     public void moveToTarget(int targetPosX, int targetPosY) {
         speed = new Random().nextInt(initSpeed());
         if (imageView.getX() < targetPosX) {
-            if (objectCollisionDetectWithEnemy().equals("good-way")) {
                 imageView.setX(imageView.getX() + speed);
                 healthLine.setStartX(healthLine.getStartX() + speed);
                 healthLine.setEndX(healthLine.getEndX() + speed);
                 enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() + speed);
                 posX += speed;
                 calculateAndUpdateMiniMapPoint();
-            }
+
         } else {
-            if (objectCollisionDetectWithEnemy().equals("good-way")) {
                 imageView.setX(imageView.getX() - speed);
                 healthLine.setStartX(healthLine.getStartX() - speed);
                 healthLine.setEndX(healthLine.getEndX() - speed);
                 enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() - speed);
                 posX -= speed;
                 calculateAndUpdateMiniMapPoint();
-            }
-        }
-        if (imageView.getY() < targetPosY) {
-            if (objectCollisionDetectWithEnemy().equals("good-way")){
+
+        } if (imageView.getY() < targetPosY) {
                 imageView.setY(imageView.getY() + speed);
                 healthLine.setStartY(healthLine.getStartY() + speed);
                 healthLine.setEndY(healthLine.getEndY() + speed);
                 enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() + speed);
                 posY += speed;
                 calculateAndUpdateMiniMapPoint();
-            }
 
-        } else { if (objectCollisionDetectWithEnemy().equals("good-way")) {
+
+        } else {
             imageView.setY(imageView.getY() - speed);
             healthLine.setStartY(healthLine.getStartY() - speed);
             healthLine.setEndY(healthLine.getEndY() - speed);
             enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() - speed);
             posY -= speed;
             calculateAndUpdateMiniMapPoint();
-        }
+            }
         }
 
-    }
+
 
     public void calculateAndUpdateMiniMapPoint() {
         int currentPosX = posX;
