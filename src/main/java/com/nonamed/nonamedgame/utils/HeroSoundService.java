@@ -18,12 +18,19 @@ public class HeroSoundService {
     public static MediaPlayer heroMediaPlayer = new MediaPlayer(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/bokserskiy-silnyiy-udar.mp3").toURI().toString()));
 
     static {
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/ne-mozu-pidibratu-slova.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/ne-potribni-grohi.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/ne-mozu-pidibratu-slova.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/v-zavtrashniy-den.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/bud-prosche.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/a-vot-c4a-dlya-dushi.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/ai-mlya.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/berem-teplogo.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/bratva-kopita-otkinu.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/ne-strelya.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/chewbacca_swf.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/o-privet.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/puk.mp3").toURI().toString()));
 
         damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/bokserskiy-silnyiy-udar.mp3").toURI().toString()));
         damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/bokserskiy-udar-po-grushe.mp3").toURI().toString()));
