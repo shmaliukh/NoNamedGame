@@ -58,7 +58,7 @@ public class Hero {
 
     public Hero() {
         HERO.SCORE = 0;
-        this.name = Config.HERO_NAME;
+        this.name = Config.HERO_NAME_STR;
         this.health = Config.HERO_HEALTH;
         this.damage = Config.HERO_DAMAGE;
         this.speed = Config.HERO_SPEED;

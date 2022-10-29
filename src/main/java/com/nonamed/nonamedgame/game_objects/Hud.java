@@ -168,6 +168,7 @@ public final class Hud {
     }
 
     private static void setUpHeroNameText() {
+        heroNameText.setText(HERO_NAME_STR);
         heroNameText.setX(552);
         heroNameText.setY(868);
         heroNameText.setFont(Font.font(32));
