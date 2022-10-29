@@ -50,15 +50,15 @@ public final class GameWorldHandler implements Serializable {
         gameWorld.registerObject(hudGroup);
     }
 
-    public List<AbstractPerson> personArrayList = new ArrayList<>();
-    public List<ImageView> keyArrayList = new ArrayList<>();
-    public List<BaseObject> baseObjectArrayList = new ArrayList<>();
+    public static final List<AbstractPerson> personArrayList = new ArrayList<>();
+    public static final List<ImageView> keyArrayList = new ArrayList<>();
+    public static final List<BaseObject> baseObjectArrayList = new ArrayList<>();
     Text missionText = new Text();
     ImageView homeImageView;
     ImageView keyImageView = new ImageView();
     Rectangle homeBorder;
     private int idToSet = 0;
-    private AnimationTimer timer;
+    private static AnimationTimer timer;
 
     public GameWorldHandler() {
         initTimer();
@@ -141,6 +141,7 @@ public final class GameWorldHandler implements Serializable {
                 for (AbstractPerson person : personArrayList) {
                     if (person.getHealth() <= 0) {
                         gameWorld.getGamePane().getChildren().remove(person.getGroup());
+
                         personArrayList.remove(person);
                         if (Config.HERO_ENEMY_GOAL > 0) {
                             Config.HERO_ENEMY_GOAL -= 1;
@@ -193,7 +194,8 @@ public final class GameWorldHandler implements Serializable {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        addPersonToScene(new DarkPerson(RANDOM.nextInt(Config.WORLD_WIDTH), RANDOM.nextInt(Config.WORLD_HEIGHT)));
+                        addPersonToScene(
+                                new DarkPerson(RANDOM.nextInt(Config.WORLD_WIDTH), RANDOM.nextInt(Config.WORLD_HEIGHT)));
                     }
                 });
             }
@@ -228,10 +230,8 @@ public final class GameWorldHandler implements Serializable {
     }
 
     public void addPersonToScene(AbstractPerson person) {
-        person.setId(idToSet);
         gameWorld.registerObject(person.getGroup());
         personArrayList.add(person);
-        idToSet += 1;
     }
 
 //    public void addBaseObjectToScene(BaseObject baseObject) {

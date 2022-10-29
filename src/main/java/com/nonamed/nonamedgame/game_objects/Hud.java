@@ -1,15 +1,17 @@
 package com.nonamed.nonamedgame.game_objects;
 
 import javafx.scene.Group;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import static com.nonamed.nonamedgame.Config.HERO_ENERGY;
-import static com.nonamed.nonamedgame.Config.HERO_HEALTH;
+import static com.nonamed.nonamedgame.Config.*;
+import static com.nonamed.nonamedgame.StaticData.HUD;
+import static com.nonamed.nonamedgame.StaticData.USIK_AVATAR;
+import static com.nonamed.nonamedgame.game_objects.MiniMap.miniMapImageView;
 import static com.nonamed.nonamedgame.scenes.GameWorldHandler.HERO;
 import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
 
@@ -21,22 +23,38 @@ public final class Hud {
     public static Group hudGroup = new Group();
     public static Line healthLine = new Line();
     public static Line energyLine = new Line();
+    public static Line energyBackLine = new Line();
+    public static Line healthBackLine = new Line();
     public static Text healthText = new Text("HEALTH");
     public static Text energyText = new Text("ENERGY");
     public static Text heroNameText = new Text("HERO NAME");
-    public static Rectangle rectangle = new Rectangle();
-    public static Rectangle avatar = new Rectangle();
+    public static ImageView hudImage = new ImageView();
+    public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
 
     static {
-        setUpRectangle();
         setUpAvatar();
+
+        setUpMiniMap();
+        setUpHealthBackLine();
+        setUpEnergyBackLine();
+
+        setUpHealthLine();
+        setUpEnergyLine();
+
+        setUpHud();
 
         setUpHeroNameText();
         setUpHealthText();
         setUpEnergyText();
-        setUpHealthLine();
-        setUpEnergyLine();
+
+        hudGroup.setLayoutX(0);
+        hudGroup.setLayoutY(0);
+
+    }
+
+    private static void setUpMiniMap() {
+        hudGroup.getChildren().add(miniMapImageView);
     }
 
     private Hud() {
@@ -44,87 +62,111 @@ public final class Hud {
     }
 
     private static void setUpAvatar() {
-        avatar.setLayoutX(603);
-        avatar.setLayoutY(945);
-        avatar.setHeight(AVATAR_HEIGHT);
-        avatar.setWidth(AVATAR_WIDTH);
-        avatar.setFill(Color.BLACK);
+        avatar.setImage(HERO_AVATAR);
+        avatar.setLayoutX(616);
+        avatar.setLayoutY(888);
         hudGroup.getChildren().add(avatar);
     }
 
+    private static void setUpHealthBackLine() {
+        healthBackLine.setStrokeWidth(32);
+        healthBackLine.setStroke(Color.BISQUE);
+        healthBackLine.setStartX(790);
+        healthBackLine.setStartY(930);
+        healthBackLine.setEndY(930);
+        healthBackLine.setEndX(790 + 512);
+        hudGroup.getChildren().add(healthBackLine);
+    }
+
+    private static void setUpEnergyBackLine() {
+        energyBackLine.setStrokeWidth(32);
+        energyBackLine.setStroke(Color.BISQUE);
+        energyBackLine.setStartX(790);
+        energyBackLine.setStartY(1018);
+        energyBackLine.setEndY(1018);
+        energyBackLine.setEndX(790 + 512);
+        hudGroup.getChildren().add(energyBackLine);
+    }
+
+    private static void setUpEnergyLine() {
+        energyLine.setStrokeWidth(32);
+        energyLine.setStroke(Color.BLUE);
+        energyLine.setStartX(790);
+        energyLine.setStartY(1018);
+        energyLine.setEndY(1018);
+        energyLine.setEndX(calcHeroEnergy());
+
+
+//        hudGroup.getChildren().add(healthText);
+        hudGroup.getChildren().add(healthLine);
+//        hudGroup.getChildren().add(energyText);
+        hudGroup.getChildren().add(energyLine);
+    }
+
+
+    private static void setUpHealthLine() {
+        healthLine.setStrokeWidth(32);
+        healthLine.setStroke(Color.GREEN);
+        healthLine.setStartX(790);
+        healthLine.setStartY(930);
+        healthLine.setEndY(930);
+        healthLine.setEndX(calcHeroHeath());
+    }
+
     private static void setUpHeroNameText() {
-        heroNameText.setX(539);
-        heroNameText.setY(930);
+        heroNameText.setX(552);
+        heroNameText.setY(868);
         heroNameText.setFont(Font.font(32));
         heroNameText.setWrappingWidth(256);
         heroNameText.setTextAlignment(TextAlignment.CENTER);
         hudGroup.getChildren().add(heroNameText);
     }
 
-    private static void setUpRectangle() {
-        rectangle.setLayoutX(0);
-        rectangle.setLayoutY(802);
-        rectangle.setWidth(1920);
-        rectangle.setHeight(278);
-        rectangle.setFill(Color.BROWN);
-        hudGroup.getChildren().add(rectangle);
+    private static void setUpHud() {
+        hudImage.setLayoutX(0);
+        hudImage.setLayoutY(765);
+//        hudImage.setFitWidth(1920);
+//        hudImage.setFitHeight(300);
+        hudImage.setImage(HUD);
+        hudGroup.getChildren().add(hudImage);
     }
 
-    private static void setUpEnergyLine() {
-        hudGroup.setLayoutX(0);
-        hudGroup.setLayoutY(0);
-        hudGroup.getChildren().add(healthText);
-        hudGroup.getChildren().add(healthLine);
-        hudGroup.getChildren().add(energyText);
-        hudGroup.getChildren().add(energyLine);
-    }
-
-    private static void setUpHealthLine() {
-        healthLine.setStrokeWidth(32);
-        healthLine.setStroke(Color.GREEN);
-        healthLine.setStartX(837);
-        healthLine.setStartY(950);
-        healthLine.setEndY(950);
-        healthLine.setEndX(calcHeroHeath());
-    }
 
     private static void setUpEnergyText() {
-        energyLine.setStrokeWidth(32);
-        energyLine.setStroke(Color.BLUE);
-        energyLine.setStartX(837);
-        energyLine.setStartY(1041);
-        energyLine.setEndY(1041);
-        energyLine.setEndX(calcHeroEnergy());
-    }
-
-    private static void setUpHealthText() {
-        healthText.setX(837);
-        healthText.setY(930);
-        healthText.setFont(Font.font(32));
-        healthText.setWrappingWidth(512.0);
-        healthText.setTextAlignment(TextAlignment.CENTER);
-        energyText.setX(837);
-        energyText.setY(1022);
+        energyText.setX(790);
+        energyText.setY(990);
         energyText.setFont(Font.font(32));
         energyText.setWrappingWidth(512.0);
         energyText.setTextAlignment(TextAlignment.CENTER);
+        hudGroup.getChildren().add(energyText);
+
+    }
+
+    private static void setUpHealthText() {
+        healthText.setX(790);
+        healthText.setY(900);
+        healthText.setFont(Font.font(32));
+        healthText.setWrappingWidth(512.0);
+        healthText.setTextAlignment(TextAlignment.CENTER);
+        hudGroup.getChildren().add(healthText);
     }
 
     public static void updateGroup() {
+        hudGroup.toFront();
         hudGroup.setLayoutX(-gameWorld.getGamePane().getLayoutX());
         hudGroup.setLayoutY(-gameWorld.getGamePane().getLayoutY());
-
+        MiniMap.upDateMiniMap();
 
         healthLine.setEndX(calcHeroHeath());
         energyLine.setEndX(calcHeroEnergy());
     }
 
     static int calcHeroHeath() {
-        return 837 + 512 * HERO.getHealth() / HERO_HEALTH;
+        return 790 + 512 * HERO.getHealth() / HERO_HEALTH;
     }
 
     static int calcHeroEnergy() {
-        return 837 + 512 * HERO.getEnergy() / HERO_ENERGY;
+        return 790 + 512 * HERO.getEnergy() / HERO_ENERGY;
     }
 
 }

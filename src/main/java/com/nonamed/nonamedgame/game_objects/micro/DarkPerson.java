@@ -39,13 +39,11 @@ public class DarkPerson extends AbstractPerson {
         if (group.getBoundsInParent().intersects(HERO.getGroup().getBoundsInParent())) {
             health -= HERO.getDamage();
             HERO.setHealth(HERO.getHealth() - damage);
-            System.out.println(posX - HERO.getPosX());
             if (posX - HERO.getPosX() > 0) {
                 HERO.fightRight = true;
             } else {
                 HERO.fightLeft = true;
             }
-            //System.out.println(health);
             if (health < 0) {
                 timer.stop();
             }

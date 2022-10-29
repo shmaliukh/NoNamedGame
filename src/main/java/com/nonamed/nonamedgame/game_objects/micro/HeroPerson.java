@@ -44,7 +44,7 @@ public class HeroPerson extends AbstractPerson {
 
     @Override
     protected void setUpPersonPicturesGroup() {
-        imageView = new ImageView(USIK_ANIMATED);
+        imageView = new ImageView(HERO_ANIMATED);
         group.getChildren().add(imageView);
         initNameText();
         initHealthLine(HERO_HEALTH, Color.GREEN);
@@ -95,14 +95,14 @@ public class HeroPerson extends AbstractPerson {
         speed = Config.HERO_SPEED;
         --energy;
         if(fightLeft){
-            imageView.setImage(USIK_FIGHT_LEFT);
+            imageView.setImage(HERO_FIGHT_LEFT);
             HERO.fightLeft = false;
         }
         else if(fightRight){
-            imageView.setImage(USIK_FIGHT_RIGHT);
+            imageView.setImage(HERO_FIGHT_RIGHT);
             HERO.fightRight = false;
         } else {
-            imageView.setImage(USIK_ANIMATED);
+            imageView.setImage(HERO_ANIMATED);
         }
         upDateAllPersonImages(HERO_HEALTH);
 
