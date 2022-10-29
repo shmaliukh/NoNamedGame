@@ -1,9 +1,12 @@
 package com.nonamed.nonamedgame.scenes;
 
 import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.StaticData;
+import com.nonamed.nonamedgame.utils.HeroSoundService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -16,7 +19,11 @@ public class MainMenuController implements Initializable {
 
     @FXML
     protected void onNewGameButtonClick() {
+        App.MEDIA_PLAYER.stop();
+        App.MEDIA_PLAYER = new MediaPlayer(StaticData.PlANE_SOUND);
+        App.MEDIA_PLAYER.play();
         App.setStageScene(App.gamePane.getScene());
+        App.getStage().setFullScreen(true);
         App.execute();
     }
 

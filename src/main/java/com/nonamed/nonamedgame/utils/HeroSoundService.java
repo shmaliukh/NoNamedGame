@@ -49,6 +49,15 @@ public class HeroSoundService {
         }
     }
 
+    public static void onButtonPress(){
+        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+            heroMediaPlayer.stop();
+            MediaPlayer heroMediaPlayer = new MediaPlayer(damageMusicList.get(RANDOM.nextInt(damageMusicList.size())));
+            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            heroMediaPlayer.play();
+        }
+    }
+
     public static void sayIfDamaged() {
         if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
             heroMediaPlayer.stop();
