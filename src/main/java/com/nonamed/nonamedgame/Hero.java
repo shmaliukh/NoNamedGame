@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -14,8 +15,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.nonamed.nonamedgame.App.HERO;
-import static com.nonamed.nonamedgame.App.mainMenuPane;
+import static com.nonamed.nonamedgame.App.*;
 
 @Getter
 @Setter
@@ -221,6 +221,9 @@ public class Hero {
         isDamageAction = true;
         if(getHealth() < 0){
             App.stopGame();
+            MEDIA_PLAYER.stop();
+            MEDIA_PLAYER = new MediaPlayer(StaticData.GAME_OVER_SOUND);
+            MEDIA_PLAYER.play();
             App.getStage().setScene(mainMenuPane.getScene());
             // FIXME set result window
         }

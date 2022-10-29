@@ -7,12 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.nonamed.nonamedgame.StaticData.PlANE_SOUND;
+
 public class App extends Application {
+
+    public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
+
 
     private static final FXMLLoader fxmlLoaderMainMenu = new FXMLLoader(App.class.getResource("fxmls/mainMenu.fxml"));
     private static final FXMLLoader fxmlLoaderGameScene = new FXMLLoader(App.class.getResource("fxmls/mainScreen.fxml"));
@@ -59,6 +65,9 @@ public class App extends Application {
     }
 
     public static void execute() {
+        MEDIA_PLAYER.stop();
+        MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
+        MEDIA_PLAYER.play();
         gameWorld = new GameWorld();
         HERO = new Hero();
         new Enemy();
@@ -111,6 +120,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        MEDIA_PLAYER.play();
+
         stage = primaryStage;
         stage.setScene(mainMenuPane.getScene());
 

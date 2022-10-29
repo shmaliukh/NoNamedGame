@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.0</junit.version>
         <javafx-controls.version>${javafx-fxml.version}</javafx-controls.version>
-        <javafx-fxml.version>17.0.2</javafx-fxml.version>
+        <javafx-fxml.version>19</javafx-fxml.version>
         <lombok.version>1.18.24</lombok.version>
         <slf4j-api.version>2.0.3</slf4j-api.version>
         <javafx-maven-plugin.version>0.0.8</javafx-maven-plugin.version>
@@ -30,6 +30,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx-fxml.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>${javafx-fxml.version}</version>
+        </dependency>
+
+
 
 
         <dependency>

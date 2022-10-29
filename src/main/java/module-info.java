@@ -3,6 +3,7 @@ module com.nonamed.nonamedgame {
     requires javafx.fxml;
     requires lombok;
     requires org.slf4j;
+    requires javafx.media;
 
 
     opens com.nonamed.nonamedgame to javafx.fxml;

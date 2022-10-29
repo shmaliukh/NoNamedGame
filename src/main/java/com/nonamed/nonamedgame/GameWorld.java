@@ -16,7 +16,6 @@ import static com.nonamed.nonamedgame.StaticData.BACKGROUND_IMAGE;
 public class GameWorld {
 
     private final ImageView backgroundStaticImage;
-    private final Group gameHud = Hud.hudGroup;
 
     private Line heroHealthLine;
     private Line heroEnergyLine;
@@ -44,7 +43,7 @@ public class GameWorld {
 //        App.gamePane.getChildren().add(heroHealthLine);
 //        App.gamePane.getChildren().add(heroEnergyLine);
 
-        App.gamePane.getChildren().add(gameHud);
+        App.gamePane.getChildren().add(Hud.generateHudGroup());
         App.gamePane.getChildren().add(miniMap);
 
     }

@@ -1,6 +1,5 @@
 package com.nonamed.nonamedgame.game_objects;
 
-import com.nonamed.nonamedgame.Hero;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -10,7 +9,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 import static com.nonamed.nonamedgame.App.HERO;
-import static com.nonamed.nonamedgame.App.gameWorld;
 import static com.nonamed.nonamedgame.Config.*;
 import static com.nonamed.nonamedgame.StaticData.HUD;
 
@@ -31,7 +29,26 @@ public final class Hud {
     public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
 
-    static {
+    private Hud() {
+
+    }
+
+    //
+    static int calcHeroHeath() {
+        return 790 + 512 * HERO.getHealth() / HERO_HEALTH;
+    }
+
+    static int calcHeroEnergy() {
+        return 790 + 512 * HERO.getEnergy() / HERO_ENERGY;
+    }
+
+    public static Group generateHudGroup() {
+        hudGroup = new Group();
+        initHud();
+        return hudGroup;
+    }
+
+    static void initHud() {
         setUpAvatar();
 
         setUpHealthBackLine();
@@ -48,11 +65,6 @@ public final class Hud {
 
         hudGroup.setLayoutX(0);
         hudGroup.setLayoutY(0);
-
-    }
-
-
-    private Hud() {
 
     }
 
@@ -93,7 +105,6 @@ public final class Hud {
         hudGroup.getChildren().add(energyLine);
     }
 
-
     public static void setUpHealthLine() {
         healthLine.setStrokeWidth(32);
         healthLine.setStroke(Color.GREEN);
@@ -123,7 +134,6 @@ public final class Hud {
         hudGroup.getChildren().add(hudImage);
     }
 
-
     private static void setUpEnergyText() {
         energyText.setX(790);
         energyText.setY(990);
@@ -150,14 +160,6 @@ public final class Hud {
 
         healthLine.setEndX(calcHeroHeath());
         energyLine.setEndX(calcHeroEnergy());
-    }
-//
-    static int calcHeroHeath() {
-        return 790 + 512 * HERO.getHealth() / HERO_HEALTH;
-    }
-
-    static int calcHeroEnergy() {
-        return 790 + 512 * HERO.getEnergy() / HERO_ENERGY;
     }
 
 }
