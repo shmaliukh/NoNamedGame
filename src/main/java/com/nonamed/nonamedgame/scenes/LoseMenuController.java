@@ -18,7 +18,7 @@ public class LoseMenuController implements Initializable {
 
     @FXML
     protected void onRetryButtonClick() {
-        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
+        Scene gameScene = App.gameWorld.getGameScene();
         App.stage.setScene(gameScene);
     }
 

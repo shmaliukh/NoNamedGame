@@ -15,6 +15,7 @@ public class StaticData {
     public static final Image HUD = new Image("HudFinal.png");
 
     public static final Image SVINO_PES_ANIMATED = new Image("SvinoPes 3.gif");
+    public static final Image BACKGROUND_IMAGE = new Image("backgroundGameScene.png");
     public static int SCORE = 0;
 
 }

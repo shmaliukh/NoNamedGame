@@ -2,20 +2,22 @@ package com.nonamed.nonamedgame.game_objects.micro;
 
 import com.nonamed.nonamedgame.App;
 import com.nonamed.nonamedgame.Config;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import lombok.Getter;
 
 import static com.nonamed.nonamedgame.Config.*;
 import static com.nonamed.nonamedgame.StaticData.*;
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.HERO;
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+import static com.nonamed.nonamedgame.App.HERO;
+import static com.nonamed.nonamedgame.App.gameWorld;
 
 @Getter
 public class HeroPerson extends AbstractPerson {
+
+    public static Rectangle bodyCollisionRectangle = new Rectangle();
 
     boolean fightLeft = false ;
     boolean fightRight = false ;
@@ -45,9 +47,22 @@ public class HeroPerson extends AbstractPerson {
     @Override
     protected void setUpPersonPicturesGroup() {
         imageView = new ImageView(HERO_ANIMATED);
-        group.getChildren().add(imageView);
+        personGroup.getChildren().add(imageView);
+        setUbBodyCollisionRectangle();
+
         initNameText();
         initHealthLine(HERO_HEALTH, Color.GREEN);
+    }
+
+    private void setUbBodyCollisionRectangle() {
+        bodyCollisionRectangle.setX(40);
+        bodyCollisionRectangle.setY(50);
+        bodyCollisionRectangle.setWidth(50);
+        bodyCollisionRectangle.setHeight(50);
+        bodyCollisionRectangle.setFill(Color.RED);
+        bodyCollisionRectangle.setOpacity(1);
+        bodyCollisionRectangle.setOpacity(1);
+        personGroup.getChildren().add(bodyCollisionRectangle);
     }
 
     public void setUpKeyHandlerActions(Stage scene) {
@@ -58,10 +73,10 @@ public class HeroPerson extends AbstractPerson {
     private void onKeyReleased(Stage scene) {
         scene.addEventFilter(KeyEvent.KEY_RELEASED, (keyEvent -> {
             switch (keyEvent.getCode()) {
-                case UP -> isUP = false;
-                case DOWN -> isDOWN = false;
-                case RIGHT -> isRIGHT = false;
-                case LEFT -> isLEFT = false;
+                case UP, W -> isUP = false;
+                case DOWN, S -> isDOWN = false;
+                case RIGHT, D -> isRIGHT = false;
+                case LEFT, A -> isLEFT = false;
             }
             moveStatus = WAIT;
         }));
@@ -70,10 +85,10 @@ public class HeroPerson extends AbstractPerson {
     private void onKeyPressed(Stage scene) {
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {
             switch (keyEvent.getCode()) {
-                case UP -> moveByDirection(MOVE_UP);
-                case DOWN -> moveByDirection(MOVE_DOWN);
-                case RIGHT -> moveByDirection(MOVE_RIGHT);
-                case LEFT -> moveByDirection(MOVE_LEFT);
+                case UP, W -> moveByDirection(MOVE_UP);
+                case DOWN, S -> moveByDirection(MOVE_DOWN);
+                case RIGHT, D -> moveByDirection(MOVE_RIGHT);
+                case LEFT, A -> moveByDirection(MOVE_LEFT);
             }
         }));
     }
@@ -87,7 +102,6 @@ public class HeroPerson extends AbstractPerson {
                 case MOVE_RIGHT -> isRIGHT = true;
                 case MOVE_LEFT -> isLEFT = true;
             }
-            //System.out.println("pos: " + posX + " | " + posY);
         }
     }
 
@@ -151,11 +165,6 @@ public class HeroPerson extends AbstractPerson {
             }
             upDatePerson();
         }
-
-
-
-
-
     }
 
 }

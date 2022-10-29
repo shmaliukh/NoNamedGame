@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import static com.nonamed.nonamedgame.Config.NAME_LIST;
 import static com.nonamed.nonamedgame.Config.RANDOM;
 import static com.nonamed.nonamedgame.StaticData.SVINO_PES_ANIMATED;
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.HERO;
+import static com.nonamed.nonamedgame.App.HERO;
 
 public class DarkPerson extends AbstractPerson {
 
@@ -29,14 +29,15 @@ public class DarkPerson extends AbstractPerson {
     @Override
     protected void setUpPersonPicturesGroup() {
         imageView = new ImageView(SVINO_PES_ANIMATED);
-        group.getChildren().add(imageView);
+        personGroup.getChildren().add(imageView);
         initNameText();
         initHealthLine(DEFAULT_HEALTH_FOR_DARK_SIDE, Color.RED);
     }
 
     public void move() {
         moveToTarget(HERO.getPosX(), HERO.getPosY());
-        if (group.getBoundsInParent().intersects(HERO.getGroup().getBoundsInParent())) {
+        if (personGroup.getBoundsInParent()
+                .intersects(HERO.bodyCollisionRectangle.getBoundsInParent())) {
             health -= HERO.getDamage();
             HERO.setHealth(HERO.getHealth() - damage);
             if (posX - HERO.getPosX() > 0) {
@@ -47,9 +48,7 @@ public class DarkPerson extends AbstractPerson {
             if (health < 0) {
                 timer.stop();
             }
-
         }
-
     }
 
     protected void upDatePerson() {
@@ -66,7 +65,7 @@ public class DarkPerson extends AbstractPerson {
         upDatePerson();
         if (posY < targetPosY) {
             setPosY(getPosY() - speed);
-            group.setLayoutY(getPosY());
+            personGroup.setLayoutY(getPosY());
         } else {
             setPosY(getPosY() + speed);
         }

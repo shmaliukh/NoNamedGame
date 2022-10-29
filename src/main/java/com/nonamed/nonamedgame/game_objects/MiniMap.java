@@ -1,13 +1,11 @@
 package com.nonamed.nonamedgame.game_objects;
 
-import com.nonamed.nonamedgame.App;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+import static com.nonamed.nonamedgame.App.gameWorld;
 
 public final class MiniMap {
 
@@ -40,8 +38,6 @@ public final class MiniMap {
 ////        mapGroup.setScaleY(gameWorld.getGamePane().getHeight() * scaleFactor);
 //        miniMapImageView.setLayoutX(32);
 //        miniMapImageView.setLayoutY(892);
-
     }
-
 
 }

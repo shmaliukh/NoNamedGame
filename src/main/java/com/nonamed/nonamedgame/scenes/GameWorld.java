@@ -1,6 +1,7 @@
 package com.nonamed.nonamedgame.scenes;
 
 import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.StaticData;
 import com.nonamed.nonamedgame.utils.MyLogUtil;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -13,6 +14,9 @@ import java.io.IOException;
 
 @Getter
 public final class GameWorld {
+
+
+    public static final ImageView backgroundStaticImage = new ImageView(StaticData.BACKGROUND_IMAGE);
 
     private final FXMLLoader FXML_LOADER = new FXMLLoader(App.class.getResource("fxmls/mainScreen.fxml"));
     private Pane gamePane;

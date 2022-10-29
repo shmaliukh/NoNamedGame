@@ -11,8 +11,8 @@ import javafx.scene.text.Text;
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.nonamed.nonamedgame.game_objects.Hud.hudGroup;
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+import static com.nonamed.nonamedgame.game_objects.micro.HeroPerson.bodyCollisionRectangle;
+
 
 @Getter
 @Setter
@@ -36,7 +36,7 @@ public abstract class AbstractPerson extends BaseObject {
 
     protected Text nameText;
     protected Line healthLine;
-    protected Group group = new Group();
+    protected Group personGroup = new Group();
 
     protected boolean isUP = false;
     protected boolean isDOWN = false;
@@ -45,7 +45,7 @@ public abstract class AbstractPerson extends BaseObject {
 
     protected void initImageView(String imageFileNameStr) {
         initImageView(imageFileNameStr, 0, 0);
-        group.getChildren().add(imageView);
+        personGroup.getChildren().add(imageView);
     }
 
     public abstract void move();
@@ -54,7 +54,7 @@ public abstract class AbstractPerson extends BaseObject {
         healthLine = new Line(0, 0, calcHealthPosXEnd(maxHealth), 0);
         healthLine.setStrokeWidth(5);
         healthLine.setStroke(color);
-        group.getChildren().add(healthLine);
+        personGroup.getChildren().add(healthLine);
     }
 
     protected void initNameText() {
@@ -62,13 +62,16 @@ public abstract class AbstractPerson extends BaseObject {
         nameText.setX(0);
         nameText.setY(-10);
         nameText.setFont(Font.font(12));
-        group.getChildren().add(nameText);
+        personGroup.getChildren().add(nameText);
     }
 
     protected void upDateAllPersonImages(int maxHealth) {
-        group.setLayoutX(getPosX());
-        group.setLayoutY(getPosY());
+        personGroup.setLayoutX(getPosX());
+        personGroup.setLayoutY(getPosY());
         Hud.updateGroup();
+
+        bodyCollisionRectangle.setLayoutX(getPosX());
+        bodyCollisionRectangle.setLayoutY(getPosY());
 
 
         healthLine.setEndX(calcHealthPosXEnd(maxHealth));

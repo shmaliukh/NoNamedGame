@@ -18,8 +18,9 @@ public class WinMenuController implements Initializable {
 
     @FXML
     protected void onRetryButtonClick() {
-        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
+        Scene gameScene = App.gameWorld.getGameScene();
         App.stage.setScene(gameScene);
+        App.stage.setFullScreen(true);
     }
 
     @Override

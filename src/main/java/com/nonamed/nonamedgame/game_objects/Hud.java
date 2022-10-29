@@ -10,10 +10,9 @@ import javafx.scene.text.TextAlignment;
 
 import static com.nonamed.nonamedgame.Config.*;
 import static com.nonamed.nonamedgame.StaticData.HUD;
-import static com.nonamed.nonamedgame.StaticData.USIK_AVATAR;
 import static com.nonamed.nonamedgame.game_objects.MiniMap.miniMapImageView;
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.HERO;
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+import static com.nonamed.nonamedgame.App.HERO;
+import static com.nonamed.nonamedgame.App.gameWorld;
 
 public final class Hud {
 

@@ -6,7 +6,6 @@ import com.nonamed.nonamedgame.Config;
 import com.nonamed.nonamedgame.game_objects.BaseObject;
 import com.nonamed.nonamedgame.game_objects.micro.AbstractPerson;
 import com.nonamed.nonamedgame.game_objects.micro.DarkPerson;
-import com.nonamed.nonamedgame.game_objects.micro.HeroPerson;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
@@ -42,12 +41,9 @@ public final class GameWorldHandler implements Serializable {
             "\n* kill enemies" +
             "\n✔ find " + Config.HERO_KEY_GOAL + " keys";
 
-    public static HeroPerson HERO = new HeroPerson("Кличко", 896, 476);
-    public static GameWorld gameWorld = new GameWorld();
-
     static {
-        gameWorld.registerObject(HERO.getGroup());
-        gameWorld.registerObject(hudGroup);
+        App.gameWorld.registerObject(App.HERO.getPersonGroup());
+        App.gameWorld.registerObject(hudGroup);
     }
 
     public static final List<AbstractPerson> personArrayList = new ArrayList<>();
@@ -81,8 +77,8 @@ public final class GameWorldHandler implements Serializable {
         homeBorder.setOpacity(0);
 
 
-        gameWorld.getGamePane().getChildren().add(homeImageView);
-        gameWorld.getGamePane().getChildren().add(homeBorder);
+        App.gameWorld.getGamePane().getChildren().add(homeImageView);
+        App.gameWorld.getGamePane().getChildren().add(homeBorder);
     }
 
     private void addKeyHomeImageView(int posX, int posY) {
@@ -90,7 +86,7 @@ public final class GameWorldHandler implements Serializable {
         keyImageView.setX(posX);
         keyImageView.setY(posY);
         keyArrayList.add(keyImageView);
-        gameWorld.getGamePane().getChildren().add(keyImageView);
+        App.gameWorld.getGamePane().getChildren().add(keyImageView);
     }
 
     private void addMissionText() {
@@ -98,7 +94,7 @@ public final class GameWorldHandler implements Serializable {
         missionText.setX(1050);
         missionText.setY(30);
         missionText.setFont(Font.font(20));
-        gameWorld.getGamePane().getChildren().add(missionText);
+        App.gameWorld.getGamePane().getChildren().add(missionText);
     }
 
     private void initTimer() {
@@ -114,33 +110,35 @@ public final class GameWorldHandler implements Serializable {
             @Override
             public void handle(long l) {
 
-                if (!keySpawn.isAlive() && !gameWorld.getGamePane().getChildren().contains(keyImageView)) {
+                if (!keySpawn.isAlive() && !App.gameWorld.getGamePane().getChildren().contains(keyImageView)) {
                     Config.IS_KEY_GOAL = true;
                     setUpGoalText();
                 }
 
-                if (HERO.getGroup().getBoundsInParent().intersects(keyImageView.getBoundsInParent())) {
+                if (App.HERO.getPersonGroup().getBoundsInParent().intersects(keyImageView.getBoundsInParent())) {
                     if (keyArrayList.contains(keyImageView)) {
-                        gameWorld.getGamePane().getChildren().remove(keyImageView);
+                        App.gameWorld.getGamePane().getChildren().remove(keyImageView);
                     }
                 }
-                if (HERO.getHealth() < 0) {
+                if (App.HERO.getHealth() < 0) {
                     personArrayList.forEach(o -> o = null);
                     App.stage.setScene(new LoseMenu().loseMenuScene);
+                    App.stage.setFullScreen(true);
                     App.isAbleToUseEscButton = false;
                     timer.stop();
                 } else if (Config.HERO_ENEMY_GOAL == 0 && Config.IS_KEY_GOAL) {
                     setUpGoalText();
-                    if (HERO.getGroup().getBoundsInParent().intersects(homeBorder.getBoundsInParent())) {
+                    if (App.HERO.getPersonGroup().getBoundsInParent().intersects(homeBorder.getBoundsInParent())) {
                         System.out.println("Hero Win");
                         App.stage.setScene(new WinMenu().winMenuScene);
+                        App.stage.setFullScreen(true);
                         App.isAbleToUseEscButton = false;
                         timer.stop();
                     }
                 }
                 for (AbstractPerson person : personArrayList) {
                     if (person.getHealth() <= 0) {
-                        gameWorld.getGamePane().getChildren().remove(person.getGroup());
+                        App.gameWorld.getGamePane().getChildren().remove(person.getPersonGroup());
 
                         personArrayList.remove(person);
                         if (Config.HERO_ENEMY_GOAL > 0) {
@@ -153,7 +151,7 @@ public final class GameWorldHandler implements Serializable {
                     }
                 }
 
-                HERO.move();
+                App.HERO.move();
             }
         };
         timer.start();
@@ -230,7 +228,7 @@ public final class GameWorldHandler implements Serializable {
     }
 
     public void addPersonToScene(AbstractPerson person) {
-        gameWorld.registerObject(person.getGroup());
+        App.gameWorld.registerObject(person.getPersonGroup());
         personArrayList.add(person);
     }
 

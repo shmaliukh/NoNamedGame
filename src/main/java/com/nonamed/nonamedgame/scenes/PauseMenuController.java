@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.nonamed.nonamedgame.scenes.GameWorldHandler.gameWorld;
+import static com.nonamed.nonamedgame.App.gameWorld;
 
 public class PauseMenuController implements Initializable {
 
@@ -16,6 +16,7 @@ public class PauseMenuController implements Initializable {
     protected void onContinueButtonClick() {
         Scene continueGameScene = gameWorld.getGameScene();
         App.stage.setScene(continueGameScene);
+        App.stage.setFullScreen(true);
     }
 
     @FXML
@@ -26,8 +27,9 @@ public class PauseMenuController implements Initializable {
 
     @FXML
     protected void onRetryButtonClick() {
-        Scene gameScene = new GameWorldHandler().gameWorld.getGameScene();
+        Scene gameScene = App.gameWorld.getGameScene();
         App.stage.setScene(gameScene);
+        App.stage.setFullScreen(true);
     }
 
     @Override
