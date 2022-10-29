@@ -19,6 +19,7 @@ public final class Config {
 
     public static void setUpProfileConfig(){
         if(isUsik){
+            HERO_NAME_STR = "УСИК";
             HERO_ANIMATED = USIK_ANIMATED;
             HERO_FIGHT_LEFT = USIK_FIGHT_LEFT;
             HERO_FIGHT_RIGHT = USIK_FIGHT_RIGHT ;
@@ -28,6 +29,7 @@ public final class Config {
             HERO_FIGHT_LEFT = OLHA_FIGHT_LEFT;
             HERO_FIGHT_RIGHT = OLHA_FIGHT_RIGHT ;
             HERO_AVATAR = OLHA_AVATAR;
+            HERO_NAME_STR = "ХАРЛАН";
         }
     }
 
@@ -39,7 +41,7 @@ public final class Config {
     public static int WINDOW_WIDTH = 1920;
     public static int WORLD_HEIGHT = 2560;
     public static int WORLD_WIDTH = 5120;
-    public static String HERO_NAME = "VLAD";
+    public static String HERO_NAME_STR = "";
     public static int HERO_SPEED = 5;
     public static int HERO_DAMAGE = 5;
     public static int HERO_HEALTH = 10000;
