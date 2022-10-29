@@ -6,27 +6,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nonamed.nonamedgame.scenes.MainMenuController">
     <children>
-        <Button fx:id="newGameButtonAsHarlan" layoutX="1018.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonAsHarlan" prefHeight="107.0" prefWidth="502.0" styleClass="newGameButton" text="Почати як Харлан" AnchorPane.leftAnchor="1018.0" AnchorPane.rightAnchor="400.0">
+        <Button fx:id="newGameButtonAsHarlan" layoutX="1008.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonAsHarlan" prefHeight="107.0" prefWidth="512.0" styleClass="newGameButton" text="Я - Харлан" AnchorPane.leftAnchor="1008.0" AnchorPane.rightAnchor="400.0">
             <font>
                 <Font size="50.0" />
             </font>
         </Button>
-        <Button fx:id="exitButton" layoutX="400.0" layoutY="572.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="100.0" prefWidth="400.0" text="Exit" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
+        <Button fx:id="exitButton" layoutX="400.0" layoutY="572.0" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="100.0" prefWidth="400.0" text="Кивати п’ятами" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
             <font>
                 <Font size="50.0" />
             </font>
         </Button>
-        <Button fx:id="settingsButton" layoutX="400.0" layoutY="434.0" mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="100.0" prefWidth="400.0" text="Settings" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
+        <Button fx:id="settingsButton" layoutX="400.0" layoutY="433.0" mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="100.0" prefWidth="400.0" text="Наготовляння" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
             <font>
                 <Font size="50.0" />
             </font>
         </Button>
-        <Button layoutX="350.0" layoutY="123.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="710.0" text="NoNamed" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
+        <Button layoutX="350.0" layoutY="90.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="710.0" text="NoNamed" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
             <font>
                 <Font size="79.0" />
             </font>
         </Button>
-      <Button fx:id="newGameButtonAsUsik" layoutX="400.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonAsUsik" prefHeight="107.0" prefWidth="486.0" styleClass="newGameButton" text="Почати як Усик">
+      <Button fx:id="newGameButtonAsUsik" layoutX="400.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonAsUsik" prefHeight="107.0" prefWidth="512.0" styleClass="newGameButton" text="Я - Усик">
          <font>
             <Font size="50.0" />
          </font>
