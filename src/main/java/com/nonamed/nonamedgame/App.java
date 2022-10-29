@@ -77,7 +77,6 @@ public class App extends Application {
         HERO = new Hero();
         new Enemy();
         new SvinoPesHach();
-        new GameWorldObjects(1);
 
         for (int i = 0; i < 10; i++) {
             new SvinoPesOrk();
@@ -118,6 +117,26 @@ public class App extends Application {
             }
         });
         enemySpawn.start();
+        gameWorldObjects.add(new GameWorldObjects(1));
+        Thread gameWorldObjectSpawn = new Thread(() -> {
+            while (true){
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        gameWorldObjects.add(new GameWorldObjects(1));
+                    }
+                });
+            }
+
+
+        });
+        gameWorldObjectSpawn.start();
     }
 
     public static void stopGame() {
@@ -189,4 +208,15 @@ public class App extends Application {
 
         });
     }
+
+    public static String objectCollisionDetectWithHero(){
+        for (GameWorldObjects gameWorldObject : gameWorldObjects) {
+            System.out.println("collision");
+            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
+                return "wrong-way";
+            }
+        }
+        return "good-way";
+    }
+
 }

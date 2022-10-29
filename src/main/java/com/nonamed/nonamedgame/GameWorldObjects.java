@@ -36,7 +36,7 @@ public class GameWorldObjects {
         obj_v1.setX(posX);
         obj_v1.setY(posY);
         obj_v1.setWidth(64);
-        obj_v1.setHeight(64);
+        obj_v1.setHeight(128);
         obj_v1.setFill(Color.GREEN);
 
         miniMapPoint = new Rectangle();
@@ -49,7 +49,8 @@ public class GameWorldObjects {
         timerObjectAction = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                collisionDetectWithHero();
+
+                objectCollisionDetectWithPerson();
 
             }};
 
@@ -77,10 +78,11 @@ public class GameWorldObjects {
 
     }
 
-    public void collisionDetectWithHero(){
-        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.obj_v1.getBoundsInParent())){
-            System.out.println("Object collision");
+    public String objectCollisionDetectWithPerson(){
+            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(obj_v1.getBoundsInParent())){
+                return  "wrong-way";
         }
+        return "good-way";
     }
 
 
