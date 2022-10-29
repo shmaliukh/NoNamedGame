@@ -31,6 +31,7 @@ public class App extends Application {
     public static Pane resultMenuPane;
     public static Pane settingMenuPane;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
+    public static ArrayList<GameWorldObjects> gameWorldObjects = new ArrayList<>();
     public static GameWorld gameWorld;
     public static Hero HERO;
     public static Enemy enemy;
@@ -71,6 +72,7 @@ public class App extends Application {
         gameWorld = new GameWorld();
         HERO = new Hero();
         new Enemy();
+        new GameWorldObjects(1);
 
         for (int i = 0; i < 10; i++) {
             new Enemy();
@@ -151,5 +153,22 @@ public class App extends Application {
             }
 
         });
+    }
+
+    public static void updatePosition(String direction){
+        for (GameWorldObjects gameWorldObject : App.gameWorldObjects) {
+            if (direction.equals("UP")) {
+                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() + Config.HERO_SPEED);
+            }
+            if (direction.equals("DOWN")) {
+                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() - Config.HERO_SPEED);
+            }
+            if (direction.equals("RIGHT")) {
+                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() - Config.HERO_SPEED);
+            }
+            if (direction.equals("LEFT")) {
+                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() + Config.HERO_SPEED);
+            }
+        }
     }
 }
