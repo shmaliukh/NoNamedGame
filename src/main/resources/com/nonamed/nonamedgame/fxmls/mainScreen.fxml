@@ -5,33 +5,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2560.0" prefWidth="5120.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2560.0" prefWidth="5120.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Rectangle arcHeight="64.0" arcWidth="128.0" fill="#1f93ff" height="278.0" layoutY="802.0" stroke="BLACK" strokeType="INSIDE" width="548.0" />
-        <Rectangle arcHeight="128.0" arcWidth="64.0" fill="#1f93ff" height="278.0" layoutX="1372.0" layoutY="802.0" stroke="BLACK" strokeType="INSIDE" width="548.0" />
-        <Rectangle fill="#1f93ff" height="205.0" layoutY="875.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="128.0" layoutX="603.0" layoutY="945.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5fb045" height="256.0" layoutX="14.0" layoutY="817.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5fb045" height="256.0" layoutX="1394.0" layoutY="817.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#922cff" height="32.0" layoutX="837.0" layoutY="1041.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="32.0" layoutX="837.0" layoutY="950.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
-        <Text layoutX="837.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HEALTH" textAlignment="CENTER" wrappingWidth="512.0">
+        <Rectangle arcHeight="64.0" arcWidth="128.0" fill="#1f93ff" height="278.0" layoutY="802.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="548.0" />
+        <Rectangle arcHeight="128.0" arcWidth="64.0" fill="#1f93ff" height="278.0" layoutX="1372.0" layoutY="802.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="548.0" />
+        <Rectangle fill="#1f93ff" height="205.0" layoutY="875.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="128.0" layoutX="603.0" layoutY="945.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5fb045" height="256.0" layoutX="14.0" layoutY="817.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5fb045" height="256.0" layoutX="1394.0" layoutY="817.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#922cff" height="32.0" layoutX="837.0" layoutY="1041.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="32.0" layoutX="837.0" layoutY="950.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="512.0" />
+        <Text layoutX="837.0" layoutY="930.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HEALTH" textAlignment="CENTER" wrappingWidth="512.0">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-        <Text layoutX="837.0" layoutY="1022.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENERGY" textAlignment="CENTER" wrappingWidth="512.0">
+        <Text layoutX="837.0" layoutY="1022.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENERGY" textAlignment="CENTER" wrappingWidth="512.0">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-        <Text layoutX="539.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HERO NAME" textAlignment="CENTER" wrappingWidth="256.0">
+        <Text layoutX="539.0" layoutY="930.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HERO NAME" textAlignment="CENTER" wrappingWidth="256.0">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="128.0" layoutX="484.0" layoutY="484.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="64.0" layoutX="375.0" layoutY="548.0" stroke="BLACK" strokeType="INSIDE" width="64.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="256.0" layoutX="46.0" layoutY="356.0" stroke="BLACK" strokeType="INSIDE" width="256.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="128.0" layoutX="484.0" layoutY="484.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="64.0" layoutX="375.0" layoutY="548.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="64.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56ff1f" height="256.0" layoutX="46.0" layoutY="356.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="256.0" />
+      <Text layoutX="616.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Завантаження...">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
     </children>
 </Pane>
