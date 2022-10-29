@@ -31,4 +31,5 @@ public class PauseMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 }

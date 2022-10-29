@@ -3,7 +3,6 @@ package com.nonamed.nonamedgame.scenes;
 import com.nonamed.nonamedgame.App;
 import com.nonamed.nonamedgame.Config;
 import com.nonamed.nonamedgame.StaticData;
-import com.nonamed.nonamedgame.utils.HeroSoundService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,12 +20,14 @@ public class MainMenuController implements Initializable {
     @FXML
     protected void onNewGameButtonAsHarlan() {
         Config.isUsik = false;
-        startGame();
+//        startGame();
+        App.setStageScene(App.previewPane.getScene());
     }
     @FXML
     protected void onNewGameButtonAsUsik() {
         Config.isUsik = true;
-        startGame();
+        App.setStageScene(App.previewPane.getScene());
+//        startGame();
     }
 
     private void startGame() {

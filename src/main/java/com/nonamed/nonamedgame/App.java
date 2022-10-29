@@ -29,12 +29,15 @@ public class App extends Application {
     private static final FXMLLoader fxmlLoaderPauseMenuScene = new FXMLLoader(App.class.getResource("fxmls/pauseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderResultMenuScene = new FXMLLoader(App.class.getResource("fxmls/loseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderSettingMenuScene = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
+    private static final FXMLLoader fxmlLoaderPreviewScene = new FXMLLoader(App.class.getResource("fxmls/preview.fxml"));
+
     public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
     public static Pane mainMenuPane;
     public static Pane gamePane;
     public static Pane pauseMenuPane;
     public static Pane resultMenuPane;
     public static Pane settingMenuPane;
+    public static Pane previewPane;
     public static ArrayList<Enemy> enemies = new ArrayList<>();
     public static ArrayList<GameWorldObjects> gameWorldObjects = new ArrayList<>();
     public static GameWorld gameWorld;
@@ -50,6 +53,7 @@ public class App extends Application {
             pauseMenuPane = fxmlLoaderPauseMenuScene.load();
             resultMenuPane = fxmlLoaderResultMenuScene.load();
             settingMenuPane = fxmlLoaderSettingMenuScene.load();
+            previewPane = fxmlLoaderPreviewScene.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
