@@ -64,6 +64,7 @@ public class App extends Application {
     public final Scene pauseMenuScene = new Scene(pauseMenuPane);
     public final Scene resultMenuScene = new Scene(resultMenuPane);
     public final Scene settingScene = new Scene(settingMenuPane);
+    public final Scene previewScene = new Scene(previewPane);
 
     public static Stage getStage() {
         return stage;
