@@ -10,6 +10,7 @@ public class StaticData {
     public static final Image HUD = new Image("HudFinal.png");
     public static final Image BACKGROUND_IMAGE = new Image("MAP.png");
     public static final Image SCORE_IMAGE = new Image("score-image.png");
+    public static final Image LOGO_IMAGE = new Image("logo.png");
 
 
     public static final Image USIK_ANIMATED = new Image("UsikFinal.gif");

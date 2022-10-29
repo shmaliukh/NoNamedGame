@@ -185,6 +185,7 @@ public class App extends Application {
 
         stage = primaryStage;
         stage.setScene(mainMenuPane.getScene());
+        stage.getIcons().add(StaticData.LOGO_IMAGE);
 
         stage.setTitle("NoNamed game");
         stage.setMinWidth(1200);
