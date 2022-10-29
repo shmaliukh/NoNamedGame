@@ -51,6 +51,11 @@ public class GameWorld {
         return miniMap;
     }
 
+//    public void updateHudGroup(String direction){
+//        if (direction.equals("UP"))
+//            hudGroup.setLayoutY(hudGroup.getLayoutY() - Config.HERO_SPEED);
+//    }
+
 //    public void saveAsPng(Node node, String fname) {
 //        saveAsPng(node, fname, new SnapshotParameters());
 //    }

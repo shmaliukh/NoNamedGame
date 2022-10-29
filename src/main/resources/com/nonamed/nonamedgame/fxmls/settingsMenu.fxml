@@ -1,81 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css"
-            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.nonamed.nonamedgame.scenes.SettingsMenuController">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nonamed.nonamedgame.scenes.SettingsMenuController">
     <children>
-        <Button fx:id="exitButton" layoutX="400.0" layoutY="482.0" mnemonicParsing="false"
-                onAction="#onMainMenuButtonClick" prefHeight="100.0" prefWidth="400.0" text="Main menu"
-                AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
+        <Button fx:id="exitButton" layoutX="407.0" layoutY="809.0" mnemonicParsing="false" onAction="#onMainMenuButtonClick" prefHeight="100.0" prefWidth="400.0" text="Main menu" AnchorPane.leftAnchor="407.0" AnchorPane.rightAnchor="393.0">
             <font>
-                <Font size="50.0"/>
+                <Font size="50.0" />
             </font>
         </Button>
-        <Text layoutX="514.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+        <Text layoutX="810.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Налаштування">
             <font>
-                <Font size="50.0"/>
+                <Font size="50.0" />
             </font>
         </Text>
-        <Slider fx:id="speedSlider" layoutX="318.0" layoutY="168.0" majorTickUnit="2.0" max="10.0" min="1.0"
-                minorTickCount="1" onMouseReleased="#onSpeedSliderAction" prefHeight="37.0" prefWidth="534.0"
-                showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0"/>
-        <Text layoutX="92.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero speed">
+        <Slider fx:id="speedSlider" layoutX="718.0" layoutY="168.0" majorTickUnit="2.0" max="10.0" min="1.0" minorTickCount="1" onMouseReleased="#onSpeedSliderAction" prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+        <Text layoutX="492.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero speed">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Text fx:id="speedValueText" layoutX="878.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="109.16235996457954">
+        <Text fx:id="speedValueText" layoutX="1278.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="109.16235996457954">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Slider fx:id="heroDamageSlider" layoutX="318.0" layoutY="221.0" majorTickUnit="2.0" max="10.0" min="1.0"
-                minorTickCount="1" onMouseReleased="#onHeroDamageSliderAction" prefHeight="37.0" prefWidth="534.0"
-                showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0"/>
-        <Text layoutX="92.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero damage">
+        <Slider fx:id="heroDamageSlider" layoutX="718.0" layoutY="221.0" majorTickUnit="2.0" max="10.0" min="1.0" minorTickCount="1" onMouseReleased="#onHeroDamageSliderAction" prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+        <Text layoutX="492.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero damage">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Text fx:id="heroDamageText" layoutX="878.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="109.16235996457954">
+        <Text fx:id="heroDamageText" layoutX="1278.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="109.16235996457954">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Slider fx:id="heroHealthSlider" blockIncrement="500.0" layoutX="318.0" layoutY="271.0" majorTickUnit="1000.0"
-                max="10000.0" min="500.0" minorTickCount="1" onMouseReleased="#onHeroHealthSliderAction"
-                prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"
-                value="500.0"/>
-        <Text layoutX="92.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero health">
+        <Slider fx:id="heroHealthSlider" blockIncrement="500.0" layoutX="718.0" layoutY="271.0" majorTickUnit="1000.0" max="10000.0" min="500.0" minorTickCount="1" onMouseReleased="#onHeroHealthSliderAction" prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="500.0" />
+        <Text layoutX="492.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero health">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Text fx:id="heroHealthText" layoutX="878.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="109.16235996457954">
+        <Text fx:id="heroHealthText" layoutX="1278.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="109.16235996457954">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Slider fx:id="enemySpeedSlider" layoutX="318.0" layoutY="321.0" majorTickUnit="2.0" max="10.0" min="1.0"
-                minorTickCount="1" onMouseReleased="#onEnemySpeedSliderAction" prefHeight="37.0" prefWidth="534.0"
-                showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0"/>
-        <Text layoutX="92.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy speed">
+        <Slider fx:id="enemySpeedSlider" layoutX="718.0" layoutY="321.0" majorTickUnit="2.0" max="10.0" min="1.0" minorTickCount="1" onMouseReleased="#onEnemySpeedSliderAction" prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+        <Text layoutX="492.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy speed">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
-        <Text fx:id="enemySpeedText" layoutX="878.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              wrappingWidth="109.16235996457954">
+        <Text fx:id="enemySpeedText" layoutX="1278.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="109.16235996457954">
             <font>
-                <Font size="34.0"/>
+                <Font size="34.0" />
             </font>
         </Text>
+      <Slider fx:id="volumeSlider" layoutX="718.0" layoutY="641.0" majorTickUnit="2.0" max="10.0" min="1.0" minorTickCount="1" onMouseReleased="#onVolumeSliderAction" prefHeight="37.0" prefWidth="534.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Text layoutX="492.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <Text fx:id="volumeSliderText" layoutX="1278.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="109.16235996457954">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="modeOne" layoutX="237.0" layoutY="401.0" mnemonicParsing="false" onAction="#onChooseModeBoxActionLight" text="Початківець">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="modeTwo" layoutX="567.0" layoutY="401.0" mnemonicParsing="false" onAction="#onChooseModeBoxActionMedium" text="Спортсмен">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="modeThree" layoutX="877.0" layoutY="401.0" mnemonicParsing="false" onAction="#onChooseModeBoxActionHard" text="Боєць">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </CheckBox>
+      <Text fx:id="enemySpeedText1" layoutX="914.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Режим" wrappingWidth="156.0025582407519">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="modeFour" layoutX="1091.0" layoutY="406.0" mnemonicParsing="false" onAction="#onChooseModeBoxActionFour" text="Смерть ворогам">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="modeFive" layoutX="1484.0" layoutY="405.0" mnemonicParsing="false" onAction="#onChooseModeBoxActionFive" text="Власні">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </CheckBox>
     </children>
 </AnchorPane>

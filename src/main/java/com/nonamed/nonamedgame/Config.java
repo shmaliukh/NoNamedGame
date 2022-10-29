@@ -39,7 +39,7 @@ public final class Config {
 //    public static int HERO_SPEED = 5;
     public static String RIGHT_HERO_KICK = "X";
     public static String ENEMY_NAME = "!*!";
-    public static int ENEMY_HEALTH = 300;
+    public static int ENEMY_HEALTH = 3000;
 //    public static int ENEMY_DAMAGE = 1;
     public static int ENEMY_SPEED = 3;
     public static int ENEMY_SPEED_BOUND = 3;

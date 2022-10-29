@@ -13,8 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.nonamed.nonamedgame.StaticData.MAIN_MENU_SOUND;
-import static com.nonamed.nonamedgame.StaticData.PlANE_SOUND;
+import static com.nonamed.nonamedgame.StaticData.*;
 import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfDamaged;
 
 public class App extends Application {
@@ -24,7 +23,7 @@ public class App extends Application {
     private static final FXMLLoader fxmlLoaderPauseMenuScene = new FXMLLoader(App.class.getResource("fxmls/pauseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderResultMenuScene = new FXMLLoader(App.class.getResource("fxmls/loseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderSettingMenuScene = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
-    public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
+    public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(MAIN_MENU_SOUND);
     public static Pane mainMenuPane;
     public static Pane gamePane;
     public static Pane pauseMenuPane;
@@ -66,7 +65,7 @@ public class App extends Application {
 
     public static void execute() {
         MEDIA_PLAYER.stop();
-        MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
+        MEDIA_PLAYER = new MediaPlayer(MAIN_MENU_SOUND);
         MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
         MEDIA_PLAYER.play();
         gameWorld = new GameWorld();
