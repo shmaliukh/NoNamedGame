@@ -16,6 +16,8 @@ public final class Config {
     public static final Image HERO_AVATAR = USIK_AVATAR;
     public static final Random RANDOM = new Random();
 
+    public static double VOLUME_LEVEL = 0.5;
+
     public static int WINDOW_HEIGHT = 1080;
     public static int WINDOW_WIDTH = 1920;
     public static int WORLD_HEIGHT = 2560;
@@ -25,13 +27,9 @@ public final class Config {
     public static int HERO_DAMAGE = 5;
     public static int HERO_HEALTH = 10000;
     public static int HERO_ENERGY = 10000;
-    public static int HERO_ENEMY_GOAL = 7;
-    public static int HERO_KEY_GOAL = 4;
-    public static boolean IS_KEY_GOAL = false;
+
     public static int DARK_PERSON_SPEED = 3;
-    public static int BUFFER_DARK_PERSON_SPEED = DARK_PERSON_SPEED - HERO_SPEED;
     public static int ENEMY_DAMAGE = 3;
-    public static int VOLUME = 80;
     public static List<String> NAME_LIST = new ArrayList<>();
 
 

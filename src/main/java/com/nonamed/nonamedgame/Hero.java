@@ -248,6 +248,7 @@ public class Hero {
 
 
     public void move() {
+        MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
         setEnergy(getEnergy() - 1);
         Hud.updateGroup();
         if (isUP) {

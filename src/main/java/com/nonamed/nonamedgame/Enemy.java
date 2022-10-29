@@ -1,5 +1,6 @@
 package com.nonamed.nonamedgame;
 
+import com.nonamed.nonamedgame.utils.HeroSoundService;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -150,6 +151,7 @@ public class Enemy {
             setHealth(this.health - Config.HERO_DAMAGE);
             healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
             if (this.health <= 0) {
+                HeroSoundService.say();
                 App.gamePane.getChildren().remove(groupEnemy);
                 App.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
                 timerEnemyMove.stop();
