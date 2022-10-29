@@ -29,9 +29,24 @@ public final class Config {
     public static int HERO_KEY_GOAL = 4;
     public static boolean IS_KEY_GOAL = false;
     public static int DARK_PERSON_SPEED = 3;
+    public static int BUFFER_DARK_PERSON_SPEED = DARK_PERSON_SPEED - HERO_SPEED;
     public static int ENEMY_DAMAGE = 3;
     public static int VOLUME = 80;
     public static List<String> NAME_LIST = new ArrayList<>();
+
+
+//    public static String HERO_NAME = "Cossack";
+//    public static int HERO_HEALTH = 1000;
+//    public static int HERO_DAMAGE = 50;
+//    public static int HERO_SPEED = 5;
+    public static String RIGHT_HERO_KICK = "X";
+    public static String ENEMY_NAME = "!*!";
+    public static int ENEMY_HEALTH = 150;
+//    public static int ENEMY_DAMAGE = 1;
+    public static int ENEMY_SPEED = 3;
+    public static int ENEMY_SPEED_BOUND = 3;
+
+
 
     static {
         NAME_LIST.add("Vlad");

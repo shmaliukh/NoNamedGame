@@ -1,5 +1,6 @@
 package com.nonamed.nonamedgame.game_objects;
 
+import com.nonamed.nonamedgame.Hero;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -8,11 +9,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import static com.nonamed.nonamedgame.Config.*;
-import static com.nonamed.nonamedgame.StaticData.HUD;
-import static com.nonamed.nonamedgame.game_objects.MiniMap.miniMapImageView;
 import static com.nonamed.nonamedgame.App.HERO;
 import static com.nonamed.nonamedgame.App.gameWorld;
+import static com.nonamed.nonamedgame.Config.*;
+import static com.nonamed.nonamedgame.StaticData.HUD;
 
 public final class Hud {
 
@@ -34,7 +34,6 @@ public final class Hud {
     static {
         setUpAvatar();
 
-        setUpMiniMap();
         setUpHealthBackLine();
         setUpEnergyBackLine();
 
@@ -52,9 +51,6 @@ public final class Hud {
 
     }
 
-    private static void setUpMiniMap() {
-        hudGroup.getChildren().add(miniMapImageView);
-    }
 
     private Hud() {
 
@@ -87,29 +83,26 @@ public final class Hud {
         hudGroup.getChildren().add(energyBackLine);
     }
 
-    private static void setUpEnergyLine() {
+    public static void setUpEnergyLine() {
         energyLine.setStrokeWidth(32);
         energyLine.setStroke(Color.BLUE);
         energyLine.setStartX(790);
         energyLine.setStartY(1018);
         energyLine.setEndY(1018);
-        energyLine.setEndX(calcHeroEnergy());
-
-
-//        hudGroup.getChildren().add(healthText);
-        hudGroup.getChildren().add(healthLine);
-//        hudGroup.getChildren().add(energyText);
+        energyLine.setEndX(790 + 512);
         hudGroup.getChildren().add(energyLine);
     }
 
 
-    private static void setUpHealthLine() {
+    public static void setUpHealthLine() {
         healthLine.setStrokeWidth(32);
         healthLine.setStroke(Color.GREEN);
         healthLine.setStartX(790);
         healthLine.setStartY(930);
         healthLine.setEndY(930);
-        healthLine.setEndX(calcHeroHeath());
+        healthLine.setEndX(790 + 512);
+        hudGroup.getChildren().add(healthLine);
+
     }
 
     private static void setUpHeroNameText() {
@@ -152,14 +145,13 @@ public final class Hud {
 
     public static void updateGroup() {
         hudGroup.toFront();
-        hudGroup.setLayoutX(-gameWorld.getGamePane().getLayoutX());
-        hudGroup.setLayoutY(-gameWorld.getGamePane().getLayoutY());
-        MiniMap.upDateMiniMap();
+//        hudGroup.setLayoutX(-gameWorld..getLayoutX());
+//        hudGroup.setLayoutY(-gameWorld.getGamePane().getLayoutY());
 
         healthLine.setEndX(calcHeroHeath());
         energyLine.setEndX(calcHeroEnergy());
     }
-
+//
     static int calcHeroHeath() {
         return 790 + 512 * HERO.getHealth() / HERO_HEALTH;
     }
