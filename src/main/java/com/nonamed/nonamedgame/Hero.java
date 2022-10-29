@@ -21,17 +21,15 @@ import static com.nonamed.nonamedgame.App.*;
 @Setter
 public class Hero {
 
-    static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
-
-    public static int SCORE = 0;
-
+    public static final String GOOD_WAY = "good-way";
+    public static final double m = 0;
     public static final String WAIT_STATUS = "wait";
     public static final String RIGHT = "Right";
     public static final String LEFT = "Left";
-
     public static final int KICK_ANIMATION_TIME = 700;
-    public boolean isDamageAction = false;
-    private int energy;
+    public static final int STEP_TO_AUTO_MOVE = 1;
+    public static int SCORE = 0;
+    static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
     private final double lineHealthLambda;
     private final int damage;
     private final int speed;
@@ -43,6 +41,8 @@ public class Hero {
     private final Rectangle bodyCollision;
     private final AnimationTimer timerHeroMove;
     private final Circle miniMapPoint;
+    public boolean isDamageAction = false;
+    private int energy;
     private String name;
     private int health;
     private int posX;
@@ -109,7 +109,51 @@ public class Hero {
         timerHeroMove = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                move();
+                Rectangle collisionDetectWithHero = objectCollisionDetectWithHero();
+
+//                if (collisionDetectWithHero != null) {
+//                    System.out.println("hero: " + HERO.getBodyCollision().getX() + " " + HERO.getBodyCollision().getY());
+//                    System.out.println("coli: " + collisionDetectWithHero.getX() + " " + collisionDetectWithHero.getY());
+//                    //x-direction
+//                    if (HERO.getBodyCollision().getX() <= collisionDetectWithHero.getX() + m) {
+//                        //Collision from left side
+//                        imageView.setX(imageView.getX() - STEP_TO_AUTO_MOVE);
+//                        posX -= STEP_TO_AUTO_MOVE;
+//                        rightKickCollision.setX(rightKickCollision.getX() - STEP_TO_AUTO_MOVE);
+//                        leftKickCollision.setX(leftKickCollision.getX() - STEP_TO_AUTO_MOVE);
+//                        bodyCollision.setX(bodyCollision.getX() - STEP_TO_AUTO_MOVE);
+//                    } else if (HERO.getBodyCollision().getTranslateX() >= collisionDetectWithHero.getTranslateX()) {
+//                        //Collision from right side
+//                        imageView.setX(imageView.getX() - STEP_TO_AUTO_MOVE);
+//                        posX += STEP_TO_AUTO_MOVE;
+//                        rightKickCollision.setX(rightKickCollision.getX() + STEP_TO_AUTO_MOVE);
+//                        leftKickCollision.setX(leftKickCollision.getX() + STEP_TO_AUTO_MOVE);
+//                        bodyCollision.setX(bodyCollision.getX() + STEP_TO_AUTO_MOVE);
+////                        calculateAndUpdateMiniMapPoint();
+//                    }
+//
+//                    //y-direction
+//                    if (HERO.getBodyCollision().getTranslateY() + m >= collisionDetectWithHero.getTranslateY()) {
+//                        //Collision from top side
+//                        imageView.setY(imageView.getY() + STEP_TO_AUTO_MOVE);
+//                        posY += STEP_TO_AUTO_MOVE;
+//                        rightKickCollision.setY(rightKickCollision.getY() + STEP_TO_AUTO_MOVE);
+//                        leftKickCollision.setY(leftKickCollision.getY() + STEP_TO_AUTO_MOVE);
+//                        bodyCollision.setY(bodyCollision.getY() + STEP_TO_AUTO_MOVE);
+////                        calculateAndUpdateMiniMapPoint();
+//                    } else {
+////            if (HERO.getBodyCollision().getTranslateY() + HERO.getBodyCollision().getHeight() - m <= collisionDetectWithHero.getTranslateY()) {
+//                        //Collision from bottom side
+//                        imageView.setY(imageView.getY() - STEP_TO_AUTO_MOVE);
+//                        posY -= STEP_TO_AUTO_MOVE;
+//                        rightKickCollision.setY(rightKickCollision.getY() - STEP_TO_AUTO_MOVE);
+//                        leftKickCollision.setY(leftKickCollision.getY() - STEP_TO_AUTO_MOVE);
+//                        bodyCollision.setY(bodyCollision.getY() - STEP_TO_AUTO_MOVE);
+////                        calculateAndUpdateMiniMapPoint();
+//                    }
+//                } else {
+                    move();
+//                }
             }
         };
 
@@ -226,7 +270,7 @@ public class Hero {
     public void damageFromEnemy() {
         setHealth(HERO.getHealth() - Config.ENEMY_DAMAGE);
         isDamageAction = true;
-        if(getHealth() < 0){
+        if (getHealth() < 0) {
             ifLoseAction();
             // FIXME set result window
         }
@@ -259,25 +303,63 @@ public class Hero {
     public void move() {
 //        HERO.SCORE ++;
         MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
-        setEnergy(getEnergy() - 1);
-        if(getEnergy() < 0){
+        setEnergy(getEnergy() - STEP_TO_AUTO_MOVE);
+        if (getEnergy() < 0) {
             ifLoseAction();
             // FIXME set result window
         }
         Hud.updateGroup();
 
-        if (isUP) {
-            if (App.objectCollisionDetectWithHero().equals("good-way") || isDOWN || isRIGHT || isLEFT){
-                if (this.imageView.getY() < 230){
-                    if (App.gameWorld.getBackgroundStaticImage().getY() < -10){
+//            //x-direction
+//            if (HERO.getBodyCollision().getTranslateX() + collisionDetectWithHero.getWidth() < collisionDetectWithHero.getTranslateX() + m) {
+//                //Collision from left side
+//                imageView.setX(imageView.getX() + STEP_TO_AUTO_MOVE);
+//                posX += STEP_TO_AUTO_MOVE;
+//                rightKickCollision.setX(rightKickCollision.getX() + STEP_TO_AUTO_MOVE);
+//                leftKickCollision.setX(leftKickCollision.getX() + STEP_TO_AUTO_MOVE);
+//                bodyCollision.setX(bodyCollision.getX() + STEP_TO_AUTO_MOVE);
+//                calculateAndUpdateMiniMapPoint();
+//            } else if (HERO.getBodyCollision().getTranslateX() > collisionDetectWithHero.getTranslateX() + HERO.getBodyCollision().getWidth() - m) {
+//                //Collision from right side
+//                imageView.setX(imageView.getX() - STEP_TO_AUTO_MOVE);
+//                posX -= STEP_TO_AUTO_MOVE;
+//                rightKickCollision.setX(rightKickCollision.getX() - STEP_TO_AUTO_MOVE);
+//                leftKickCollision.setX(leftKickCollision.getX() - STEP_TO_AUTO_MOVE);
+//                bodyCollision.setX(bodyCollision.getX() - STEP_TO_AUTO_MOVE);
+//                calculateAndUpdateMiniMapPoint();
+//            } else
+//                //y-direction
+//                if (HERO.getBodyCollision().getTranslateY() + m < collisionDetectWithHero.getTranslateY() + collisionDetectWithHero.getHeight()) {
+//                    //Collision from top side
+//                    imageView.setY(imageView.getY() + STEP_TO_AUTO_MOVE);
+//                    posY += STEP_TO_AUTO_MOVE;
+//                    rightKickCollision.setY(rightKickCollision.getY() + STEP_TO_AUTO_MOVE);
+//                    leftKickCollision.setY(leftKickCollision.getY() + STEP_TO_AUTO_MOVE);
+//                    bodyCollision.setY(bodyCollision.getY() + STEP_TO_AUTO_MOVE);
+//                    calculateAndUpdateMiniMapPoint();
+//                } else if (HERO.getBodyCollision().getTranslateY() + HERO.getBodyCollision().getHeight() - m > collisionDetectWithHero.getTranslateY()) {
+//                    //Collision from bottom side
+//                    imageView.setY(imageView.getY() - STEP_TO_AUTO_MOVE);
+//                    posY -= STEP_TO_AUTO_MOVE;
+//                    rightKickCollision.setY(rightKickCollision.getY() - STEP_TO_AUTO_MOVE);
+//                    leftKickCollision.setY(leftKickCollision.getY() - STEP_TO_AUTO_MOVE);
+//                    bodyCollision.setY(bodyCollision.getY() - STEP_TO_AUTO_MOVE);
+//                    calculateAndUpdateMiniMapPoint();
+//                }
+//        } else {
+            if (isUP) {
+//            if (App.objectCollisionDetectWithHero().equals(GOOD_WAY) || isDOWN || isRIGHT || isLEFT){
+                if (this.imageView.getY() < 230) {
+                    if (App.gameWorld.getBackgroundStaticImage().getY() < -10) {
                         App.gameWorld.getBackgroundStaticImage().setY(App.gameWorld.getBackgroundStaticImage().getY() + speed);
+                        enemies.forEach(o-> {
+                            o.moveDown(speed);
+                        });
                         //App.gameWorld.getGameWorldPane().setLayoutY(App.gameWorld.getGameWorldPane().getLayoutY() + speed);
                         posY -= speed;
                         calculateAndUpdateMiniMapPoint();
                         App.updatePosition("UP");
-                    }
-                    else
-                    if (this.imageView.getY() > 10){
+                    } else if (this.imageView.getY() > 10) {
                         imageView.setY(imageView.getY() - speed);
                         posY -= speed;
                         rightKickCollision.setY(rightKickCollision.getY() - speed);
@@ -286,8 +368,7 @@ public class Hero {
                         calculateAndUpdateMiniMapPoint();
                     }
 
-                }
-                else{
+                } else {
                     imageView.setY(imageView.getY() - speed);
                     posY -= speed;
                     rightKickCollision.setY(rightKickCollision.getY() - speed);
@@ -295,21 +376,19 @@ public class Hero {
                     bodyCollision.setY(bodyCollision.getY() - speed);
                     calculateAndUpdateMiniMapPoint();
                 }
+//            }
             }
-        }
-        if (isDOWN) {
-            if (App.objectCollisionDetectWithHero().equals("good-way") || isUP || isRIGHT || isLEFT){
-                if (this.imageView.getY() > 650){
-                    if (App.gameWorld.getBackgroundStaticImage().getY() > -1800){
+            if (isDOWN) {
+//            if (App.objectCollisionDetectWithHero().equals(GOOD_WAY) || isUP || isRIGHT || isLEFT){
+                if (this.imageView.getY() > 650) {
+                    if (App.gameWorld.getBackgroundStaticImage().getY() > -1800) {
                         App.gameWorld.getBackgroundStaticImage().setY(App.gameWorld.getBackgroundStaticImage().getY() - speed);
                         //App.gameWorld.getGameWorldPane().setLayoutY(App.gameWorld.getGameWorldPane().getLayoutY() - speed);
+                        enemies.forEach(o->o.moveUp(speed));
                         posY += speed;
                         calculateAndUpdateMiniMapPoint();
                         App.updatePosition("DOWN");
-                    }
-
-                    else
-                    if (this.imageView.getY() < 650){
+                    } else if (this.imageView.getY() < 650) {
                         imageView.setY(imageView.getY() + speed);
                         posY += speed;
                         rightKickCollision.setY(rightKickCollision.getY() + speed);
@@ -317,8 +396,7 @@ public class Hero {
                         bodyCollision.setY(bodyCollision.getY() + speed);
                         calculateAndUpdateMiniMapPoint();
                     }
-                }
-                else{
+                } else {
                     imageView.setY(imageView.getY() + speed);
                     posY += speed;
                     rightKickCollision.setY(rightKickCollision.getY() + speed);
@@ -326,22 +404,20 @@ public class Hero {
                     bodyCollision.setY(bodyCollision.getY() + speed);
                     calculateAndUpdateMiniMapPoint();
                 }
-            }
+//            }
 
-        }
-        if (isRIGHT) {
-            if (App.objectCollisionDetectWithHero().equals("good-way")) {
-                if (this.imageView.getX() > 1600){
-                    if (App.gameWorld.getBackgroundStaticImage().getX() > -2700){
+            }
+            if (isRIGHT) {
+//            if (App.objectCollisionDetectWithHero().equals(GOOD_WAY) || isDOWN || isUP || isLEFT) {
+                if (this.imageView.getX() > 1600) {
+                    if (App.gameWorld.getBackgroundStaticImage().getX() > -2700) {
                         App.gameWorld.getBackgroundStaticImage().setX(App.gameWorld.getBackgroundStaticImage().getX() - speed);
                         //App.gameWorld.getGameWorldPane().setLayoutX(App.gameWorld.getGameWorldPane().getLayoutX() - speed);
+                        enemies.forEach(o->o.moverLeft(speed));
                         posX += speed;
                         calculateAndUpdateMiniMapPoint();
                         App.updatePosition("RIGHT");
-                    }
-
-                    else
-                    if (this.imageView.getX() < 1800){
+                    } else if (this.imageView.getX() < 1800) {
                         imageView.setX(imageView.getX() + speed);
                         posX += speed;
                         rightKickCollision.setX(rightKickCollision.getX() + speed);
@@ -350,8 +426,7 @@ public class Hero {
                         calculateAndUpdateMiniMapPoint();
                     }
 
-                }
-                else{
+                } else {
                     imageView.setX(imageView.getX() + speed);
                     posX += speed;
                     rightKickCollision.setX(rightKickCollision.getX() + speed);
@@ -359,22 +434,20 @@ public class Hero {
                     bodyCollision.setX(bodyCollision.getX() + speed);
                     calculateAndUpdateMiniMapPoint();
                 }
-            }
+//            }
 
-        }
-        if (isLEFT) {
-            if (App.objectCollisionDetectWithHero().equals("good-way")) {
-                if (this.imageView.getX() < 230){
-                    if (App.gameWorld.getBackgroundStaticImage().getX() < -10){
+            }
+            if (isLEFT) {
+//            if (App.objectCollisionDetectWithHero().equals(GOOD_WAY) || isDOWN || isUP || isRIGHT) {
+                if (this.imageView.getX() < 230) {
+                    if (App.gameWorld.getBackgroundStaticImage().getX() < -10) {
                         App.gameWorld.getBackgroundStaticImage().setX(App.gameWorld.getBackgroundStaticImage().getX() + speed);
                         //App.gameWorld.getGameWorldPane().setLayoutX(App.gameWorld.getGameWorldPane().getLayoutX() + speed);
+                        enemies.forEach(o->o.moveRight(speed));
                         posX -= speed;
                         calculateAndUpdateMiniMapPoint();
                         App.updatePosition("LEFT");
-                    }
-
-                    else
-                    if (this.imageView.getX() > 10) {
+                    } else if (this.imageView.getX() > 10) {
                         imageView.setX(imageView.getX() - speed);
                         posX -= speed;
                         rightKickCollision.setX(rightKickCollision.getX() - speed);
@@ -383,8 +456,7 @@ public class Hero {
                         calculateAndUpdateMiniMapPoint();
                     }
 
-                }
-                else{
+                } else {
                     imageView.setX(imageView.getX() - speed);
                     posX -= speed;
                     rightKickCollision.setX(rightKickCollision.getX() - speed);
@@ -393,7 +465,8 @@ public class Hero {
                     calculateAndUpdateMiniMapPoint();
                 }
             }
-            }
+//            }
+//        }
 
     }
 

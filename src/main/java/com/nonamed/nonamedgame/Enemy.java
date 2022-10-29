@@ -122,16 +122,17 @@ public class Enemy {
         maxHealth = Config.ENEMY_HEALTH;
     }
 
-    public void collisionWithHero(){
-        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+    public void collisionWithHero() {
+        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
             App.HERO.damageFromEnemy();
         }
-        if (App.HERO.isRightKick() && !isFight){
-            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+        if (App.HERO.isRightKick() && !isFight) {
+            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
                 damageFromHero();
             }
-        } if (App.HERO.isLeftKick() && !isFight) {
-            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+        }
+        if (App.HERO.isLeftKick() && !isFight) {
+            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
                 damageFromHero();
             }
         }
@@ -154,23 +155,20 @@ public class Enemy {
 
         });
         kick.start();
-
-
     }
 
-    public void damageFromHero(){
+    public void damageFromHero() {
         setHealth(this.health - Config.HERO_DAMAGE);
         healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
-        if (this.health <= 0){
+        if (this.health <= 0) {
             HERO.SCORE += 10;
             App.gamePane.getChildren().remove(groupEnemy);
             App.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
             timerEnemyMove.stop();
         }
-
     }
 
-    public void objectCollisionDetectWithEnemy(){
+    public void objectCollisionDetectWithEnemy() {
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
             if (this.enemyBodyCollisionRectangle.getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
                 enemy.groupEnemy.setOpacity(0);
@@ -180,49 +178,67 @@ public class Enemy {
     }
 
     public void moveToTarget(int targetPosX, int targetPosY) {
+//        objectCollisionDetectWithEnemy();
         speed = new Random().nextInt(initSpeed());
         if (imageView.getX() < targetPosX) {
-                imageView.setX(imageView.getX() + speed);
-                healthLine.setStartX(healthLine.getStartX() + speed);
-                healthLine.setEndX(healthLine.getEndX() + speed);
-                enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() + speed);
-                posX += speed;
-                calculateAndUpdateMiniMapPoint();
-
+            moveRight(speed);
         } else {
-                imageView.setX(imageView.getX() - speed);
-                healthLine.setStartX(healthLine.getStartX() - speed);
-                healthLine.setEndX(healthLine.getEndX() - speed);
-                enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() - speed);
-                posX -= speed;
-                calculateAndUpdateMiniMapPoint();
-
-        } if (imageView.getY() < targetPosY) {
-                imageView.setY(imageView.getY() + speed);
-                healthLine.setStartY(healthLine.getStartY() + speed);
-                healthLine.setEndY(healthLine.getEndY() + speed);
-                enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() + speed);
-                posY += speed;
-                calculateAndUpdateMiniMapPoint();
-
-
-        } else {
-            imageView.setY(imageView.getY() - speed);
-            healthLine.setStartY(healthLine.getStartY() - speed);
-            healthLine.setEndY(healthLine.getEndY() - speed);
-            enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() - speed);
-            posY -= speed;
-            calculateAndUpdateMiniMapPoint();
-            }
+            moverLeft(speed);
         }
+        if (imageView.getY() < targetPosY) {
+            moveDown(speed);
+        } else {
+            moveUp(speed);
+        }
+        calculateAndUpdateMiniMapPoint();
 
+    }
+
+    public void moveUp(int distance) {
+        imageView.setY(imageView.getY() - distance);
+        healthLine.setStartY(healthLine.getStartY() - distance);
+        healthLine.setEndY(healthLine.getEndY() - distance);
+        enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() - distance);
+        posY -= distance;
+        calculateAndUpdateMiniMapPoint();
+    }
+
+    public void moveDown(int distance) {
+        imageView.setY(imageView.getY() + distance);
+        healthLine.setStartY(healthLine.getStartY() + distance);
+        healthLine.setEndY(healthLine.getEndY() + distance);
+        enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() + distance);
+        posY += distance;
+        calculateAndUpdateMiniMapPoint();
+
+    }
+
+    public void moverLeft(int distance) {
+        imageView.setX(imageView.getX() - distance);
+        healthLine.setStartX(healthLine.getStartX() - distance);
+        healthLine.setEndX(healthLine.getEndX() - distance);
+        enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() - distance);
+        posX -= distance;
+        calculateAndUpdateMiniMapPoint();
+
+    }
+
+    public void moveRight(int distance) {
+        imageView.setX(imageView.getX() + distance);
+        healthLine.setStartX(healthLine.getStartX() + distance);
+        healthLine.setEndX(healthLine.getEndX() + distance);
+        enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() + distance);
+        posX += distance;
+        calculateAndUpdateMiniMapPoint();
+
+    }
 
 
     public void calculateAndUpdateMiniMapPoint() {
         int currentPosX = posX;
         int currentPosY = posY;
-        int percentagePosX = currentPosX * 100 / 4500;
-        int percentagePosY = currentPosY * 100 / 3000;
+        int percentagePosX = currentPosX * 100 / 5120;
+        int percentagePosY = currentPosY * 100 / 2560;
         int miniMapPosX = 512 * percentagePosX / 100;
         int miniMapPosY = 256 * percentagePosY / 100;
 

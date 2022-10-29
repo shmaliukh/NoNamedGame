@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class App extends Application {
     private static final FXMLLoader fxmlLoaderResultMenuScene = new FXMLLoader(App.class.getResource("fxmls/loseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderSettingMenuScene = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
     private static final FXMLLoader fxmlLoaderPreviewScene = new FXMLLoader(App.class.getResource("fxmls/preview.fxml"));
+    public static final String WRONG_WAY = "wrong-way";
+    public static final String GOOD_WAY = "good-way";
 
     public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
     public static Pane mainMenuPane;
@@ -82,16 +85,15 @@ public class App extends Application {
         MEDIA_PLAYER.play();
         gameWorld = new GameWorld();
         HERO = new Hero();
-        new Enemy();
-        new SvinoPesHach();
+        enemies.add(new Enemy());
+        enemies.add(new SvinoPesHach());
 
         for (int i = 0; i < 10; i++) {
-            new SvinoPesOrk();
+            enemies.add(new SvinoPesOrk());
         }
 
         Thread enemySpawn = new Thread(() -> {
             while (true) {
-
                 try {
                     Thread.sleep(30000);
                 } catch (InterruptedException e) {
@@ -217,13 +219,24 @@ public class App extends Application {
         });
     }
 
-    public static String objectCollisionDetectWithHero(){
+    public static Rectangle objectCollisionDetectWithHero(){
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
+//            System.out.println("collision");
             if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
-                return "wrong-way";
+                return gameWorldObject.getObj_v1();
             }
         }
-        return "good-way";
+        return null;
     }
+
+//    public static String objectCollisionDetectWithHero(){
+//        for (GameWorldObjects gameWorldObject : gameWorldObjects) {
+//            System.out.println("collision");
+//            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
+//                return WRONG_WAY;
+//            }
+//        }
+//        return GOOD_WAY;
+//    }
 
 }
