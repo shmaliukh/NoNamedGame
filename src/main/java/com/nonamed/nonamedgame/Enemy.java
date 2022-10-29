@@ -109,37 +109,39 @@ public class Enemy {
         App.gamePane.getChildren().add(groupEnemy);
     }
 
-    public void collisionWithHero() {
-        if (HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
-            HERO.damageFromEnemy();
+    public void collisionWithHero(){
+        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+            App.HERO.damageFromEnemy();
         }
-        if (!isFight) {
+        if (App.HERO.isRightKick() && !isFight){
+            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+                damageFromHero();
+            }
+        } if (App.HERO.isLeftKick() && !isFight) {
+            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+                damageFromHero();
+            }
+        }
 
-            if (HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
-                System.out.println("fight");
-                damageFromHero();
+
+        isFight = true;
+        Thread kick = new Thread(() -> {
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-            if (HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
-                damageFromHero();
-            }
-            isFight = true;
-            Thread kick = new Thread(() -> {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+
                 }
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                });
-                isFight = false;
-                HERO.isDamageAction = false;
             });
-            kick.start();
-        }
+            isFight = false;
+
+        });
+        kick.start();
+
 
     }
 
