@@ -170,7 +170,7 @@ public class Enemy {
 
     public void objectCollisionDetectWithEnemy() {
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
-            if (this.enemyBodyCollisionRectangle.getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
+            if (this.enemyBodyCollisionRectangle.getBoundsInParent().intersects(gameWorldObject.getCollisionRectangle().getBoundsInParent())) {
                 enemy.groupEnemy.setOpacity(0);
             }
         }
