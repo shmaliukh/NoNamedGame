@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.nonamed.nonamedgame.StaticData.*;
+
 public final class Config {
 
     public static boolean isUsik = true;
@@ -14,6 +16,20 @@ public final class Config {
     public static Image HERO_FIGHT_LEFT;
     public static Image HERO_FIGHT_RIGHT;
     public static Image HERO_AVATAR;
+
+    public static void setUpProfileConfig(){
+        if(isUsik){
+            HERO_ANIMATED = USIK_ANIMATED;
+            HERO_FIGHT_LEFT = USIK_FIGHT_LEFT;
+            HERO_FIGHT_RIGHT = USIK_FIGHT_RIGHT ;
+            HERO_AVATAR = USIK_AVATAR;
+        } else {
+            HERO_ANIMATED = OLHA_ANIMATED;
+            HERO_FIGHT_LEFT = OLHA_FIGHT_LEFT;
+            HERO_FIGHT_RIGHT = OLHA_FIGHT_RIGHT ;
+            HERO_AVATAR = OLHA_AVATAR;
+        }
+    }
 
     public static final Random RANDOM = new Random();
 

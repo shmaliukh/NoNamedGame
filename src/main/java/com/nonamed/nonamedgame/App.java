@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.nonamed.nonamedgame.Config.RANDOM;
+import static com.nonamed.nonamedgame.Config.setUpProfileConfig;
 import static com.nonamed.nonamedgame.StaticData.MAIN_MENU_SOUND;
 import static com.nonamed.nonamedgame.StaticData.PlANE_SOUND;
 
@@ -69,6 +70,7 @@ public class App extends Application {
     }
 
     public static void execute() {
+        setUpProfileConfig();
         MEDIA_PLAYER.stop();
         MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
         MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
