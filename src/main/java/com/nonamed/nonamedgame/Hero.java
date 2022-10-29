@@ -54,6 +54,7 @@ public class Hero {
     private String moveStatus;
 
     public Hero() {
+        heroGroup = new Group();
         this.name = Config.HERO_NAME;
         this.health = Config.HERO_HEALTH;
         this.damage = Config.HERO_DAMAGE;
@@ -62,6 +63,7 @@ public class Hero {
 
         this.image = Config.HERO_ANIMATED;
         this.imageView = new ImageView(image);
+
         this.imageView.setDisable(true);
         this.posX = 1500;
         this.posY = 1400;
@@ -109,7 +111,6 @@ public class Hero {
             }
         };
 
-        heroGroup = new Group();
         heroGroup.getChildren().addAll(rightKickCollision, leftKickCollision, bodyCollision, imageView);
 
         timerHeroMove.start();
