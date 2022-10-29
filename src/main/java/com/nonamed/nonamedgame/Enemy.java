@@ -152,6 +152,7 @@ public class Enemy {
             healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
             if (this.health <= 0) {
                 HeroSoundService.say();
+                HERO.SCORE += 10;
                 App.gamePane.getChildren().remove(groupEnemy);
                 App.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
                 timerEnemyMove.stop();

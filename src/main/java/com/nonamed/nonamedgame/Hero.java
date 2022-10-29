@@ -22,6 +22,8 @@ import static com.nonamed.nonamedgame.App.*;
 @Setter
 public class Hero {
 
+    public static int SCORE = 0;
+
     public static final String WAIT_STATUS = "wait";
     public static final String RIGHT = "Right";
     public static final String LEFT = "Left";
@@ -54,6 +56,7 @@ public class Hero {
     private String moveStatus;
 
     public Hero() {
+        HERO.SCORE = 0;
         this.name = Config.HERO_NAME;
         this.health = Config.HERO_HEALTH;
         this.damage = Config.HERO_DAMAGE;
@@ -250,6 +253,10 @@ public class Hero {
     }
 
     public void move() {
+//        HERO.SCORE ++;
+        MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
+        setEnergy(getEnergy() - 1);
+        Hud.updateGroup();
         if (isUP) {
 
             if (this.imageView.getY() < 230){

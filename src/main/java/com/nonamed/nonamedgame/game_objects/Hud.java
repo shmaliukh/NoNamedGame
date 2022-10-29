@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -15,17 +16,27 @@ import static com.nonamed.nonamedgame.StaticData.HUD;
 
 public final class Hud {
 
-    public static final int AVATAR_HEIGHT = 128;
-    public static final int AVATAR_WIDTH = 128;
+    public static final String SCORE_ENG = "SCORE:";
+    public static final String HEALTH_ENG = "HEALTH";
+    public static final String ENERGY_ENG = "ENERGY";
+    public static final String HERO_NAME_ENG = "HERO NAME";
+
+    public static final String SCORE_UKR = "БАЛИ:";
+    public static final String HEALTH_UKR = "ЗДОРОВ'Я";
+    public static final String ENERGY_UKR = "ЕНЕРГІЯ";
+    public static final String HERO_NAME_UKR = "КОЗАК";
 
     public static Group hudGroup = new Group();
+    public static Rectangle scoreRectangle = new Rectangle();
     public static Line healthLine = new Line();
     public static Line energyLine = new Line();
     public static Line energyBackLine = new Line();
     public static Line healthBackLine = new Line();
-    public static Text healthText = new Text("HEALTH");
-    public static Text energyText = new Text("ENERGY");
-    public static Text heroNameText = new Text("HERO NAME");
+    public static Text scoreText = new Text(SCORE_UKR);
+    public static Text currentScoreText = new Text("0");
+    public static Text healthText = new Text(HEALTH_UKR);
+    public static Text energyText = new Text(ENERGY_UKR);
+    public static Text heroNameText = new Text(HERO_NAME_UKR);
     public static ImageView hudImage = new ImageView();
     public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
@@ -34,13 +45,12 @@ public final class Hud {
 
     }
 
-    //
     static int calcHeroHeath() {
-        return 790 + 512 * HERO.getHealth() / HERO_HEALTH;
+        return 768 + 512 * HERO.getHealth() / HERO_HEALTH;
     }
 
     static int calcHeroEnergy() {
-        return 790 + 512 * HERO.getEnergy() / HERO_ENERGY;
+        return 768 + 512 * HERO.getEnergy() / HERO_ENERGY;
     }
 
     public static Group generateHudGroup() {
@@ -51,6 +61,13 @@ public final class Hud {
 
     static void initHud() {
         setUpAvatar();
+
+
+        initSCoreRectangle();
+
+        setUpScoreText();
+        setUpCurrentScoreText();
+
 
         setUpHealthBackLine();
         setUpEnergyBackLine();
@@ -70,6 +87,34 @@ public final class Hud {
         hudGroup.setLayoutX(0);
         hudGroup.setLayoutY(0);
 
+    }
+
+    private static void setUpCurrentScoreText() {
+        currentScoreText.setX(960);
+        currentScoreText.setY(30);
+        currentScoreText.setFont(Font.font(32));
+        currentScoreText.setWrappingWidth(128);
+        currentScoreText.setTextAlignment(TextAlignment.CENTER);
+        hudGroup.getChildren().add(currentScoreText);
+    }
+
+    private static void setUpScoreText() {
+        scoreText.setX(832);
+        scoreText.setY(30);
+        scoreText.setFont(Font.font(32));
+        scoreText.setWrappingWidth(128);
+        scoreText.setTextAlignment(TextAlignment.CENTER);
+        hudGroup.getChildren().add(scoreText);
+    }
+
+    private static void initSCoreRectangle() {
+        scoreRectangle = new Rectangle();
+        scoreRectangle.setLayoutX(832);
+        scoreRectangle.setLayoutY(0);
+        scoreRectangle.setFill(Color.BISQUE);
+        scoreRectangle.setWidth(256);
+        scoreRectangle.setHeight(40);
+        hudGroup.getChildren().add(scoreRectangle);
     }
 
     private static void setUpAvatar() {
@@ -162,6 +207,7 @@ public final class Hud {
 //        hudGroup.setLayoutX(-gameWorld..getLayoutX());
 //        hudGroup.setLayoutY(-gameWorld.getGamePane().getLayoutY());
 
+        currentScoreText.setText(String.valueOf(HERO.SCORE));
         healthLine.setEndX(calcHeroHeath());
         energyLine.setEndX(calcHeroEnergy());
     }
