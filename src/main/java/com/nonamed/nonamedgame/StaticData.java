@@ -17,7 +17,7 @@ public class StaticData {
     public static final Image USIK_FIGHT_RIGHT = new Image("UsikFightRight.gif");
     public static final Image USIK_AVATAR = new Image("Usik-Avatar.gif");
 
-    public static final Image OLHA_ANIMATED = new Image("UsikFinal.gif");
+    public static final Image OLHA_ANIMATED = new Image("OlgaHarlan-walk.gif");
     public static final Image OLHA_FIGHT_LEFT = new Image("OlgaHarlan-attack-left.gif");
     public static final Image OLHA_FIGHT_RIGHT = new Image("OlgaHarlan-attack-right.gif");
     public static final Image OLHA_AVATAR = new Image("OlgaHarlanAvatarFINAL.gif");
