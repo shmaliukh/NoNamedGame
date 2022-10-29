@@ -12,7 +12,6 @@ public class StaticData {
     public static final Image SCORE_IMAGE = new Image("score-image.png");
     public static final Image LOGO_IMAGE = new Image("logo.png");
 
-
     public static final Image USIK_ANIMATED = new Image("UsikFinal.gif");
     public static final Image USIK_FIGHT_LEFT = new Image("UsikFightLeft.gif");
     public static final Image USIK_FIGHT_RIGHT = new Image("UsikFightRight.gif");
@@ -35,6 +34,5 @@ public class StaticData {
     public static final Media GAME_OVER_SOUND = new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/game-over.mp3").toURI().toString());
 
     public static final Media ON_BUTTON_PRESS_SOUND_V1 =  new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/bokserskiy-silnyiy-udar.mp3").toURI().toString());
-
 
 }
