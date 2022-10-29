@@ -182,13 +182,17 @@ public class Enemy {
         speed = new Random().nextInt(initSpeed());
         if (imageView.getX() < targetPosX) {
             moveRight(speed);
+            posX += speed;
         } else {
             moverLeft(speed);
+            posX -= speed;
         }
         if (imageView.getY() < targetPosY) {
             moveDown(speed);
+            posY += speed;
         } else {
             moveUp(speed);
+            posY -= speed;
         }
         calculateAndUpdateMiniMapPoint();
 
@@ -199,7 +203,7 @@ public class Enemy {
         healthLine.setStartY(healthLine.getStartY() - distance);
         healthLine.setEndY(healthLine.getEndY() - distance);
         enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() - distance);
-        posY -= distance;
+//        posY -= distance;
         calculateAndUpdateMiniMapPoint();
     }
 
@@ -208,7 +212,7 @@ public class Enemy {
         healthLine.setStartY(healthLine.getStartY() + distance);
         healthLine.setEndY(healthLine.getEndY() + distance);
         enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() + distance);
-        posY += distance;
+//        posY += distance;
         calculateAndUpdateMiniMapPoint();
 
     }
@@ -218,7 +222,7 @@ public class Enemy {
         healthLine.setStartX(healthLine.getStartX() - distance);
         healthLine.setEndX(healthLine.getEndX() - distance);
         enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() - distance);
-        posX -= distance;
+
         calculateAndUpdateMiniMapPoint();
 
     }
@@ -228,14 +232,14 @@ public class Enemy {
         healthLine.setStartX(healthLine.getStartX() + distance);
         healthLine.setEndX(healthLine.getEndX() + distance);
         enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() + distance);
-        posX += distance;
+
         calculateAndUpdateMiniMapPoint();
 
     }
 
 
     public void calculateAndUpdateMiniMapPoint() {
-        int currentPosX = posX;
+        int currentPosX = posX ;
         int currentPosY = posY;
         int percentagePosX = currentPosX * 100 / 5120;
         int percentagePosY = currentPosY * 100 / 2560;
