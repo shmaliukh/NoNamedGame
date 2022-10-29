@@ -142,7 +142,7 @@ public class App extends Application {
         stage.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ESCAPE) {
                 if (App.stage.getScene() != pauseMenuScene
-                        && App.stage.getScene() != mainMenuScene) {
+                        && App.stage.getScene() != mainMenuScene && App.stage.getScene() != pauseMenuScene) {
                     System.out.println("Відкрита пауза");
                     //stage.close();
                     isStopped = true;
