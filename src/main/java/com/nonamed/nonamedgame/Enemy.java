@@ -173,7 +173,6 @@ public class Enemy {
 
     public String objectCollisionDetectWithEnemy(){
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
-            System.out.println("collision wrong");
             if (this.enemyBodyCollisionRectangle.getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
                 return "wrong-way";
             }
