@@ -169,16 +169,16 @@ public class App extends Application {
     public static void updatePosition(String direction) {
         for (GameWorldObjects gameWorldObject : App.gameWorldObjects) {
             if (direction.equals("UP")) {
-                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() + Config.HERO_SPEED);
+                gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() + Config.HERO_SPEED);
             }
             if (direction.equals("DOWN")) {
-                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() - Config.HERO_SPEED);
+                gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() - Config.HERO_SPEED);
             }
             if (direction.equals("RIGHT")) {
-                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() - Config.HERO_SPEED);
+                gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() - Config.HERO_SPEED);
             }
             if (direction.equals("LEFT")) {
-                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() + Config.HERO_SPEED);
+                gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() + Config.HERO_SPEED);
             }
         }
     }
@@ -222,8 +222,8 @@ public class App extends Application {
     public static Rectangle objectCollisionDetectWithHero(){
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
 //            System.out.println("collision");
-            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
-                return gameWorldObject.getObj_v1();
+            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getCollisionRectangle().getBoundsInParent())) {
+                return gameWorldObject.getCollisionRectangle();
             }
         }
         return null;
