@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nonamed.nonamedgame.scenes.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: GRAY;" stylesheets="@mainMenuStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nonamed.nonamedgame.scenes.MainMenuController">
     <children>
-        <Button fx:id="newGameButton" layoutX="400.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonClick" prefHeight="100.0" prefWidth="400.0" styleClass="newGameButton" text="New Game" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
+        <Button fx:id="newGameButtonAsHarlan" layoutX="1018.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonAsHarlan" prefHeight="107.0" prefWidth="502.0" styleClass="newGameButton" text="Почати як Харлан" AnchorPane.leftAnchor="1018.0" AnchorPane.rightAnchor="400.0">
             <font>
                 <Font size="50.0" />
             </font>
@@ -26,5 +26,10 @@
                 <Font size="79.0" />
             </font>
         </Button>
+      <Button fx:id="newGameButtonAsUsik" layoutX="400.0" layoutY="305.0" mnemonicParsing="false" onAction="#onNewGameButtonAsUsik" prefHeight="107.0" prefWidth="486.0" styleClass="newGameButton" text="Почати як Усик">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

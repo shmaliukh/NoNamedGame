@@ -1,6 +1,7 @@
 package com.nonamed.nonamedgame.scenes;
 
 import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.Config;
 import com.nonamed.nonamedgame.StaticData;
 import com.nonamed.nonamedgame.utils.HeroSoundService;
 import javafx.fxml.FXML;
@@ -18,7 +19,17 @@ public class MainMenuController implements Initializable {
     protected Button exitButton;
 
     @FXML
-    protected void onNewGameButtonClick() {
+    protected void onNewGameButtonAsHarlan() {
+        Config.isUsik = false;
+        startGame();
+    }
+    @FXML
+    protected void onNewGameButtonAsUsik() {
+        Config.isUsik = true;
+        startGame();
+    }
+
+    private void startGame() {
         App.MEDIA_PLAYER.stop();
         App.MEDIA_PLAYER = new MediaPlayer(StaticData.PlANE_SOUND);
         App.MEDIA_PLAYER.play();

@@ -6,14 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.nonamed.nonamedgame.StaticData.*;
-
 public final class Config {
 
-    public static final Image HERO_ANIMATED = USIK_ANIMATED;
-    public static final Image HERO_FIGHT_LEFT = USIK_FIGHT_LEFT;
-    public static final Image HERO_FIGHT_RIGHT = USIK_FIGHT_RIGHT;
-    public static final Image HERO_AVATAR = USIK_AVATAR;
+    public static boolean isUsik = true;
+
+    public static Image HERO_ANIMATED;
+    public static Image HERO_FIGHT_LEFT;
+    public static Image HERO_FIGHT_RIGHT;
+    public static Image HERO_AVATAR;
+
     public static final Random RANDOM = new Random();
 
     public static double VOLUME_LEVEL = 0.5;
