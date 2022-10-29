@@ -248,7 +248,7 @@ public class Hero {
         int currentPosX = posX;
         int currentPosY = posY;
         int percentagePosX = currentPosX * 100 / 4500;
-        int percentagePosY = currentPosY * 100 / 3000;
+        int percentagePosY = currentPosY * 100 / 2500;
         int miniMapPosX = 512 * percentagePosX / 100;
         int miniMapPosY = 256 * percentagePosY / 100;
 
@@ -300,7 +300,7 @@ public class Hero {
         if (isDOWN) {
             if (App.objectCollisionDetectWithHero().equals("good-way") || isUP || isRIGHT || isLEFT){
                 if (this.imageView.getY() > 650){
-                    if (App.gameWorld.getBackgroundStaticImage().getY() > -2300){
+                    if (App.gameWorld.getBackgroundStaticImage().getY() > -1800){
                         App.gameWorld.getBackgroundStaticImage().setY(App.gameWorld.getBackgroundStaticImage().getY() - speed);
                         //App.gameWorld.getGameWorldPane().setLayoutY(App.gameWorld.getGameWorldPane().getLayoutY() - speed);
                         posY += speed;
