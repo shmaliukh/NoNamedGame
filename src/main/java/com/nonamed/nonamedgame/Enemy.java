@@ -123,17 +123,16 @@ public class Enemy {
         maxHealth = Config.ENEMY_HEALTH;
     }
 
-    public void collisionWithHero() {
-        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
+    public void collisionWithHero(){
+        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
             App.HERO.damageFromEnemy();
         }
-        if (App.HERO.isRightKick() && !isFight) {
-            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
+        if (App.HERO.isRightKick() && !isFight){
+            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
                 damageFromHero();
             }
-        }
-        if (App.HERO.isLeftKick() && !isFight) {
-            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
+        } if (App.HERO.isLeftKick() && !isFight) {
+            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
                 damageFromHero();
             }
         }
@@ -160,18 +159,15 @@ public class Enemy {
 
     }
 
-    public void damageFromHero() {
-        if (HERO.isDamageAction) {
-            setHealth(this.health - initDamage());
-            healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
-            if (this.health <= 0) {
-                HeroSoundService.say();
-                HERO.SCORE += 10;
-                App.gamePane.getChildren().remove(groupEnemy);
-                App.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
-                timerEnemyMove.stop();
-            }
+    public void damageFromHero(){
+        setHealth(this.health - Config.HERO_DAMAGE);
+        healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
+        if (this.health <= 0){
+            App.gamePane.getChildren().remove(groupEnemy);
+            App.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
+            timerEnemyMove.stop();
         }
+
     }
 
     public void moveToTarget(int targetPosX, int targetPosY) {
