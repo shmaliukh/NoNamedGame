@@ -29,7 +29,6 @@ public class GameWorld {
 
         initMap();
 
-
         heroEnergyLine = new Line();
         heroEnergyLine.setStrokeWidth(20);
         heroEnergyLine.setStartX(736);

@@ -1,6 +1,7 @@
 package com.nonamed.nonamedgame;
 
 import com.nonamed.nonamedgame.game_objects.Hud;
+import com.nonamed.nonamedgame.utils.HeroSoundService;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -187,6 +188,8 @@ public class Hero {
     }
 
     private void heroKickAction(String kickSide) {
+//        HeroSoundService.sayIfDamaged();
+
         if (!isKick) {
             if (kickSide.equals(RIGHT)) {
                 imageView.setImage(Config.HERO_FIGHT_RIGHT);

@@ -13,19 +13,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.nonamed.nonamedgame.StaticData.MAIN_MENU_SOUND;
 import static com.nonamed.nonamedgame.StaticData.PlANE_SOUND;
+import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfDamaged;
 
 public class App extends Application {
-
-    public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
-
 
     private static final FXMLLoader fxmlLoaderMainMenu = new FXMLLoader(App.class.getResource("fxmls/mainMenu.fxml"));
     private static final FXMLLoader fxmlLoaderGameScene = new FXMLLoader(App.class.getResource("fxmls/mainScreen.fxml"));
     private static final FXMLLoader fxmlLoaderPauseMenuScene = new FXMLLoader(App.class.getResource("fxmls/pauseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderResultMenuScene = new FXMLLoader(App.class.getResource("fxmls/loseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderSettingMenuScene = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
-
+    public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
     public static Pane mainMenuPane;
     public static Pane gamePane;
     public static Pane pauseMenuPane;
@@ -67,6 +66,7 @@ public class App extends Application {
     public static void execute() {
         MEDIA_PLAYER.stop();
         MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
+        MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
         MEDIA_PLAYER.play();
         gameWorld = new GameWorld();
         HERO = new Hero();
@@ -120,6 +120,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
+        MEDIA_PLAYER = new MediaPlayer(MAIN_MENU_SOUND);
+        MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
         MEDIA_PLAYER.play();
 
         stage = primaryStage;
@@ -130,12 +133,7 @@ public class App extends Application {
         stage.setMinHeight(720);
         stage.setFullScreenExitHint("");
 
-
         addKeyHandlerToMainStage();
-
-        //execute();
-
-
         stage.show();
     }
 

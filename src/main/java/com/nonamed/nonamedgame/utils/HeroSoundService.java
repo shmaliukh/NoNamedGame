@@ -13,18 +13,42 @@ import static com.nonamed.nonamedgame.Config.RANDOM;
 public class HeroSoundService {
 
     public static final List<Media> musicList = new ArrayList<>();
+    public static final List<Media> damageMusicList = new ArrayList<>();
     public static Media buzzer = new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/music.mp3").toURI().toString());
-    public static MediaPlayer mediaPlayer = new MediaPlayer(buzzer);
+    public static MediaPlayer heroMediaPlayer = new MediaPlayer(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/bokserskiy-silnyiy-udar.mp3").toURI().toString()));
 
     static {
         musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/v-zavtrashniy-den.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/a-vot-c4a-dlya-dushi.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/ai-mlya.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/berem-teplogo.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/bratva-kopita-otkinu.mp3").toURI().toString()));
+        musicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/moscal-vopli/ne-strelya.mp3").toURI().toString()));
+
+        damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/bokserskiy-silnyiy-udar.mp3").toURI().toString()));
+        damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/bokserskiy-udar-po-grushe.mp3").toURI().toString()));
+        damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/gluhoy-udar-po-grushe-v-bokserskih-perchatkah.mp3").toURI().toString()));
+        damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/silnyiy-udar.mp3").toURI().toString()));
+        damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/zvuk-udara.mp3").toURI().toString()));
+        damageMusicList.add(new Media(new File("src/main/resources/com/nonamed/nonamedgame/hero-frazes/if-damaged/zvuk-udara2.mp3").toURI().toString()));
     }
 
     public static void say() {
-        if (mediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            mediaPlayer = new MediaPlayer(musicList.get(RANDOM.nextInt(musicList.size())));
-            mediaPlayer.setVolume(Config.VOLUME_LEVEL);
-            mediaPlayer.play();
+        heroMediaPlayer.stop();
+        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+            heroMediaPlayer = new MediaPlayer(musicList.get(RANDOM.nextInt(musicList.size())));
+            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            heroMediaPlayer.play();
+        }
+    }
+
+    public static void sayIfDamaged() {
+        heroMediaPlayer.stop();
+        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+            heroMediaPlayer.stop();
+            heroMediaPlayer = new MediaPlayer(damageMusicList.get(RANDOM.nextInt(damageMusicList.size())));
+            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            heroMediaPlayer.play();
         }
     }
 
