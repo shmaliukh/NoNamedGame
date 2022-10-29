@@ -219,7 +219,6 @@ public class App extends Application {
 
     public static String objectCollisionDetectWithHero(){
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
-            System.out.println("collision");
             if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getObj_v1().getBoundsInParent())) {
                 return "wrong-way";
             }
