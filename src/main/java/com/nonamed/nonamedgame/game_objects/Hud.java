@@ -1,5 +1,6 @@
 package com.nonamed.nonamedgame.game_objects;
 
+import com.nonamed.nonamedgame.StaticData;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -38,6 +39,7 @@ public final class Hud {
     public static Text energyText = new Text(ENERGY_UKR);
     public static Text heroNameText = new Text(HERO_NAME_UKR);
     public static ImageView hudImage = new ImageView();
+    public static ImageView scoreImageFrame = new ImageView();
     public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
 
@@ -62,7 +64,6 @@ public final class Hud {
     static void initHud() {
         setUpAvatar();
 
-
         initSCoreRectangle();
 
         setUpScoreText();
@@ -77,6 +78,7 @@ public final class Hud {
 
         hudGroup.getChildren().add(miniMap);
 
+        setScoreFrame();
         setUpHud();
 
         setUpHeroNameText();
@@ -91,7 +93,7 @@ public final class Hud {
 
     private static void setUpCurrentScoreText() {
         currentScoreText.setX(960);
-        currentScoreText.setY(30);
+        currentScoreText.setY(40);
         currentScoreText.setFont(Font.font(32));
         currentScoreText.setWrappingWidth(128);
         currentScoreText.setTextAlignment(TextAlignment.CENTER);
@@ -100,7 +102,7 @@ public final class Hud {
 
     private static void setUpScoreText() {
         scoreText.setX(832);
-        scoreText.setY(30);
+        scoreText.setY(40);
         scoreText.setFont(Font.font(32));
         scoreText.setWrappingWidth(128);
         scoreText.setTextAlignment(TextAlignment.CENTER);
@@ -113,7 +115,7 @@ public final class Hud {
         scoreRectangle.setLayoutY(0);
         scoreRectangle.setFill(Color.BISQUE);
         scoreRectangle.setWidth(256);
-        scoreRectangle.setHeight(40);
+        scoreRectangle.setHeight(60);
         hudGroup.getChildren().add(scoreRectangle);
     }
 
@@ -181,6 +183,13 @@ public final class Hud {
 //        hudImage.setFitHeight(300);
         hudImage.setImage(HUD);
         hudGroup.getChildren().add(hudImage);
+    }
+
+    private static void setScoreFrame() {
+        scoreImageFrame.setLayoutX(815);
+        scoreImageFrame.setLayoutY(0);
+        scoreImageFrame.setImage(StaticData.SCORE_IMAGE);
+        hudGroup.getChildren().add(scoreImageFrame);
     }
 
     private static void setUpEnergyText() {
