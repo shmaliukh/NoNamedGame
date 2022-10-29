@@ -19,6 +19,8 @@ public class App extends javafx.application.Application {
     public static GameWorld gameWorld = new GameWorld();
     public static final Pane miniMap = new Pane();
 
+
+
     static {
         miniMap.setLayoutX(10);
         miniMap.setLayoutY(814);
