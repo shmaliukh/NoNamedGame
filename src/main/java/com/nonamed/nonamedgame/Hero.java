@@ -22,6 +22,8 @@ import static com.nonamed.nonamedgame.App.*;
 @Setter
 public class Hero {
 
+    static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
+
     public static int SCORE = 0;
 
     public static final String WAIT_STATUS = "wait";
@@ -239,9 +241,8 @@ public class Hero {
     private void ifLoseAction() {
         App.stopGame();
         MEDIA_PLAYER.stop();
-        MediaPlayer mediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
-        mediaPlayer.play();
         App.getStage().setScene(mainMenuPane.getScene());
+        loseMediaPlayer.play();
     }
 
     public void calculateAndUpdateMiniMapPoint() {
