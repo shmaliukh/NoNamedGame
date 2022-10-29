@@ -1,5 +1,9 @@
 package com.nonamed.nonamedgame;
 
+import com.nonamed.nonamedgame.enemies.SvinoPes;
+import com.nonamed.nonamedgame.enemies.SvinoPesBuryat;
+import com.nonamed.nonamedgame.enemies.SvinoPesHach;
+import com.nonamed.nonamedgame.enemies.SvinoPesOrk;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +17,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.nonamed.nonamedgame.Config.RANDOM;
 import static com.nonamed.nonamedgame.StaticData.MAIN_MENU_SOUND;
 import static com.nonamed.nonamedgame.StaticData.PlANE_SOUND;
-import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfDamaged;
 
 public class App extends Application {
 
@@ -72,10 +76,11 @@ public class App extends Application {
         gameWorld = new GameWorld();
         HERO = new Hero();
         new Enemy();
+        new SvinoPesHach();
         new GameWorldObjects(1);
 
         for (int i = 0; i < 10; i++) {
-            new Enemy();
+            new SvinoPesOrk();
         }
 
         Thread enemySpawn = new Thread(() -> {
@@ -89,11 +94,24 @@ public class App extends Application {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
+                        int nextInt = 0;
                         int countOfSpawn = (int) (Math.random() * 10);
                         System.out.println("Завспавнилося " + countOfSpawn);
                         for (int i = 0; i < countOfSpawn; i++) {
-                            if (!isStopped)
-                                enemies.add(new Enemy());
+                            if (!isStopped) {
+                                nextInt = RANDOM.nextInt(100);
+                                if (nextInt > 90) {
+                                    enemies.add(new Enemy());
+                                } else if (nextInt > 75) {
+                                    enemies.add(new SvinoPesBuryat());
+                                } else if (nextInt > 50) {
+                                    enemies.add(new SvinoPesHach());
+                                } else if (nextInt > 25) {
+                                    enemies.add(new SvinoPes());
+                                } else {
+                                    enemies.add(new SvinoPesOrk());
+                                }
+                            }
                         }
                     }
                 });
@@ -118,6 +136,23 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static void updatePosition(String direction) {
+        for (GameWorldObjects gameWorldObject : App.gameWorldObjects) {
+            if (direction.equals("UP")) {
+                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() + Config.HERO_SPEED);
+            }
+            if (direction.equals("DOWN")) {
+                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() - Config.HERO_SPEED);
+            }
+            if (direction.equals("RIGHT")) {
+                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() - Config.HERO_SPEED);
+            }
+            if (direction.equals("LEFT")) {
+                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() + Config.HERO_SPEED);
+            }
+        }
     }
 
     @Override
@@ -153,22 +188,5 @@ public class App extends Application {
             }
 
         });
-    }
-
-    public static void updatePosition(String direction){
-        for (GameWorldObjects gameWorldObject : App.gameWorldObjects) {
-            if (direction.equals("UP")) {
-                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() + Config.HERO_SPEED);
-            }
-            if (direction.equals("DOWN")) {
-                gameWorldObject.getObj_v1().setY(gameWorldObject.getObj_v1().getY() - Config.HERO_SPEED);
-            }
-            if (direction.equals("RIGHT")) {
-                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() - Config.HERO_SPEED);
-            }
-            if (direction.equals("LEFT")) {
-                gameWorldObject.getObj_v1().setX(gameWorldObject.getObj_v1().getX() + Config.HERO_SPEED);
-            }
-        }
     }
 }

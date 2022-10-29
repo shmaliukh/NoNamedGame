@@ -10,4 +10,6 @@ module com.nonamed.nonamedgame {
     exports com.nonamed.nonamedgame;
     exports com.nonamed.nonamedgame.scenes;
     opens com.nonamed.nonamedgame.scenes to javafx.fxml;
+    exports com.nonamed.nonamedgame.enemies;
+    opens com.nonamed.nonamedgame.enemies to javafx.fxml;
 }

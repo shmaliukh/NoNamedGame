@@ -17,52 +17,33 @@ import java.util.concurrent.ThreadLocalRandom;
 import static com.nonamed.nonamedgame.App.HERO;
 
 public class Enemy {
+
     private final String name;
-    private int health;
     private final int damage;
-    private int speed;
     private final Image image;
-
     private final ImageView imageView;
-    private int posX;
-    private int posY;
-
     private final AnimationTimer timerEnemyMove;
     private final double lineHealthLambda;
-
     private final Rectangle enemyBodyCollisionRectangle;
-
-    private boolean isFight = false;
-
     private final Line healthLine;
     private final Group groupEnemy;
-
     private final Circle miniMapPoint;
-
-    public Circle getMiniMapPoint() {
-        return miniMapPoint;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public AnimationTimer getTimerEnemyMove() {
-        return timerEnemyMove;
-    }
+    protected int maxHealth;
+    private int health;
+    private int speed;
+    private int posX;
+    private int posY;
+    private boolean isFight = false;
 
     public Enemy() {
+        initMaxHealth();
         this.name = Config.ENEMY_NAME;
         this.health = Config.ENEMY_HEALTH;
-        this.damage = Config.ENEMY_DAMAGE;
-        this.speed = Config.ENEMY_SPEED;
+        this.damage = initDamage();
+        this.speed = initSpeed();
 
 
-        this.image = StaticData.SVINO_PES_3_IMAGE;
+        this.image = initAnimatedImage();
         this.imageView = new ImageView(image);
         this.imageView.setX(ThreadLocalRandom.current().nextInt(-800, 2500));
         this.imageView.setY(ThreadLocalRandom.current().nextInt(-600, 2000));
@@ -70,7 +51,7 @@ public class Enemy {
         this.posX = (int) (1000 + imageView.getX());
         this.posY = (int) (1000 + imageView.getY());
 
-        this.lineHealthLambda = 90 / (double) (Config.ENEMY_HEALTH / Config.HERO_DAMAGE);
+        this.lineHealthLambda = 90 / (double) (maxHealth / Config.HERO_DAMAGE);
 
         this.healthLine = new Line();
         healthLine.setStartX(this.imageView.getX() + 20);
@@ -110,16 +91,49 @@ public class Enemy {
         App.gamePane.getChildren().add(groupEnemy);
     }
 
-    public void collisionWithHero(){
-        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+    public int initSpeed() {
+        return Config.ENEMY_SPEED;
+    }
+
+    protected int initDamage() {
+        return Config.ENEMY_DAMAGE;
+    }
+
+    public Circle getMiniMapPoint() {
+        return miniMapPoint;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public AnimationTimer getTimerEnemyMove() {
+        return timerEnemyMove;
+    }
+
+    protected Image initAnimatedImage() {
+        return StaticData.SVINO_PES_3_IMAGE;
+    }
+
+    protected void initMaxHealth() {
+        maxHealth = Config.ENEMY_HEALTH;
+    }
+
+    public void collisionWithHero() {
+        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
             App.HERO.damageFromEnemy();
         }
-        if (App.HERO.isRightKick() && !isFight){
-            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+        if (App.HERO.isRightKick() && !isFight) {
+            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
                 damageFromHero();
             }
-        } if (App.HERO.isLeftKick() && !isFight) {
-            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())){
+        }
+        if (App.HERO.isLeftKick() && !isFight) {
+            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
                 damageFromHero();
             }
         }
@@ -147,8 +161,8 @@ public class Enemy {
     }
 
     public void damageFromHero() {
-        if(HERO.isDamageAction){
-            setHealth(this.health - Config.HERO_DAMAGE);
+        if (HERO.isDamageAction) {
+            setHealth(this.health - initDamage());
             healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
             if (this.health <= 0) {
                 HeroSoundService.say();
@@ -161,7 +175,7 @@ public class Enemy {
     }
 
     public void moveToTarget(int targetPosX, int targetPosY) {
-        speed = new Random().nextInt(Config.DARK_PERSON_SPEED);
+        speed = new Random().nextInt(initSpeed());
         if (imageView.getX() < targetPosX) {
             imageView.setX(imageView.getX() + speed);
             healthLine.setStartX(healthLine.getStartX() + speed);

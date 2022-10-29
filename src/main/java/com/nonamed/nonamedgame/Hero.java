@@ -226,11 +226,7 @@ public class Hero {
         setHealth(HERO.getHealth() - Config.ENEMY_DAMAGE);
         isDamageAction = true;
         if(getHealth() < 0){
-            App.stopGame();
-            MEDIA_PLAYER.stop();
-            MEDIA_PLAYER = new MediaPlayer(StaticData.GAME_OVER_SOUND);
-            MEDIA_PLAYER.play();
-            App.getStage().setScene(mainMenuPane.getScene());
+            ifLoseAction();
             // FIXME set result window
         }
 //        if (App.gameWorld.getHeroHealthLine().getEndX() < 768) {
@@ -238,6 +234,14 @@ public class Hero {
 //        }
 
 //        App.gameWorld.getHeroHealthLine().setEndX(App.gameWorld.getHeroHealthLine().getEndX() - lineHealthLambda);
+    }
+
+    private void ifLoseAction() {
+        App.stopGame();
+        MEDIA_PLAYER.stop();
+        MediaPlayer mediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
+        mediaPlayer.play();
+        App.getStage().setScene(mainMenuPane.getScene());
     }
 
     public void calculateAndUpdateMiniMapPoint() {
@@ -256,9 +260,13 @@ public class Hero {
 //        HERO.SCORE ++;
         MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
         setEnergy(getEnergy() - 1);
+        if(getEnergy() < 0){
+            ifLoseAction();
+            // FIXME set result window
+        }
         Hud.updateGroup();
-        if (isUP) {
 
+        if (isUP) {
             if (this.imageView.getY() < 230){
                 if (App.gameWorld.getBackgroundStaticImage().getY() < -10){
                     App.gameWorld.getBackgroundStaticImage().setY(App.gameWorld.getBackgroundStaticImage().getY() + speed);

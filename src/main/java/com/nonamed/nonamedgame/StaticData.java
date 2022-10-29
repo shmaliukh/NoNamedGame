@@ -20,6 +20,10 @@ public class StaticData {
     public static final Image SVINO_PES_ANIMATED = new Image("SvinoPes 3.gif");
     public static final Image BACKGROUND_IMAGE = new Image("backgroundGameScene.png");
     public static final Image SVINO_PES_3_IMAGE = new Image("SvinoPes 3.gif");
+    public static final Image SVINO_PES_HATCH = new Image("SvinoPes Hach.gif");
+    public static final Image SVINO_PES_ORK = new Image("SvinoPes Ork.gif");
+    public static final Image SVINO_PES_BURYAT = new Image("SvinoPesBuryat.gif");
+    public static final Image SVINO_PES = new Image("SvinoPes.gif");
     public static int SCORE = 0;
 
     public static final Media PlANE_SOUND = new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/music.mp3").toURI().toString());
