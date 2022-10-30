@@ -1,10 +1,13 @@
 # :video_game: NoNamed game ХАКАТОН 3.0 
 
+   Відео та карта гри в посиланні https://drive.google.com/drive/folders/1IIh8DD20MBckVVFXlWGwOWSfGAxnbL_2
+
   :bangbang: Для отримання гри потрібно завантажити NoNamedGame.zip->розпакувати, відкрити папку "bin" та запусити file:app.bat. 
   
  ![This is an image](/readME_File.png)
    
   Створено прес-реліз гри, у реалізації дотримано головної концепції трьої слів: 
+  
   :pushpin: Шукати 
   
   :pushpin: Заряджений
