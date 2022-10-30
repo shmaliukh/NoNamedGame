@@ -1,6 +1,6 @@
 # :video_game: NoNamed game ХАКАТОН 3.0 
 
-  :bangbang: Для отримання гри потрібно завантажити NoNamedTestgame.zip->розпакувати, відкрити папку "bin" та запусити file:app.bat. 
+  :bangbang: Для отримання гри потрібно завантажити NoNamedGame.zip->розпакувати, відкрити папку "bin" та запусити file:app.bat. 
   
  ![This is an image](/readME_File.png)
    
