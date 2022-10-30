@@ -258,9 +258,10 @@ public class App_old extends Application {
         gameWorldObjects.add(new GameWorldObjects("treeV1", -400, 150));
         //gameWorldObjects.add(new GameWorldObjects("christmasTree", 300, 200));
         gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
-        gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 1075, 60));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 2900, 380));
         gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
-        gameWorldObjects.add(new GameWorldObjects("treeV1", 3500, -300));
+        gameWorldObjects.add(new GameWorldObjects("treeV1", 2935, -210));
 
     }
 
