@@ -12,7 +12,7 @@ public class SvinoPes extends Enemy {
     }
 
     protected void initMaxHealth() {
-        maxHealth = (int) (Config.ENEMY_HEALTH * 1.05);
+        maxHealth = (int) (Config.ENEMY_HEALTH * 1.3);
     }
 
     protected Image initAnimatedImage() {

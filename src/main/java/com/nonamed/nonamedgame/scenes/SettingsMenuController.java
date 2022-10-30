@@ -177,21 +177,21 @@ public class SettingsMenuController implements Initializable {
 
 
     public void setConfigFileLight() {
-        Config.HERO_SPEED = 8;
+        Config.HERO_SPEED = 5;
         Config.HERO_DAMAGE = 100;
         Config.HERO_HEALTH = 10000;
         Config.DARK_PERSON_SPEED = 3;
     }
 
     public void setConfigFileMedium() {
-        Config.HERO_SPEED = 6;
+        Config.HERO_SPEED = 4;
         Config.HERO_DAMAGE = 60;
         Config.HERO_HEALTH =  7000;
         Config.DARK_PERSON_SPEED = 4;
     }
 
     public void setConfigFileHard() {
-        Config.HERO_SPEED = 5;
+        Config.HERO_SPEED = 3;
         Config.HERO_DAMAGE = 40;
         Config.HERO_HEALTH =  2000;
         Config.DARK_PERSON_SPEED = 6;
@@ -200,8 +200,9 @@ public class SettingsMenuController implements Initializable {
     public void setConfigFilePersonal() {
         setSliderEnabled();
     }
+
     public void setConfigFileEpic() {
-        Config.HERO_SPEED = 5;
+        Config.HERO_SPEED = 4;
         Config.HERO_DAMAGE = 100;
         Config.HERO_HEALTH =  20000;
         Config.DARK_PERSON_SPEED = 4;

@@ -258,12 +258,9 @@ public class App_old extends Application {
         gameWorldObjects.add(new GameWorldObjects("treeV1", -400, 150));
         //gameWorldObjects.add(new GameWorldObjects("christmasTree", 300, 200));
         gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
-        gameWorldObjects.add(new GameWorldObjects("ATB", 1085, 50));
-        gameWorldObjects.add(new GameWorldObjects("ATB", 2900, 390));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
         gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
-        gameWorldObjects.add(new GameWorldObjects("treeV1",1170,-890));
-        gameWorldObjects.add(new GameWorldObjects("treeV1",2965,-200));
-        gameWorldObjects.add(new GameWorldObjects("treeV1",1300,100));
+
     }
 
 //    public static String objectCollisionDetectWithHero(){

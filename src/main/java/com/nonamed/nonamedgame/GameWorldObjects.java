@@ -29,6 +29,8 @@ public class GameWorldObjects {
     private AnimationTimer timerObjectAction;
     private ImageView bonusBagImage = new ImageView();
     private ImageView bonusImage = new ImageView();
+
+
     private Group bonusGroup;
     private int variant;
 
@@ -40,6 +42,9 @@ public class GameWorldObjects {
         } else if (variant == 2){
             bonusBagImage = new ImageView(new Image("LukyCan.png"));
             bonusImage = new ImageView(new Image("apple.gif"));
+        } else if (variant == 3){
+            bonusBagImage = new ImageView(new Image("LukyBox.png"));
+            bonusImage = new ImageView(new Image("coin.gif"));
         }
 
         collisionRectangle = new Rectangle();
@@ -222,6 +227,7 @@ public class GameWorldObjects {
                 App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
                 Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
                 Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
+                Hud.scoreText.setText(Hud.SCORE_UKR + " " + App_old.HERO.SCORE);
             }
         }
     }
@@ -231,8 +237,10 @@ public class GameWorldObjects {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
                 if (App_old.gameWorldObjects.get(i).getVariant() == 1){
                     Config.HERO_BONUS_HEALTH_COUNT += 1;
-                }else
+                }else if (App_old.gameWorldObjects.get(i).getVariant() == 2)
                     Config.HERO_BONUS_ENERGY_COUNT += 1;
+                else if (App_old.gameWorldObjects.get(i).getVariant() == 3)
+                    App_old.HERO.SCORE += 40;
                 App_old.gameWorldObjects.remove(App_old.gameWorldObjects.get(i));
 
                 break;
