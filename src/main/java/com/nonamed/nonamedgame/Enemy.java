@@ -171,7 +171,7 @@ public class Enemy {
             App_old.gamePane.getChildren().remove(groupEnemy);
             App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
             timerEnemyMove.stop();
-            //HeroSoundService.say();
+            HeroSoundService.say();
             //TODO remove from arraylist
         }
     }
