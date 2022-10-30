@@ -1,6 +1,7 @@
 package com.nonamed.nonamedgame.game_objects;
 
 import com.nonamed.nonamedgame.StaticData;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -29,6 +30,8 @@ public final class Hud {
     public static final String HEALTH_UKR = "ЗДОРОВ'Я";
     public static final String ENERGY_UKR = "ЕНЕРГІЯ";
     public static final String HERO_NAME_UKR = "КОЗАК";
+    public static final Image BUTTON_IMAGE_UP = new Image("ButtonUp.png");
+    public static final Image BUTTON_IMAGE_DOWN = new Image("ButtonDown.png");
 
     public static Button speedUpButton = new Button();
     public static Button speedDownButton = new Button();
@@ -83,7 +86,6 @@ public final class Hud {
         setUpScoreText();
         setUpCurrentScoreText();
 
-
         setUpHealthBackLine();
         setUpEnergyBackLine();
 
@@ -104,20 +106,17 @@ public final class Hud {
 
         setInfoBonusPanel();
 
-
         hudGroup.setLayoutX(0);
         hudGroup.setLayoutY(0);
-
     }
 
     private static void setUpSpeedUpButton() {
+        Image img = BUTTON_IMAGE_UP;
+        ImageView view = new ImageView(img);
+        speedUpButton.setGraphic(view);
         speedUpButton.setLayoutX(1400);
         speedUpButton.setLayoutY(898);
-        speedUpButton.setPrefWidth(216);
-        speedUpButton.setPrefHeight(64);
-        speedUpButton.setText("ШВИДШЕ");
-        speedUpButton.setFont(Font.font(24));
-        speedUpButton.setTextAlignment(TextAlignment.CENTER);
+        speedUpButton.setPadding(Insets.EMPTY);
         speedUpButton.setOnMouseClicked(e -> {
             if (HERO_SPEED > 1 && HERO_ENERGY_USAGE > 1
                     && HERO_SPEED < 10 && HERO_ENERGY_USAGE < 10) {
@@ -129,13 +128,18 @@ public final class Hud {
     }
 
     private static void setUpSpeedDownButton() {
+        Image img = BUTTON_IMAGE_DOWN;
+        ImageView view = new ImageView(img);
+//        speedDownButton.setStyle("-fx-background-image: url(" + BUTTON_IMAGE + ")");
+        speedDownButton.setPadding(Insets.EMPTY);
+        speedDownButton.setGraphic(view);
         speedDownButton.setLayoutX(1647);
         speedDownButton.setLayoutY(898);
-        speedDownButton.setPrefWidth(216);
-        speedDownButton.setPrefHeight(64);
-        speedDownButton.setText("ПОВІЛЬНІШЕ");
-        speedDownButton.setFont(Font.font(24));
-        speedDownButton.setTextAlignment(TextAlignment.CENTER);
+//        speedDownButton.setPrefWidth(216);
+//        speedDownButton.setPrefHeight(64);
+//        speedDownButton.setText("ПОВІЛЬНІШЕ");
+//        speedDownButton.setFont(Font.font(24));
+//        speedDownButton.setTextAlignment(TextAlignment.CENTER);
         speedDownButton.setOnMouseClicked(e -> {
             if (HERO_SPEED > 2 && HERO_ENERGY_USAGE > 2) {
                 HERO_SPEED--;
