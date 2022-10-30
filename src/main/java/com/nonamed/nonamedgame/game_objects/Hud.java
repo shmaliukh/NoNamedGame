@@ -59,7 +59,6 @@ public final class Hud {
     public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
 
-
     private Hud() {
 
     }

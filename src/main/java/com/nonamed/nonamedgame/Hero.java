@@ -16,6 +16,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import static com.nonamed.nonamedgame.App_old.*;
+import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfEatApple;
+import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfEatVarenik;
 
 @Getter
 @Setter
@@ -47,6 +49,23 @@ public class Hero {
     boolean toUp = false;
     boolean toDawn = false;
     private int speed;
+
+    public void setEnergy(int energy) {
+        if(energy >= Config.HERO_ENERGY){
+            this.energy = Config.HERO_ENERGY;
+        } else {
+            this.energy = energy;
+        }
+    }
+
+    public void setHealth(int health) {
+        if(health >= Config.HERO_HEALTH){
+            this.health = Config.HERO_HEALTH;
+        } else {
+            this.health = health;
+        }
+    }
+
     private int energy;
     private String name;
     private int health;
@@ -162,9 +181,7 @@ public class Hero {
         return health;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+
 
     public void setUpKeyHandlerActions(Stage scene) {
         onKeyPressed(scene);
@@ -200,28 +217,31 @@ public class Hero {
     }
 
     public void eatVarenyk() {
+        sayIfEatVarenik();
         if (Config.HERO_BONUS_HEALTH_COUNT > 0) {
-            setHealth((int) (getHealth() + Config.HERO_HEALTH * 0.2));
             Config.HERO_BONUS_HEALTH_COUNT -= 1;
-            HERO.SCORE += 25;
+
             Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
         }
     }
 
     public void useBattery() {
+        sayIfEatVarenik();
+        setEnergy((int) (getEnergy() + Config.HERO_ENERGY * 0.2));
+        HERO.SCORE += 25;
         if (Config.HERO_BONUS_BATTERY_COUNT > 0) {
-            setEnergy((int) (getEnergy() + Config.HERO_ENERGY * 0.2));
-            HERO.SCORE += 25;
+
             Config.HERO_BONUS_BATTERY_COUNT -= 1;
             Hud.heroBonusBatteryCount.setText(" x " + Config.HERO_BONUS_BATTERY_COUNT);
         }
     }
 
     public void eatApple() {
+        sayIfEatApple();
+
+        HERO.SCORE += 25;
         if (Config.HERO_BONUS_ENERGY_COUNT > 0) {
-            setEnergy((int) (getEnergy() + Config.HERO_HEALTH * 0.10));
-            setHealth((int) (getHealth() + Config.HERO_ENERGY * 0.10));
-            HERO.SCORE += 25;
+
             Config.HERO_BONUS_ENERGY_COUNT -= 1;
             Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
         }

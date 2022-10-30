@@ -12,6 +12,9 @@ import lombok.Setter;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.nonamed.nonamedgame.App_old.HERO;
+import static com.nonamed.nonamedgame.utils.HeroSoundService.*;
+
 @Setter
 @Getter
 public class GameWorldObjects {
@@ -220,7 +223,7 @@ public class GameWorldObjects {
 
 
     public void objectCollisionToGetBonus() {
-        if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(bonusImage.getBoundsInParent())) {
+        if (HERO.getBodyCollision().getBoundsInParent().intersects(bonusImage.getBoundsInParent())) {
             if (bonusBagImage.getOpacity() == 0) {
                 App_old.gamePane.getChildren().remove(collisionRectangle);
                 App_old.gamePane.getChildren().remove(bonusImage);
@@ -228,7 +231,6 @@ public class GameWorldObjects {
                 App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
                 Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
                 Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
-                Hud.scoreText.setText(Hud.SCORE_UKR + " " + App_old.HERO.SCORE);
                 Hud.heroBonusBatteryCount.setText(" x " + Config.HERO_BONUS_BATTERY_COUNT);
             }
         }
@@ -238,14 +240,23 @@ public class GameWorldObjects {
         for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
                 if (App_old.gameWorldObjects.get(i).getVariant() == 1) {
+                    HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.20));
+//                    setEnergy((int) (getEnergy() + Config.HERO_HEALTH * 0.10));
+//                    setHealth((int) (getHealth() + Config.HERO_ENERGY * 0.10));
                     Config.HERO_BONUS_HEALTH_COUNT += 1;
+                    HERO.SCORE += 25;
                 } else if (App_old.gameWorldObjects.get(i).getVariant() == 2) {
+                    HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.10));
+                    HERO.setEnergy((int) (HERO.getEnergy()+ Config.HERO_ENERGY * 0.10));
                     Config.HERO_BONUS_ENERGY_COUNT += 1;
+                    HERO.SCORE += 25;
                 } else if (App_old.gameWorldObjects.get(i).getVariant() == 3) {
-                    App_old.HERO.SCORE += 50;
+//                    HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.20));
+                    HERO.SCORE += 100;
                 } else if (App_old.gameWorldObjects.get(i).getVariant() == 4) {
-
+                    HERO.setEnergy((int) (HERO.getEnergy()+ Config.HERO_ENERGY * 0.20));
                     Config.HERO_BONUS_BATTERY_COUNT += 1;
+                    HERO.SCORE += 50;
                 }
 
                 App_old.gameWorldObjects.remove(App_old.gameWorldObjects.get(i));
@@ -256,14 +267,14 @@ public class GameWorldObjects {
     }
 
     public void objectCollisionDetectWithPersonForBonus() {
-        if (App_old.HERO.getLeftKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
-            if (App_old.HERO.isLeftKick()) {
+        if (HERO.getLeftKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+            if (HERO.isLeftKick()) {
                 bonusBagImage.setOpacity(0);
                 removeByIndex();
             }
         }
-        if (App_old.HERO.getRightKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
-            if (App_old.HERO.isRightKick()) {
+        if (HERO.getRightKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+            if (HERO.isRightKick()) {
                 bonusBagImage.setOpacity(0);
                 removeByIndex();
             }
@@ -274,7 +285,7 @@ public class GameWorldObjects {
 
 
     public String objectCollisionDetectWithPerson() {
-        if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+        if (HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
 
             return "wrong-way";
         }
