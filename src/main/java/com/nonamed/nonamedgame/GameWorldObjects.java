@@ -1,6 +1,9 @@
 package com.nonamed.nonamedgame;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
@@ -13,21 +16,44 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GameWorldObjects {
 
     private Rectangle collisionRectangle = new Rectangle();
-    private int posX = ThreadLocalRandom.current().nextInt(100, 2500);
-    private int posY = ThreadLocalRandom.current().nextInt(100, 2500);
+    private int posX = ThreadLocalRandom.current().nextInt(100, 1000);
+    private int posY = ThreadLocalRandom.current().nextInt(100, 500);
 
     private Rectangle miniMapPoint;
+    public final int mapBoundXMin = -800;
+    public final int mapBoundXMax = 2700;
+    public final int mapBoundYMin = -800;
+    public final int mapBoundYMax = 2000;
 
     private AnimationTimer timerObjectAction;
+    private ImageView bonusBagImage;
+    private ImageView bonusImage;
+    private Group bonusGroup;
 
     public GameWorldObjects(int variant) {
+        if (variant == 1){
+            bonusBagImage = new ImageView(new Image("LukyBox.png"));
+            bonusImage = new ImageView(new Image("Varenyk.gif"));
+        }
+
         collisionRectangle = new Rectangle();
-        collisionRectangle.setX(posX);
-        collisionRectangle.setY(posY);
-        collisionRectangle.setWidth(125);
-        collisionRectangle.setHeight(320);
+
+
+        collisionRectangle.setX(findPointX());
+        collisionRectangle.setY(findPointY());
+        posX = (int) collisionRectangle.getX() - 1000;
+        posY = (int) collisionRectangle.getY() - 1000;
+        collisionRectangle.setWidth(64);
+        collisionRectangle.setHeight(64);
 
         collisionRectangle.setFill(Color.RED);
+        collisionRectangle.setOpacity(0);
+
+        bonusBagImage.setX(collisionRectangle.getX() - 10);
+        bonusBagImage.setY(collisionRectangle.getY() - 10);
+        bonusImage.setX(collisionRectangle.getX() + 16);
+        bonusImage.setY(collisionRectangle.getY() + 16);
+
 
         miniMapPoint = new Rectangle();
         miniMapPoint.setWidth(5);
@@ -40,15 +66,21 @@ public class GameWorldObjects {
             @Override
             public void handle(long l) {
 
-                objectCollisionDetectWithPerson();
+                objectCollisionDetectWithPersonForBonus();
+                objectCollisionToGetBonus();
 
             }
         };
 
         timerObjectAction.start();
 
+        bonusGroup = new Group();
+        bonusGroup.getChildren().addAll(collisionRectangle, bonusImage, bonusBagImage, miniMapPoint);
+
 
         App_old.gamePane.getChildren().add(collisionRectangle);
+        App_old.gamePane.getChildren().add(bonusImage);
+        App_old.gamePane.getChildren().add(bonusBagImage);
         App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
@@ -82,11 +114,6 @@ public class GameWorldObjects {
         collisionRectangle.setFill(Color.RED);
         collisionRectangle.setOpacity(0.3);
 
-        miniMapPoint = new Rectangle();
-        miniMapPoint.setWidth(5);
-        miniMapPoint.setHeight(5);
-        miniMapPoint.setFill(Color.GREEN);
-
         calculateAndUpdateMiniMapPoint();
 
         timerObjectAction = new AnimationTimer() {
@@ -102,7 +129,7 @@ public class GameWorldObjects {
 
 
         App_old.gamePane.getChildren().add(collisionRectangle);
-        App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
+        //App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
     public Rectangle getMiniMapPoint() {
@@ -133,6 +160,91 @@ public class GameWorldObjects {
         getMiniMapPoint().setY(Math.abs(miniMapPosY));
 
     }
+
+    public int findPointX(){
+        int posX = 0;
+        boolean find = true;
+            posX = ThreadLocalRandom.current().nextInt(mapBoundXMin, mapBoundXMax);
+            for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
+                if (App_old.gameWorldObjects.get(i).posX < posX &&
+                    App_old.gameWorldObjects.get(i).posX + App_old.gameWorldObjects.get(i).collisionRectangle.getWidth() < posX ||
+                    App_old.gameWorldObjects.get(i).posX > posX &&
+                            App_old.gameWorldObjects.get(i).posX + App_old.gameWorldObjects.get(i).collisionRectangle.getWidth() > posX){
+                    find = false;
+                } else {
+                    find = true;
+                    break;
+                }
+            }
+        System.out.println(find);
+            if (find)
+                posX = -10000;
+            return posX;
+    }
+    public int findPointY(){
+        int posY = 0;
+        boolean find = true;
+        posY = ThreadLocalRandom.current().nextInt(mapBoundYMin, mapBoundYMax);
+        for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
+            if (App_old.gameWorldObjects.get(i).posY < posY &&
+                    App_old.gameWorldObjects.get(i).posY + App_old.gameWorldObjects.get(i).collisionRectangle.getHeight() < posY ||
+                    App_old.gameWorldObjects.get(i).posY > posY &&
+                            App_old.gameWorldObjects.get(i).posY + App_old.gameWorldObjects.get(i).collisionRectangle.getHeight() > posY){
+                find = false;
+            } else {
+                find = true;
+                break;
+            }
+        }
+        System.out.println(find);
+        if (find)
+            posY = -10000;
+        return posY;
+    }
+
+
+
+    public void objectCollisionToGetBonus(){
+        if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(bonusImage.getBoundsInParent())) {
+            if (bonusBagImage.getOpacity() == 0) {
+                System.out.println("гам");
+                App_old.gamePane.getChildren().remove(collisionRectangle);
+                App_old.gamePane.getChildren().remove(bonusImage);
+                App_old.gamePane.getChildren().remove(bonusBagImage);
+                App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
+
+            }
+        }
+    }
+
+    public void removeByIndex(){
+        for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
+            if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
+                System.out.println("Видаляю обєкт за індексом");
+                App_old.gameWorldObjects.remove(App_old.gameWorldObjects.get(i));
+                break;
+            }
+        }
+    }
+
+    public void objectCollisionDetectWithPersonForBonus() {
+        if (App_old.HERO.getLeftKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+            if (App_old.HERO.isLeftKick()) {
+                bonusBagImage.setOpacity(0);
+                removeByIndex();
+            }
+        }
+        if (App_old.HERO.getRightKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+            if (App_old.HERO.isRightKick()) {
+                System.out.println("Bonus RIIIIGHT Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet");
+            }
+        }
+
+
+        }
+
+
+
 
     public String objectCollisionDetectWithPerson() {
         if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {

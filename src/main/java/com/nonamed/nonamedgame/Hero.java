@@ -267,7 +267,8 @@ public class Hero {
 
     public void move() {
         MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
-        setEnergy(getEnergy() - STEP_TO_AUTO_MOVE);
+        //setEnergy(getEnergy() - STEP_TO_AUTO_MOVE);
+        setEnergy(getEnergy() - Config.HERO_ENERGY_USAGE);
         if (getEnergy() < 0) {
             ifLoseAction();
             // FIXME set result window

@@ -126,7 +126,10 @@ public class App_old extends Application {
             }
         });
         enemySpawn.start();
-        gameWorldObjects.add(new GameWorldObjects(1));
+        //gameWorldObjects.add(new GameWorldObjects(1));
+                for (int i = 0; i < 10; i++) {
+            gameWorldObjects.add(new GameWorldObjects(1));
+        }
         Thread gameWorldObjectSpawn = new Thread(() -> {
             while (true) {
 
@@ -145,7 +148,7 @@ public class App_old extends Application {
 
 
         });
-        gameWorldObjectSpawn.start();
+        //gameWorldObjectSpawn.start();
     }
 
     public static void stopGame() {
@@ -171,18 +174,26 @@ public class App_old extends Application {
             if (direction.equals("UP")) {
                 gameWorldObject.setPosY(gameWorldObject.getPosY() - Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() + Config.HERO_SPEED);
+                gameWorldObject.getBonusBagImage().setY(gameWorldObject.getBonusBagImage().getY() + Config.HERO_SPEED);
+                gameWorldObject.getBonusImage().setY(gameWorldObject.getBonusImage().getY() + Config.HERO_SPEED);
             }
             if (direction.equals("DOWN")) {
                 gameWorldObject.setPosY(gameWorldObject.getPosY() + Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() - Config.HERO_SPEED);
+                gameWorldObject.getBonusBagImage().setY(gameWorldObject.getBonusBagImage().getY() - Config.HERO_SPEED);
+                gameWorldObject.getBonusImage().setY(gameWorldObject.getBonusImage().getY() - Config.HERO_SPEED);
             }
             if (direction.equals("RIGHT")) {
                 gameWorldObject.setPosX(gameWorldObject.getPosX() + Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() - Config.HERO_SPEED);
+                gameWorldObject.getBonusBagImage().setX(gameWorldObject.getBonusBagImage().getX() - Config.HERO_SPEED);
+                gameWorldObject.getBonusImage().setX(gameWorldObject.getBonusImage().getX() - Config.HERO_SPEED);
             }
             if (direction.equals("LEFT")) {
                 gameWorldObject.setPosX(gameWorldObject.getPosX() - Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() + Config.HERO_SPEED);
+                gameWorldObject.getBonusBagImage().setX(gameWorldObject.getBonusBagImage().getX() + Config.HERO_SPEED);
+                gameWorldObject.getBonusImage().setX(gameWorldObject.getBonusImage().getX() + Config.HERO_SPEED);
             }
         }
     }

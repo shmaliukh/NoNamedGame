@@ -16,6 +16,7 @@ public final class Config {
     public static Image HERO_FIGHT_LEFT;
     public static Image HERO_FIGHT_RIGHT;
     public static Image HERO_AVATAR;
+
     public static double VOLUME_LEVEL = 0.0;
     public static int WINDOW_HEIGHT = 1080;
     public static int WINDOW_WIDTH = 1920;
@@ -26,6 +27,11 @@ public final class Config {
     public static int HERO_DAMAGE = 5;
     public static int HERO_HEALTH = 10000;
     public static int HERO_ENERGY = 10000;
+
+    public static int HERO_BONUS_HEALTH_COUNT = 0;
+    public static int HERO_BONUS_ENERGY_COUNT = 0;
+
+    public static int HERO_ENERGY_USAGE = 3;
     public static int DARK_PERSON_SPEED = 3;
     public static int ENEMY_DAMAGE = 3;
     public static List<String> NAME_LIST = new ArrayList<>();
