@@ -11,8 +11,6 @@ q
 Asrc/main/java/com/nonamed/nonamedgame/enemies/SvinoPesBuryat.java,8\8\888880df6a7633271aca94cd75a25f9ee76fa242
 d
 4src/main/java/com/nonamed/nonamedgame/GameWorld.java,6\c\6cd12f0a79db3f89cf6401ca2ba24ebecc9ee85a
-k
-;src/main/java/com/nonamed/nonamedgame/game_objects/Hud.java,d\b\db7fb06f0a154ed854314f508c0336fcd84d9a4c
 t
 Dsrc/main/java/com/nonamed/nonamedgame/scenes/LoseMenuController.java,5\e\5e66b8c010e5073922e23a25da1fb95c8f4c3da8
 t
