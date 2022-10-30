@@ -165,7 +165,6 @@ public class Enemy {
     public void damageFromHero() {
         setHealth(this.health - Config.HERO_DAMAGE);
         healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
-        HeroSoundService.sayIfDamaged();
         if (this.healthLine.getEndX() <= this.healthLine.getStartX()) {
             HERO.SCORE += 10;
             App_old.gamePane.getChildren().remove(groupEnemy);
