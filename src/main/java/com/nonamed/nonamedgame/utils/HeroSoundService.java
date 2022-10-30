@@ -19,6 +19,7 @@ public class HeroSoundService {
     public static final Media EAT_APPLE = new Media(new File("src/main/resources/hero_frazes/eat/poedanie-ukus-yabloka.mp3").toURI().toString());
     public static final Media EAT_COIN = new Media(new File("src/main/resources/hero_frazes/eat/monetyi-vyisyipayut.mp3").toURI().toString());
     public static MediaPlayer heroMediaPlayer = new MediaPlayer(new Media(new File("src/main/resources/hero_frazes/ne-mozu-pidibratu-slova.mp3").toURI().toString()));
+    public static MediaPlayer heroDamagePlayer = new MediaPlayer(new Media(new File("src/main/resources/hero_frazes/ne-mozu-pidibratu-slova.mp3").toURI().toString()));
     public static MediaPlayer eatMediaPlayer = new MediaPlayer(new Media(new File("src/main/resources/hero_frazes/if-damaged/bokserskiy-silnyiy-udar.mp3").toURI().toString()));
 
     static {
@@ -27,7 +28,6 @@ public class HeroSoundService {
         musicList.add(new Media(new File("src/main/resources/hero_frazes/ne-mozu-pidibratu-slova.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/hero_frazes/v-zavtrashniy-den.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/hero_frazes/bud-prosche.mp3").toURI().toString()));
-        musicList.add(new Media(new File("src/main/resources/hero_frazes/moscal-vopli/a-vot-c4a-dlya-dushi.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/hero_frazes/moscal-vopli/ai-mlya.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/hero_frazes/moscal-vopli/berem-teplogo.mp3").toURI().toString()));
         musicList.add(new Media(new File("src/main/resources/hero_frazes/moscal-vopli/bratva-kopita-otkinu.mp3").toURI().toString()));
@@ -44,60 +44,60 @@ public class HeroSoundService {
         damageMusicList.add(new Media(new File("src/main/resources/hero_frazes/if-damaged/zvuk-udara2.mp3").toURI().toString()));
 
 
-
     }
 
     public static void say() {
         if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
             heroMediaPlayer.stop();
             MediaPlayer heroMediaPlayer = new MediaPlayer(musicList.get(RANDOM.nextInt(musicList.size())));
-            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL * 1.3);
             heroMediaPlayer.play();
         }
     }
 
-    public static void onButtonPress(){
+    public static void onButtonPress() {
         if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
             heroMediaPlayer.stop();
             MediaPlayer heroMediaPlayer = new MediaPlayer(damageMusicList.get(RANDOM.nextInt(damageMusicList.size())));
-            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL * 1.3);
             heroMediaPlayer.play();
         }
     }
 
     public static void sayIfDamaged() {
-        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            heroMediaPlayer.stop();
-            heroMediaPlayer = new MediaPlayer(damageMusicList.get(RANDOM.nextInt(damageMusicList.size())));
-            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
-            heroMediaPlayer.play();
-        }
+//        if (heroDamagePlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+            heroDamagePlayer.stop();
+            heroDamagePlayer = new MediaPlayer(damageMusicList.get(RANDOM.nextInt(damageMusicList.size())));
+            heroDamagePlayer.setVolume(Config.VOLUME_LEVEL * 1.3);
+            heroDamagePlayer.play();
+//        }
     }
 
-    public static void sayIfEatCoin(){
-        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            eatMediaPlayer.stop();
-            eatMediaPlayer =new MediaPlayer(EAT_COIN);
-            eatMediaPlayer.setVolume(Config.VOLUME_LEVEL *0.7);
-            eatMediaPlayer.play();
-        }
+    public static void sayIfEatCoin() {
+//        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+        eatMediaPlayer.stop();
+        eatMediaPlayer = new MediaPlayer(EAT_COIN);
+        eatMediaPlayer.setVolume(Config.VOLUME_LEVEL * 0.7);
+        eatMediaPlayer.play();
+//        }
     }
 
-    public static void sayIfEatVarenik(){
-        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            eatMediaPlayer.stop();
-            eatMediaPlayer =new MediaPlayer(EAT_VARENUK);
-            eatMediaPlayer.setVolume(Config.VOLUME_LEVEL *0.7);
-            eatMediaPlayer.play();
-        }
+    public static void sayIfEatVarenik() {
+//        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+        eatMediaPlayer.stop();
+        eatMediaPlayer = new MediaPlayer(EAT_VARENUK);
+        eatMediaPlayer.setVolume(Config.VOLUME_LEVEL * 0.7);
+        eatMediaPlayer.play();
+//        }
     }
-    public static void sayIfEatApple(){
-        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            eatMediaPlayer.stop();
-            eatMediaPlayer =new MediaPlayer(EAT_APPLE);
-            eatMediaPlayer.setVolume(Config.VOLUME_LEVEL *0.7);
-            eatMediaPlayer.play();
-        }
+
+    public static void sayIfEatApple() {
+//        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+        eatMediaPlayer.stop();
+        eatMediaPlayer = new MediaPlayer(EAT_APPLE);
+        eatMediaPlayer.setVolume(Config.VOLUME_LEVEL * 0.7);
+        eatMediaPlayer.play();
+//        }
     }
 
 }

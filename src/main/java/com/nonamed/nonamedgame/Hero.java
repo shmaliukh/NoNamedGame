@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import static com.nonamed.nonamedgame.App_old.*;
+import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfDamaged;
 
 @Getter
 @Setter
@@ -219,6 +220,7 @@ public class Hero {
 //        HeroSoundService.sayIfDamaged();
 
         if (!isKick) {
+
             if (kickSide.equals(RIGHT)) {
                 imageView.setImage(Config.HERO_FIGHT_RIGHT);
                 isRightKick = true;
@@ -227,7 +229,9 @@ public class Hero {
                 isLeftKick = true;
             }
             isKick = true;
+            sayIfDamaged();
             Thread kick = new Thread(() -> {
+
                 try {
                     Thread.sleep(KICK_ANIMATION_TIME);
                 } catch (InterruptedException e) {
