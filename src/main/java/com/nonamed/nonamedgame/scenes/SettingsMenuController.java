@@ -206,5 +206,9 @@ public class SettingsMenuController implements Initializable {
         Config.HERO_DAMAGE = 100;
         Config.HERO_HEALTH =  20000;
         Config.DARK_PERSON_SPEED = 4;
+        Config.HERO_BONUS_BATTERY_COUNT = 99;
+        Config.HERO_BONUS_HEALTH_COUNT = 99;
+        Config.HERO_BONUS_ENERGY_COUNT = 99;
+        Config.HERO_ENERGY_USAGE = 1;
     }
 }
