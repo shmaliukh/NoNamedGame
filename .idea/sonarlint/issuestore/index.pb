@@ -15,12 +15,8 @@ N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 b
 2src/main/java/com/nonamed/nonamedgame/App_old.java,6\d\6d72acbf25c5a54c9df395da1c3e63a36594c086
-`
-0src/main/java/com/nonamed/nonamedgame/Enemy.java,8\a\8ae7a9f303c6af91104ed587dbcf0b4988a66c8d
 d
 4src/main/java/com/nonamed/nonamedgame/GameWorld.java,6\c\6cd12f0a79db3f89cf6401ca2ba24ebecc9ee85a
-k
-;src/main/java/com/nonamed/nonamedgame/GameWorldObjects.java,2\9\299f290b56c769cfb2c1eac7d2a7d57f3c55303a
 k
 ;src/main/java/com/nonamed/nonamedgame/game_objects/Hud.java,d\b\db7fb06f0a154ed854314f508c0336fcd84d9a4c
 t
