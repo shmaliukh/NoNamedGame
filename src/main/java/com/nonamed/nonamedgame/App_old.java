@@ -282,7 +282,15 @@ public class App_old extends Application {
         gameWorldObjects.add(new GameWorldObjects("bigShopVerticalPart",1615,-440));
 
         gameWorldObjects.add(new GameWorldObjects("factory",-1000,1100));
+        gameWorldObjects.add(new GameWorldObjects("starkTower",-1000,-1000));
+        gameWorldObjects.add(new GameWorldObjects("blueTower",-600,-1100));
+        gameWorldObjects.add(new GameWorldObjects("whiteTower",-20,-1000));
+        gameWorldObjects.add(new GameWorldObjects("stadium",235,-1000));
 
+        gameWorldObjects.add(new GameWorldObjects("ufo",3750,1270));
+        gameWorldObjects.add(new GameWorldObjects("river1",3350,1330));
+        gameWorldObjects.add(new GameWorldObjects("river1",3230,1100));
+        gameWorldObjects.add(new GameWorldObjects("river1",3630,600));
     }
 
 //    public static String objectCollisionDetectWithHero(){

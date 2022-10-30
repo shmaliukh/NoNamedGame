@@ -153,7 +153,32 @@ public class GameWorldObjects {
                 collisionRectangle.setWidth(465);
                 collisionRectangle.setHeight(400);
             }
+            case "starkTower"->{
+                collisionRectangle.setWidth(490);
+                collisionRectangle.setHeight(1100);
+            }
+            case "blueTower"->{
+                collisionRectangle.setWidth(590);
+                collisionRectangle.setHeight(780);
+            }
 
+            case "whiteTower"->{
+                collisionRectangle.setWidth(260);
+                collisionRectangle.setHeight(500);
+            }
+            case "stadium"->{
+                collisionRectangle.setWidth(1100);
+                collisionRectangle.setHeight(300);
+            }
+
+            case "ufo"->{
+                collisionRectangle.setWidth(350);
+                collisionRectangle.setHeight(350);
+            }
+            case "river1"->{
+                collisionRectangle.setWidth(330);
+                collisionRectangle.setHeight(350);
+            }
 
         }
 
