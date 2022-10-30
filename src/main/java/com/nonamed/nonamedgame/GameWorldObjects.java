@@ -240,21 +240,18 @@ public class GameWorldObjects {
         for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
                 if (App_old.gameWorldObjects.get(i).getVariant() == 1) {
-                    HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.20));
+
 //                    setEnergy((int) (getEnergy() + Config.HERO_HEALTH * 0.10));
 //                    setHealth((int) (getHealth() + Config.HERO_ENERGY * 0.10));
                     Config.HERO_BONUS_HEALTH_COUNT += 1;
                     HERO.SCORE += 25;
                 } else if (App_old.gameWorldObjects.get(i).getVariant() == 2) {
-                    HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.10));
-                    HERO.setEnergy((int) (HERO.getEnergy()+ Config.HERO_ENERGY * 0.10));
                     Config.HERO_BONUS_ENERGY_COUNT += 1;
                     HERO.SCORE += 25;
                 } else if (App_old.gameWorldObjects.get(i).getVariant() == 3) {
 //                    HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.20));
                     HERO.SCORE += 100;
                 } else if (App_old.gameWorldObjects.get(i).getVariant() == 4) {
-                    HERO.setEnergy((int) (HERO.getEnergy()+ Config.HERO_ENERGY * 0.20));
                     Config.HERO_BONUS_BATTERY_COUNT += 1;
                     HERO.SCORE += 50;
                 }

@@ -65,7 +65,7 @@ public class HeroSoundService {
 
     public static void sayIfDamaged() {
 //        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            heroMediaPlayer.stop();
+//            heroMediaPlayer.stop();
             heroMediaPlayer = new MediaPlayer(damageMusicList.get(RANDOM.nextInt(damageMusicList.size())));
             heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
             heroMediaPlayer.play();
@@ -74,27 +74,27 @@ public class HeroSoundService {
 
     public static void sayIfEatCoin(){
 //        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            heroMediaPlayer.stop();
-            heroMediaPlayer =new MediaPlayer(EAT_COIN);
-            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
-            heroMediaPlayer.play();
+//            eatMediaPlayer.stop();
+            eatMediaPlayer =new MediaPlayer(EAT_COIN);
+            eatMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            eatMediaPlayer.play();
 //        }
     }
 
     public static void sayIfEatVarenik(){
-//        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            heroMediaPlayer.stop();
-            heroMediaPlayer =new MediaPlayer(EAT_VARENUK);
-            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
-            heroMediaPlayer.play();
+//        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+//            eatMediaPlayer.stop();
+            eatMediaPlayer =new MediaPlayer(EAT_VARENUK);
+            eatMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            eatMediaPlayer.play();
 //        }
     }
     public static void sayIfEatApple(){
-//        if (heroMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
-            heroMediaPlayer.stop();
-            heroMediaPlayer =new MediaPlayer(EAT_APPLE);
-            heroMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
-            heroMediaPlayer.play();
+//        if (eatMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+//            eatMediaPlayer.stop();
+            eatMediaPlayer =new MediaPlayer(EAT_APPLE);
+            eatMediaPlayer.setVolume(Config.VOLUME_LEVEL + 0.3);
+            eatMediaPlayer.play();
 //        }
     }
 

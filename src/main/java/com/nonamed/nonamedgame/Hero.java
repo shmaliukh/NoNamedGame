@@ -217,31 +217,28 @@ public class Hero {
     }
 
     public void eatVarenyk() {
-        sayIfEatVarenik();
         if (Config.HERO_BONUS_HEALTH_COUNT > 0) {
             Config.HERO_BONUS_HEALTH_COUNT -= 1;
-
+            sayIfEatVarenik();
+            HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.2));
             Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
         }
     }
 
     public void useBattery() {
-        sayIfEatVarenik();
-        setEnergy((int) (getEnergy() + Config.HERO_ENERGY * 0.2));
-        HERO.SCORE += 25;
         if (Config.HERO_BONUS_BATTERY_COUNT > 0) {
-
+            sayIfEatVarenik();
+            setEnergy((int) (getEnergy() + Config.HERO_ENERGY * 0.2));
             Config.HERO_BONUS_BATTERY_COUNT -= 1;
             Hud.heroBonusBatteryCount.setText(" x " + Config.HERO_BONUS_BATTERY_COUNT);
         }
     }
 
     public void eatApple() {
-        sayIfEatApple();
-
-        HERO.SCORE += 25;
         if (Config.HERO_BONUS_ENERGY_COUNT > 0) {
-
+            HERO.setHealth((int) (HERO.getHealth()+ Config.HERO_HEALTH * 0.10));
+            HERO.setEnergy((int) (HERO.getEnergy()+ Config.HERO_ENERGY * 0.10));
+            sayIfEatApple();
             Config.HERO_BONUS_ENERGY_COUNT -= 1;
             Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
         }
@@ -297,78 +294,8 @@ public class Hero {
         App_old.stopGame();
         MEDIA_PLAYER.stop();
         loseMediaPlayer.play();
-//
-//        App_old.getStage().setFullScreen(false);
-//
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setTitle("Alert");
-//        alert.setContentText("Alert");
-//        alert.initOwner(App_old.getStage().getOwner());
-//
-//        alert.showAndWait();
-
-//        Pane rootPane = new StackPane();
-//        Scene mainScene = new Scene(rootPane);
-//        Button btn = new Button("alert");
-//
-//        Rectangle blockingRect = new Rectangle();
-//        blockingRect.widthProperty().bind(App_old.getStage().widthProperty());
-//        blockingRect.heightProperty().bind(App_old.getStage().heightProperty());
-//        blockingRect.setFill(Color.LIGHTBLUE);
-//        blockingRect.setOpacity(0.5);
-//
-//
-//        rootPane.getChildren().add(btn);
-//
-//        VBox alertPane = new VBox(10);
-//        alertPane.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-//        alertPane.setMaxWidth(400);
-//        alertPane.setMaxHeight(200);
-//        alertPane.setAlignment(Pos.CENTER);
-//        Label alertMessage = new Label("alert message");
-//        Button alertOKButton = new Button("OK");
-//        alertPane.getChildren().addAll(alertMessage, alertOKButton);
-//        btn.setOnAction(event -> {
-//            rootPane.getChildren().addAll(blockingRect, alertPane);
-//        });
-//        alertOKButton.setOnAction(event -> {
-//            rootPane.getChildren().removeAll(blockingRect, alertPane);
-//        });
-//
-//        App_old.getStage().setFullScreen(true);
-//        App_old.getStage().setScene(mainScene);
-//        App_old.getStage().show();
-
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Information Dialog");
-//        alert.setHeaderText(null);
-//        alert.setContentText("I have a great message for you!");
-//        alert.initStyle(StageStyle.UTILITY);
-//        alert.initOwner(App_old.getStage());
-//        alert.showAndWait();
-//
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        //Setting the title
-//        alert.setTitle("Result");
-//        ButtonType type = new ButtonType("Зрозумів", ButtonBar.ButtonData.OK_DONE);
-//        //Setting the content of the dialog
-//        alert.setContentText("На жаль ви прогали");
-//        //Adding buttons to the dialog pane
-//        alert.getDialogPane().getButtonTypes().add(type);
-//        //Setting the label
-//        //Creating a button
-//        alert.showAndWait();
-        //Creating a vbox to hold the button and the label
-//        HBox pane = new HBox(15);
-        //Setting the space between the nodes of a HBox pane
-//        pane.setPadding(new Insets(50, 150, 50, 60));
-//        pane.getChildren().addAll(txt, button);
-        //Creating a scene object
-//        Scene scene = new Scene(new Group(pane), 595, 300, Color.BEIGE);
-//        App_old.getStage().setScene(scene);
-
         App_old.getStage().setScene(mainMenuPane.getScene());
-
+        App_old.MEDIA_PLAYER.play();
     }
 
     public void calculateAndUpdateMiniMapPoint() {
