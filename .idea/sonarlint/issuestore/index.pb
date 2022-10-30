@@ -1,6 +1,4 @@
 
-j
-:src/main/java/com/nonamed/nonamedgame/utils/MyLogUtil.java,9\1\9194d7d8c7abd7add20df9d9014bd06e0ffd783a
 k
 ;src/main/java/com/nonamed/nonamedgame/enemies/SvinoPes.java,9\b\9b902c199784ccc984e62fc4f36fbc26403661d9
 d
@@ -11,10 +9,6 @@ o
 ?src/main/java/com/nonamed/nonamedgame/enemies/SvinoPesHach.java,3\6\36f9e8998d085cb920f4f66983d6e4878717262f
 q
 Asrc/main/java/com/nonamed/nonamedgame/enemies/SvinoPesBuryat.java,8\8\888880df6a7633271aca94cd75a25f9ee76fa242
-N
-src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-b
-2src/main/java/com/nonamed/nonamedgame/App_old.java,6\d\6d72acbf25c5a54c9df395da1c3e63a36594c086
 d
 4src/main/java/com/nonamed/nonamedgame/GameWorld.java,6\c\6cd12f0a79db3f89cf6401ca2ba24ebecc9ee85a
 k

@@ -29,7 +29,7 @@ public class Hero {
     public static final int KICK_ANIMATION_TIME = 700;
     public static int STEP_TO_AUTO_MOVE = 15;
     public static int SCORE = 0;
-    static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
+    public static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
     private final double lineHealthLambda;
     private final int damage;
     private final int speed;
