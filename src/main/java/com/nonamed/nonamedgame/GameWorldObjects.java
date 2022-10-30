@@ -125,6 +125,34 @@ public class GameWorldObjects {
                 collisionRectangle.setWidth(450);
                 collisionRectangle.setHeight(250);
             }
+            case "brownHouse"->{
+                collisionRectangle.setWidth(370);
+                collisionRectangle.setHeight(250);
+            }
+            case "greenHouse"->{
+                collisionRectangle.setWidth(350);
+                collisionRectangle.setHeight(275);
+            }
+            case "smallGreenHouse"->{
+                collisionRectangle.setWidth(220);
+                collisionRectangle.setHeight(190);
+            }
+            case "griffinsHouse"->{
+                collisionRectangle.setWidth(480);
+                collisionRectangle.setHeight(250);
+            }
+            case "bigShopHorizontalPart"->{
+                collisionRectangle.setWidth(720);
+                collisionRectangle.setHeight(220);
+            }
+            case "bigShopVerticalPart"->{
+                collisionRectangle.setWidth(485);
+                collisionRectangle.setHeight(350);
+            }
+            case "factory"->{
+                collisionRectangle.setWidth(465);
+                collisionRectangle.setHeight(400);
+            }
 
 
         }
