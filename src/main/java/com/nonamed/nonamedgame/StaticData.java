@@ -22,11 +22,11 @@ public class StaticData {
     public static final Image OLHA_FIGHT_RIGHT = new Image("OlgaRight.gif");
     public static final Image OLHA_AVATAR = new Image("OlgaHarlanAvatarFINAL.gif");
 
-    public static final Image SVINO_PES_3_IMAGE = new Image("SvinoPes 3.gif");
-    public static final Image SVINO_PES_HATCH = new Image("SvinoPes Hach.gif");
-    public static final Image SVINO_PES_ORK = new Image("SvinoPes Ork.gif");
-    public static final Image SVINO_PES_BURYAT = new Image("SvinoPesBuryat.gif");
-    public static final Image SVINO_PES = new Image("SvinoPes.gif");
+    public static final Image SVINO_PES_3_IMAGE = new Image("SvinoStandart.gif");
+    public static final Image SVINO_PES_HATCH = new Image("SvinoPesHach.gif");
+    public static final Image SVINO_PES_ORK = new Image("SvinoPesOrkAmimate.gif");
+    public static final Image SVINO_PES_BURYAT = new Image("SvinoBuryatAnim.gif");
+    public static final Image SVINO_PES = new Image("SvinoStandart.gif");
     public static int SCORE = 0;
 
     public static final Media PlANE_SOUND = new Media(new File("src/main/resources/music.mp3").toURI().toString());

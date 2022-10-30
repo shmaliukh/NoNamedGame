@@ -16,16 +16,14 @@ import java.util.concurrent.ThreadLocalRandom;
 @Getter
 public class GameWorldObjects {
 
-    private Rectangle collisionRectangle = new Rectangle();
-    private int posX = ThreadLocalRandom.current().nextInt(100, 1000);
-    private int posY = ThreadLocalRandom.current().nextInt(100, 500);
-
-    private Rectangle miniMapPoint;
     public final int mapBoundXMin = -800;
     public final int mapBoundXMax = 2700;
     public final int mapBoundYMin = -800;
     public final int mapBoundYMax = 2000;
-
+    private Rectangle collisionRectangle = new Rectangle();
+    private int posX = ThreadLocalRandom.current().nextInt(100, 1000);
+    private int posY = ThreadLocalRandom.current().nextInt(100, 500);
+    private Rectangle miniMapPoint;
     private AnimationTimer timerObjectAction;
     private ImageView bonusBagImage = new ImageView();
     private ImageView bonusImage = new ImageView();
@@ -36,16 +34,16 @@ public class GameWorldObjects {
 
     public GameWorldObjects(int variant) {
         this.variant = variant;
-        if (variant == 1){
+        if (variant == 1) {
             bonusBagImage = new ImageView(new Image("LukyBox.png"));
             bonusImage = new ImageView(new Image("Varenyk.gif"));
-        } else if (variant == 2){
+        } else if (variant == 2) {
             bonusBagImage = new ImageView(new Image("LukyCan.png"));
             bonusImage = new ImageView(new Image("apple.gif"));
-        } else if (variant == 3){
+        } else if (variant == 3) {
             bonusBagImage = new ImageView(new Image("LukyBox.png"));
             bonusImage = new ImageView(new Image("CoinFinal.gif"));
-        } else if (variant == 4){
+        } else if (variant == 4) {
             bonusBagImage = new ImageView(new Image("LukyCan.png"));
             bonusImage = new ImageView(new Image("battery.gif"));
         }
@@ -180,26 +178,27 @@ public class GameWorldObjects {
 
     }
 
-    public int findPointX(){
+    public int findPointX() {
         int posX = 0;
         boolean find = true;
-            posX = ThreadLocalRandom.current().nextInt(mapBoundXMin, mapBoundXMax);
-            for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
-                if (App_old.gameWorldObjects.get(i).posX < posX &&
+        posX = ThreadLocalRandom.current().nextInt(mapBoundXMin, mapBoundXMax);
+        for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
+            if (App_old.gameWorldObjects.get(i).posX < posX &&
                     App_old.gameWorldObjects.get(i).posX + App_old.gameWorldObjects.get(i).collisionRectangle.getWidth() < posX ||
                     App_old.gameWorldObjects.get(i).posX > posX &&
-                            App_old.gameWorldObjects.get(i).posX + App_old.gameWorldObjects.get(i).collisionRectangle.getWidth() > posX){
-                    find = false;
-                } else {
-                    find = true;
-                    break;
-                }
+                            App_old.gameWorldObjects.get(i).posX + App_old.gameWorldObjects.get(i).collisionRectangle.getWidth() > posX) {
+                find = false;
+            } else {
+                find = true;
+                break;
             }
-            if (find)
-                posX = -10000;
-            return posX;
+        }
+        if (find)
+            posX = -10000;
+        return posX;
     }
-    public int findPointY(){
+
+    public int findPointY() {
         int posY = 0;
         boolean find = true;
         posY = ThreadLocalRandom.current().nextInt(mapBoundYMin, mapBoundYMax);
@@ -207,7 +206,7 @@ public class GameWorldObjects {
             if (App_old.gameWorldObjects.get(i).posY < posY &&
                     App_old.gameWorldObjects.get(i).posY + App_old.gameWorldObjects.get(i).collisionRectangle.getHeight() < posY ||
                     App_old.gameWorldObjects.get(i).posY > posY &&
-                            App_old.gameWorldObjects.get(i).posY + App_old.gameWorldObjects.get(i).collisionRectangle.getHeight() > posY){
+                            App_old.gameWorldObjects.get(i).posY + App_old.gameWorldObjects.get(i).collisionRectangle.getHeight() > posY) {
                 find = false;
             } else {
                 find = true;
@@ -220,8 +219,7 @@ public class GameWorldObjects {
     }
 
 
-
-    public void objectCollisionToGetBonus(){
+    public void objectCollisionToGetBonus() {
         if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(bonusImage.getBoundsInParent())) {
             if (bonusBagImage.getOpacity() == 0) {
                 App_old.gamePane.getChildren().remove(collisionRectangle);
@@ -236,17 +234,20 @@ public class GameWorldObjects {
         }
     }
 
-    public void removeByIndex(){
+    public void removeByIndex() {
         for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
-                if (App_old.gameWorldObjects.get(i).getVariant() == 1){
+                if (App_old.gameWorldObjects.get(i).getVariant() == 1) {
                     Config.HERO_BONUS_HEALTH_COUNT += 1;
-                }else if (App_old.gameWorldObjects.get(i).getVariant() == 2)
+                } else if (App_old.gameWorldObjects.get(i).getVariant() == 2) {
                     Config.HERO_BONUS_ENERGY_COUNT += 1;
-                else if (App_old.gameWorldObjects.get(i).getVariant() == 3)
-                    App_old.HERO.SCORE += 40;
-                else if (App_old.gameWorldObjects.get(i).getVariant() == 4)
+                } else if (App_old.gameWorldObjects.get(i).getVariant() == 3) {
+                    App_old.HERO.SCORE += 50;
+                } else if (App_old.gameWorldObjects.get(i).getVariant() == 4) {
+
                     Config.HERO_BONUS_BATTERY_COUNT += 1;
+                }
+
                 App_old.gameWorldObjects.remove(App_old.gameWorldObjects.get(i));
 
                 break;
@@ -269,9 +270,7 @@ public class GameWorldObjects {
         }
 
 
-        }
-
-
+    }
 
 
     public String objectCollisionDetectWithPerson() {

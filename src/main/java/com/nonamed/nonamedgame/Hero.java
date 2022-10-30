@@ -3,25 +3,15 @@ package com.nonamed.nonamedgame;
 import com.nonamed.nonamedgame.game_objects.Hud;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,7 +32,6 @@ public class Hero {
     public static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
     private final double lineHealthLambda;
     private final int damage;
-    private int speed;
     private final Image image;
     private final ImageView imageView;
     private final Group heroGroup;
@@ -57,6 +46,7 @@ public class Hero {
     boolean toRight = false;
     boolean toUp = false;
     boolean toDawn = false;
+    private int speed;
     private int energy;
     private String name;
     private int health;
@@ -209,26 +199,29 @@ public class Hero {
         }));
     }
 
-    public void eatVarenyk(){
-        if (Config.HERO_BONUS_HEALTH_COUNT > 0){
-            setHealth(getHealth() + 1000);
+    public void eatVarenyk() {
+        if (Config.HERO_BONUS_HEALTH_COUNT > 0) {
+            setHealth((int) (getHealth() + Config.HERO_HEALTH * 0.2));
             Config.HERO_BONUS_HEALTH_COUNT -= 1;
+            HERO.SCORE += 25;
             Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
         }
     }
 
-    public void useBattery(){
-        if (Config.HERO_BONUS_BATTERY_COUNT > 0){
-            setEnergy(getEnergy() + 1000);
+    public void useBattery() {
+        if (Config.HERO_BONUS_BATTERY_COUNT > 0) {
+            setEnergy((int) (getEnergy() + Config.HERO_ENERGY * 0.2));
+            HERO.SCORE += 25;
             Config.HERO_BONUS_BATTERY_COUNT -= 1;
             Hud.heroBonusBatteryCount.setText(" x " + Config.HERO_BONUS_BATTERY_COUNT);
         }
     }
 
-    public void eatApple(){
-        if (Config.HERO_BONUS_ENERGY_COUNT > 0){
-            setEnergy(getEnergy() + 500);
-            setHealth(getHealth() + 500);
+    public void eatApple() {
+        if (Config.HERO_BONUS_ENERGY_COUNT > 0) {
+            setEnergy((int) (getEnergy() + Config.HERO_HEALTH * 0.10));
+            setHealth((int) (getHealth() + Config.HERO_ENERGY * 0.10));
+            HERO.SCORE += 25;
             Config.HERO_BONUS_ENERGY_COUNT -= 1;
             Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
         }
