@@ -146,9 +146,10 @@ public class App_old extends Application {
                                 nextInt = RANDOM.nextInt(100);
                                 if (nextInt > 90) {
                                     gameWorldObjects.add(new GameWorldObjects(1));
-                                } else if (nextInt < 90) {
+                                } else if (nextInt > 30 && nextInt < 90) {
                                     gameWorldObjects.add(new GameWorldObjects(2));
-                                }
+                                } else if (nextInt < 30)
+                                    gameWorldObjects.add(new GameWorldObjects(3));
                             }
                         }
                     }
@@ -249,8 +250,6 @@ public class App_old extends Application {
                     App_old.stage.setScene(pauseMenuPane.getScene());
                 }
             }
-
-
         });
     }
 
@@ -259,6 +258,7 @@ public class App_old extends Application {
         //gameWorldObjects.add(new GameWorldObjects("christmasTree", 300, 200));
         gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
         gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
+        gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
         gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
 
     }
