@@ -27,8 +27,8 @@ public class GameWorldObjects {
     public final int mapBoundYMax = 2000;
 
     private AnimationTimer timerObjectAction;
-    private ImageView bonusBagImage;
-    private ImageView bonusImage;
+    private ImageView bonusBagImage = new ImageView();
+    private ImageView bonusImage = new ImageView();
     private Group bonusGroup;
     private int variant;
 
@@ -54,6 +54,7 @@ public class GameWorldObjects {
 
         collisionRectangle.setFill(Color.RED);
         collisionRectangle.setOpacity(0);
+
 
         bonusBagImage.setX(collisionRectangle.getX() - 10);
         bonusBagImage.setY(collisionRectangle.getY() - 10);
@@ -90,37 +91,41 @@ public class GameWorldObjects {
         App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
-    public GameWorldObjects(int variant, String name, int posX, int posY) {
+    public GameWorldObjects(String name, int posX, int posY) {
         collisionRectangle = new Rectangle();
         collisionRectangle.setX(posX);
         collisionRectangle.setY(posY);
         switch (name) {
             case "treeV1" -> {
-                collisionRectangle.setWidth(125);
-                collisionRectangle.setHeight(320);
+                collisionRectangle.setWidth(140);
+                collisionRectangle.setHeight(335);
             }
-            case "houseV1" -> {
+            case "christmasTree" -> {
+                collisionRectangle.setWidth(160);
+                collisionRectangle.setHeight(340);
+            }
+            case "homeWithTesla" -> {
                 collisionRectangle.setWidth(450);
                 collisionRectangle.setHeight(250);
             }
-            case "houseV2" -> {
-                collisionRectangle.setWidth(780);
-                collisionRectangle.setHeight(300);
+            case "bigHouse1" -> {
+                collisionRectangle.setWidth(550);
+                collisionRectangle.setHeight(1050);
             }
-            case "houseV3" -> {
+            case "greenHouseWithTree" -> {
+                collisionRectangle.setWidth(470);
+                collisionRectangle.setHeight(250);
+            }
+            case "ATB" -> {
                 collisionRectangle.setWidth(450);
-                collisionRectangle.setHeight(400);
+                collisionRectangle.setHeight(250);
             }
-            case "houseV4" -> {
-                collisionRectangle.setWidth(300);
-                collisionRectangle.setHeight(400);
-            }
+
+
         }
 
         collisionRectangle.setFill(Color.RED);
         collisionRectangle.setOpacity(0.3);
-
-        calculateAndUpdateMiniMapPoint();
 
         timerObjectAction = new AnimationTimer() {
             @Override
@@ -182,7 +187,6 @@ public class GameWorldObjects {
                     break;
                 }
             }
-        System.out.println(find);
             if (find)
                 posX = -10000;
             return posX;
@@ -202,7 +206,6 @@ public class GameWorldObjects {
                 break;
             }
         }
-        System.out.println(find);
         if (find)
             posY = -10000;
         return posY;
@@ -226,7 +229,6 @@ public class GameWorldObjects {
     public void removeByIndex(){
         for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
-                System.out.println("Видаляю обєкт за індексом");
                 if (App_old.gameWorldObjects.get(i).getVariant() == 1){
                     Config.HERO_BONUS_HEALTH_COUNT += 1;
                 }else
@@ -247,7 +249,6 @@ public class GameWorldObjects {
         }
         if (App_old.HERO.getRightKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
             if (App_old.HERO.isRightKick()) {
-                System.out.println("Bonus RIIIIGHT Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet");
                 bonusBagImage.setOpacity(0);
                 removeByIndex();
             }

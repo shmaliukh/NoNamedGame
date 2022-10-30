@@ -185,7 +185,6 @@ public class Hero {
 
     private void onKeyPressed(Stage scene) {
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {
-            System.out.println(keyEvent.getCode());
             switch (keyEvent.getCode()) {
                 case UP, W -> isUP = true;
                 case DOWN, S -> isDOWN = true;
