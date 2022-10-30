@@ -8,6 +8,8 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -188,24 +190,28 @@ public class App_old extends Application {
                 gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() + Config.HERO_SPEED);
                 gameWorldObject.getBonusBagImage().setY(gameWorldObject.getBonusBagImage().getY() + Config.HERO_SPEED);
                 gameWorldObject.getBonusImage().setY(gameWorldObject.getBonusImage().getY() + Config.HERO_SPEED);
+                gameWorldObject.getNpc().setY(gameWorldObject.getNpc().getY() + Config.HERO_SPEED);
             }
             if (direction.equals("DOWN")) {
                 gameWorldObject.setPosY(gameWorldObject.getPosY() + Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() - Config.HERO_SPEED);
                 gameWorldObject.getBonusBagImage().setY(gameWorldObject.getBonusBagImage().getY() - Config.HERO_SPEED);
                 gameWorldObject.getBonusImage().setY(gameWorldObject.getBonusImage().getY() - Config.HERO_SPEED);
+                gameWorldObject.getNpc().setY(gameWorldObject.getNpc().getY() - Config.HERO_SPEED);
             }
             if (direction.equals("RIGHT")) {
                 gameWorldObject.setPosX(gameWorldObject.getPosX() + Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() - Config.HERO_SPEED);
                 gameWorldObject.getBonusBagImage().setX(gameWorldObject.getBonusBagImage().getX() - Config.HERO_SPEED);
                 gameWorldObject.getBonusImage().setX(gameWorldObject.getBonusImage().getX() - Config.HERO_SPEED);
+                gameWorldObject.getNpc().setX(gameWorldObject.getNpc().getX() - Config.HERO_SPEED);
             }
             if (direction.equals("LEFT")) {
                 gameWorldObject.setPosX(gameWorldObject.getPosX() - Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() + Config.HERO_SPEED);
                 gameWorldObject.getBonusBagImage().setX(gameWorldObject.getBonusBagImage().getX() + Config.HERO_SPEED);
                 gameWorldObject.getBonusImage().setX(gameWorldObject.getBonusImage().getX() + Config.HERO_SPEED);
+                gameWorldObject.getNpc().setX(gameWorldObject.getNpc().getX() + Config.HERO_SPEED);
             }
         }
     }
@@ -292,6 +298,9 @@ public class App_old extends Application {
         gameWorldObjects.add(new GameWorldObjects("river1",3350,1330));
         gameWorldObjects.add(new GameWorldObjects("river1",3230,1100));
         gameWorldObjects.add(new GameWorldObjects("river1",3630,600));
+
+        gameWorldObjects.add(new GameWorldObjects(new ImageView(new Image("Dimas.gif")), 200, 200));
+        gameWorldObjects.add(new GameWorldObjects(new ImageView(new Image("Olya.gif")), 800, 400));
 
     }
 

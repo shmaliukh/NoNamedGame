@@ -30,10 +30,15 @@ public class GameWorldObjects {
     private AnimationTimer timerObjectAction;
     private ImageView bonusBagImage = new ImageView();
     private ImageView bonusImage = new ImageView();
+    private ImageView npc = new ImageView();
 
 
     private Group bonusGroup;
     private int variant;
+
+    public ImageView getNpc() {
+        return npc;
+    }
 
     public GameWorldObjects(int variant) {
         this.variant = variant;
@@ -95,9 +100,19 @@ public class GameWorldObjects {
 
 
         App_old.gamePane.getChildren().add(collisionRectangle);
+
         App_old.gamePane.getChildren().add(bonusImage);
         App_old.gamePane.getChildren().add(bonusBagImage);
         App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
+    }
+
+    public GameWorldObjects(ImageView npc, int posX, int posY){
+        this.npc = npc;
+        npc.setX(posX);
+        npc.setY(posY);
+
+
+        App_old.gamePane.getChildren().add(npc);
     }
 
     public GameWorldObjects(String name, int posX, int posY) {
