@@ -13,7 +13,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.nonamed.nonamedgame.App.*;
+import static com.nonamed.nonamedgame.App_old.*;
 
 public class Enemy {
 
@@ -76,7 +76,7 @@ public class Enemy {
 
         groupEnemy = new Group();
         groupEnemy.getChildren().addAll(imageView, healthLine, enemyBodyCollisionRectangle);
-        App.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
+        App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
 
 
         timerEnemyMove = new AnimationTimer() {
@@ -87,7 +87,7 @@ public class Enemy {
             }
         };
         timerEnemyMove.start();
-        App.gamePane.getChildren().add(groupEnemy);
+        App_old.gamePane.getChildren().add(groupEnemy);
     }
 
     public int initSpeed() {
@@ -123,16 +123,16 @@ public class Enemy {
     }
 
     public void collisionWithHero() {
-        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
-            App.HERO.damageFromEnemy();
+        if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
+            App_old.HERO.damageFromEnemy();
         }
-        if (App.HERO.isRightKick() && !isFight) {
-            if (App.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
+        if (App_old.HERO.isRightKick() && !isFight) {
+            if (App_old.HERO.getRightKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
                 damageFromHero();
             }
         }
-        if (App.HERO.isLeftKick() && !isFight) {
-            if (App.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
+        if (App_old.HERO.isLeftKick() && !isFight) {
+            if (App_old.HERO.getLeftKickCollision().getBoundsInParent().intersects(this.enemyBodyCollisionRectangle.getBoundsInParent())) {
                 damageFromHero();
             }
         }
@@ -162,8 +162,8 @@ public class Enemy {
         healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
         if (this.health <= 0) {
             HERO.SCORE += 10;
-            App.gamePane.getChildren().remove(groupEnemy);
-            App.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
+            App_old.gamePane.getChildren().remove(groupEnemy);
+            App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
             timerEnemyMove.stop();
         }
     }

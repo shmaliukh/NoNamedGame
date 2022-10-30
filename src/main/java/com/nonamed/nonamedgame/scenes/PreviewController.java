@@ -1,11 +1,10 @@
 package com.nonamed.nonamedgame.scenes;
 
-import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.App_old;
 import com.nonamed.nonamedgame.StaticData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 
 public class PreviewController {
 
@@ -16,17 +15,17 @@ public class PreviewController {
 
     @FXML
     private void onStartGameButtonClick(){
-        App.MEDIA_PLAYER.stop();
-        App.MEDIA_PLAYER = new MediaPlayer(StaticData.PlANE_SOUND);
-        App.MEDIA_PLAYER.play();
-        App.setStageScene(App.gamePane.getScene());
-        App.getStage().setFullScreen(true);
-        App.execute();
+        App_old.MEDIA_PLAYER.stop();
+        App_old.MEDIA_PLAYER = new MediaPlayer(StaticData.PlANE_SOUND);
+        App_old.MEDIA_PLAYER.play();
+        App_old.setStageScene(App_old.gamePane.getScene());
+        App_old.getStage().setFullScreen(true);
+        App_old.execute();
     }
 
     @FXML
     private void onMainMenuButtonClick(){
-        App.setStageScene(App.mainMenuPane.getScene());
+        App_old.setStageScene(App_old.mainMenuPane.getScene());
     }
 
 }

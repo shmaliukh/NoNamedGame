@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import static com.nonamed.nonamedgame.App.HERO;
+import static com.nonamed.nonamedgame.App_old.HERO;
 import static com.nonamed.nonamedgame.Config.*;
 import static com.nonamed.nonamedgame.GameWorld.miniMap;
 import static com.nonamed.nonamedgame.StaticData.HUD;

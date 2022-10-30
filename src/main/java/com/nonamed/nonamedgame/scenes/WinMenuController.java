@@ -1,6 +1,6 @@
 package com.nonamed.nonamedgame.scenes;
 
-import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.App_old;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -12,13 +12,13 @@ public class WinMenuController implements Initializable {
     @FXML
     protected void onMainMenuButtonClick() {
 //        Scene mainMenuScene = new MainMenu().mainMenuScene;
-        App.setStageScene(App.mainMenuPane.getScene());
+        App_old.setStageScene(App_old.mainMenuPane.getScene());
     }
 
     @FXML
     protected void onRetryButtonClick() {
-        App.setStageScene(App.gamePane.getScene());
-        App.execute();
+        App_old.setStageScene(App_old.gamePane.getScene());
+        App_old.execute();
 //        Scene gameScene = App_old.gameWorld.getGameScene();
 //        App_old.stage.setScene(gameScene);
 //        App_old.stage.setFullScreen(true);

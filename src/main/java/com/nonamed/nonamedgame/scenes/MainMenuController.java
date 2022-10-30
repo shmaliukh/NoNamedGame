@@ -1,6 +1,6 @@
 package com.nonamed.nonamedgame.scenes;
 
-import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.App_old;
 import com.nonamed.nonamedgame.Config;
 import com.nonamed.nonamedgame.StaticData;
 import javafx.fxml.FXML;
@@ -21,27 +21,27 @@ public class MainMenuController implements Initializable {
     protected void onNewGameButtonAsHarlan() {
         Config.isUsik = false;
 //        startGame();
-        App.setStageScene(App.previewPane.getScene());
+        App_old.setStageScene(App_old.previewPane.getScene());
     }
     @FXML
     protected void onNewGameButtonAsUsik() {
         Config.isUsik = true;
-        App.setStageScene(App.previewPane.getScene());
+        App_old.setStageScene(App_old.previewPane.getScene());
 //        startGame();
     }
 
     private void startGame() {
-        App.MEDIA_PLAYER.stop();
-        App.MEDIA_PLAYER = new MediaPlayer(StaticData.PlANE_SOUND);
-        App.MEDIA_PLAYER.play();
-        App.setStageScene(App.gamePane.getScene());
-        App.getStage().setFullScreen(true);
-        App.execute();
+        App_old.MEDIA_PLAYER.stop();
+        App_old.MEDIA_PLAYER = new MediaPlayer(StaticData.PlANE_SOUND);
+        App_old.MEDIA_PLAYER.play();
+        App_old.setStageScene(App_old.gamePane.getScene());
+        App_old.getStage().setFullScreen(true);
+        App_old.execute();
     }
 
     @FXML
     protected void onSettingsButtonClick() {
-        App.getStage().setScene(App.settingMenuPane.getScene());
+        App_old.getStage().setScene(App_old.settingMenuPane.getScene());
     }
 
     @FXML

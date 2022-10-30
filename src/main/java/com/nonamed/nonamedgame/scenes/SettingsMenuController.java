@@ -1,6 +1,6 @@
 package com.nonamed.nonamedgame.scenes;
 
-import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.App_old;
 import com.nonamed.nonamedgame.Config;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,7 +57,7 @@ public class SettingsMenuController implements Initializable {
     protected void onVolumeSliderAction(){
         Config.VOLUME_LEVEL = volumeSlider.valueProperty().getValue()/10;
         volumeSliderText.setText(volumeSlider.getValue() + "");
-        App.MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
+        App_old.MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
     }
 
     @FXML
@@ -136,7 +136,7 @@ public class SettingsMenuController implements Initializable {
     @FXML
     protected void onMainMenuButtonClick() {
 //        Scene mainMenuScene = new MainMenu().mainMenuScene;
-        App.setStageScene(App.mainMenuPane.getScene());
+        App_old.setStageScene(App_old.mainMenuPane.getScene());
     }
 
     @Override

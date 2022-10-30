@@ -3,13 +3,8 @@ package com.nonamed.nonamedgame;
 //import javafx.embed.swing.SwingFXUtils;
 
 import com.nonamed.nonamedgame.game_objects.Hud;
-import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 
 import static com.nonamed.nonamedgame.StaticData.BACKGROUND_IMAGE;
 
@@ -25,9 +20,9 @@ public class GameWorld {
         backgroundStaticImage.setY(-1000);
 
 
-        App.gamePane.getChildren().add(backgroundStaticImage);
+        App_old.gamePane.getChildren().add(backgroundStaticImage);
 
-        App.gamePane.getChildren().add(Hud.generateHudGroup());
+        App_old.gamePane.getChildren().add(Hud.generateHudGroup());
 //        App.gamePane.getChildren().add(miniMap);
 
     }

@@ -1,6 +1,6 @@
 package com.nonamed.nonamedgame.scenes;
 
-import com.nonamed.nonamedgame.App;
+import com.nonamed.nonamedgame.App_old;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -12,19 +12,19 @@ public class PauseMenuController implements Initializable {
 
     @FXML
     protected void onContinueButtonClick() {
-        App.setStageScene(App.gamePane.getScene());
-        App.startGame();
+        App_old.setStageScene(App_old.gamePane.getScene());
+        App_old.startGame();
     }
 
     @FXML
     protected void onMainMenuButtonClick() {
-        App.setStageScene(App.mainMenuPane.getScene());
+        App_old.setStageScene(App_old.mainMenuPane.getScene());
     }
 
     @FXML
     protected void onRetryButtonClick() {
-        App.setStageScene(App.gamePane.getScene());
-        App.execute();
+        App_old.setStageScene(App_old.gamePane.getScene());
+        App_old.execute();
     }
 
     @Override

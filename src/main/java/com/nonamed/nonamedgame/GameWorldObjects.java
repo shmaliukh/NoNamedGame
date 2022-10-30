@@ -48,8 +48,8 @@ public class GameWorldObjects {
         timerObjectAction.start();
 
 
-        App.gamePane.getChildren().add(collisionRectangle);
-        App.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
+        App_old.gamePane.getChildren().add(collisionRectangle);
+        App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
     public GameWorldObjects(int variant, String name, int posX, int posY) {
@@ -101,8 +101,8 @@ public class GameWorldObjects {
         timerObjectAction.start();
 
 
-        App.gamePane.getChildren().add(collisionRectangle);
-        App.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
+        App_old.gamePane.getChildren().add(collisionRectangle);
+        App_old.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
     public Rectangle getMiniMapPoint() {
@@ -135,7 +135,7 @@ public class GameWorldObjects {
     }
 
     public String objectCollisionDetectWithPerson() {
-        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+        if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
 
             return "wrong-way";
         }
