@@ -336,6 +336,10 @@ public class Hero {
                     enemies.forEach(o -> {
                         o.moveDown(speed);
                     });
+
+//                    for (GameWorldObjects gameWorldObject : gameWorldObjects) {
+//                        gameWorldObject
+//                    }
                     //App.gameWorld.getGameWorldPane().setLayoutY(App.gameWorld.getGameWorldPane().getLayoutY() + speed);
                     posY -= speed;
                     calculateAndUpdateMiniMapPoint();
