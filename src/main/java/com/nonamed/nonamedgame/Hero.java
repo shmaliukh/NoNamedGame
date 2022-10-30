@@ -185,6 +185,7 @@ public class Hero {
 
     private void onKeyPressed(Stage scene) {
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {
+            System.out.println(keyEvent.getCode());
             switch (keyEvent.getCode()) {
                 case UP, W -> isUP = true;
                 case DOWN, S -> isDOWN = true;
@@ -192,8 +193,26 @@ public class Hero {
                 case LEFT, A -> isLEFT = true;
                 case X, E -> heroKickAction(RIGHT);
                 case Z, Q -> heroKickAction(LEFT);
+                case DIGIT1 -> eatVarenyk();
+                case DIGIT2 -> eatApple();
             }
         }));
+    }
+
+    public void eatVarenyk(){
+        if (Config.HERO_BONUS_HEALTH_COUNT > 0){
+            setHealth(getHealth() + 200);
+            Config.HERO_BONUS_HEALTH_COUNT -= 1;
+            Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
+        }
+    }
+
+    public void eatApple(){
+        if (Config.HERO_BONUS_ENERGY_COUNT > 0){
+            setEnergy(getEnergy() + 200);
+            Config.HERO_BONUS_ENERGY_COUNT -= 1;
+            Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
+        }
     }
 
     private void heroKickAction(String kickSide) {
@@ -314,7 +333,7 @@ public class Hero {
             } else
 //            if (App.objectCollisionDetectWithHero().equals(GOOD_WAY) || isUP || isRIGHT || isLEFT){
                 if (this.imageView.getY() > 650) {
-                    if (App_old.gameWorld.getBackgroundStaticImage().getY() > -1800) {
+                    if (App_old.gameWorld.getBackgroundStaticImage().getY() > -1820) {
                         App_old.gameWorld.getBackgroundStaticImage().setY(App_old.gameWorld.getBackgroundStaticImage().getY() - speed);
                         //App.gameWorld.getGameWorldPane().setLayoutY(App.gameWorld.getGameWorldPane().getLayoutY() - speed);
                         enemies.forEach(o -> o.moveUp(speed));
@@ -347,7 +366,7 @@ public class Hero {
             } else
 //            if (App.objectCollisionDetectWithHero().equals(GOOD_WAY) || isDOWN || isUP || isLEFT) {
                 if (this.imageView.getX() > 1600) {
-                    if (App_old.gameWorld.getBackgroundStaticImage().getX() > -2700) {
+                    if (App_old.gameWorld.getBackgroundStaticImage().getX() > -3200) {
                         App_old.gameWorld.getBackgroundStaticImage().setX(App_old.gameWorld.getBackgroundStaticImage().getX() - speed);
                         //App.gameWorld.getGameWorldPane().setLayoutX(App.gameWorld.getGameWorldPane().getLayoutX() - speed);
                         enemies.forEach(o -> o.moveLeft(speed));

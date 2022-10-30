@@ -43,7 +43,9 @@ public final class Hud {
     public static ImageView hudImage = new ImageView();
     public static ImageView scoreImageFrame = new ImageView();
     public static ImageView varenykStatusImage = new ImageView(new Image("Varenyk.gif"));
+    public static ImageView appleStatusImage = new ImageView(new Image("apple.gif"));
     public static Text heroBonusHealthCount;
+    public static Text heroBonusEnergyCount;
     public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
 
@@ -207,8 +209,23 @@ public final class Hud {
         heroBonusHealthCount.setFont(Font.font(32));
         //heroBonusHealthCount.setWrappingWidth(256);
         heroBonusHealthCount.setTextAlignment(TextAlignment.CENTER);
-        heroBonusHealthCount.setText(" x " + HERO_BONUS_ENERGY_COUNT);
+        heroBonusHealthCount.setText(" x " + HERO_BONUS_HEALTH_COUNT);
         hudGroup.getChildren().add(heroBonusHealthCount);
+
+        appleStatusImage.setX(1550);
+        appleStatusImage.setY(990);
+        appleStatusImage.setScaleX(2);
+        appleStatusImage.setScaleY(2);
+        hudGroup.getChildren().add(appleStatusImage);
+
+        heroBonusEnergyCount = new Text();
+        heroBonusEnergyCount.setX(1600);
+        heroBonusEnergyCount.setY(1010);
+        heroBonusEnergyCount.setFont(Font.font(32));
+        //heroBonusHealthCount.setWrappingWidth(256);
+        heroBonusEnergyCount.setTextAlignment(TextAlignment.CENTER);
+        heroBonusEnergyCount.setText(" x " + HERO_BONUS_ENERGY_COUNT);
+        hudGroup.getChildren().add(heroBonusEnergyCount);
     }
 
     private static void setScoreFrame() {

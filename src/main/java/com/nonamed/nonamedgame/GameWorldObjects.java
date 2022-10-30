@@ -30,8 +30,10 @@ public class GameWorldObjects {
     private ImageView bonusBagImage;
     private ImageView bonusImage;
     private Group bonusGroup;
+    private int variant;
 
     public GameWorldObjects(int variant) {
+        this.variant = variant;
         if (variant == 1){
             bonusBagImage = new ImageView(new Image("LukyBox.png"));
             bonusImage = new ImageView(new Image("Varenyk.gif"));
@@ -216,6 +218,7 @@ public class GameWorldObjects {
                 App_old.gamePane.getChildren().remove(bonusBagImage);
                 App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
                 Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
+                Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
             }
         }
     }
@@ -224,8 +227,12 @@ public class GameWorldObjects {
         for (int i = 0; i < App_old.gameWorldObjects.size(); i++) {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
                 System.out.println("Видаляю обєкт за індексом");
+                if (App_old.gameWorldObjects.get(i).getVariant() == 1){
+                    Config.HERO_BONUS_HEALTH_COUNT += 1;
+                }else
+                    Config.HERO_BONUS_ENERGY_COUNT += 1;
                 App_old.gameWorldObjects.remove(App_old.gameWorldObjects.get(i));
-                Config.HERO_BONUS_HEALTH_COUNT += 1;
+
                 break;
             }
         }

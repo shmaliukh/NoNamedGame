@@ -86,11 +86,6 @@ public class App_old extends Application {
         enemies.add(new Enemy());
         enemies.add(new SvinoPesHach());
 
-        gameWorldObjects.add(new GameWorldObjects(1));
-
-//        for (int i = 0; i < 10; i++) {
-//            enemies.add(new SvinoPesOrk());
-//        }
 
         Thread enemySpawn = new Thread(() -> {
             while (true) {
@@ -126,10 +121,10 @@ public class App_old extends Application {
             }
         });
         enemySpawn.start();
-        //gameWorldObjects.add(new GameWorldObjects(1));
-                for (int i = 0; i < 10; i++) {
-            gameWorldObjects.add(new GameWorldObjects(1));
-        }
+//        //gameWorldObjects.add(new GameWorldObjects(1));
+//                for (int i = 0; i < 10; i++) {
+//            gameWorldObjects.add(new GameWorldObjects(1));
+//        }
         Thread gameWorldObjectSpawn = new Thread(() -> {
             while (true) {
 
@@ -160,7 +155,7 @@ public class App_old extends Application {
 
 
         });
-        //gameWorldObjectSpawn.start();
+        gameWorldObjectSpawn.start();
     }
 
     public static void stopGame() {
@@ -252,6 +247,7 @@ public class App_old extends Application {
                     App_old.stage.setScene(pauseMenuPane.getScene());
                 }
             }
+
 
         });
     }
