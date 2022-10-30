@@ -13,7 +13,8 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.nonamed.nonamedgame.App_old.*;
+import static com.nonamed.nonamedgame.App_old.HERO;
+import static com.nonamed.nonamedgame.App_old.gameWorldObjects;
 
 public class Enemy {
 
@@ -28,6 +29,8 @@ public class Enemy {
     private final Group groupEnemy;
     private final Circle miniMapPoint;
     protected int maxHealth;
+    boolean isStopped = false;
+    int autoMoveAdditiveSteps = 5;
     private int health;
     private int speed;
     private int posX;
@@ -169,32 +172,63 @@ public class Enemy {
         }
     }
 
-    public void objectCollisionDetectWithEnemy() {
+    public GameWorldObjects objectCollisionDetectWithEnemy() {
         for (GameWorldObjects gameWorldObject : gameWorldObjects) {
             if (this.enemyBodyCollisionRectangle.getBoundsInParent().intersects(gameWorldObject.getCollisionRectangle().getBoundsInParent())) {
-                enemy.groupEnemy.setOpacity(0);
+                return gameWorldObject;
             }
         }
-        enemy.groupEnemy.setOpacity(1);
+        return null;
     }
 
     public void moveToTarget(int targetPosX, int targetPosY) {
 //        objectCollisionDetectWithEnemy();
         speed = new Random().nextInt(initSpeed());
+        GameWorldObjects collisionDetectWithEnemy = objectCollisionDetectWithEnemy();
+
+        if (collisionDetectWithEnemy != null) {
+            isStopped = true;
+        }
         if (imageView.getX() < targetPosX) {
-            moveRight(speed);
-            posX += speed;
+            if (isStopped) {
+                moveLeft(speed + autoMoveAdditiveSteps);
+                posX -= speed;
+                isStopped = false;
+            } else {
+                moveRight(speed);
+                posX += speed;
+            }
         } else {
-            moverLeft(speed);
-            posX -= speed;
+            if (isStopped) {
+                moveRight(speed + autoMoveAdditiveSteps);
+                posX += speed;
+                isStopped = false;
+            } else {
+                moveLeft(speed);
+                posX -= speed;
+            }
         }
         if (imageView.getY() < targetPosY) {
-            moveDown(speed);
-            posY += speed;
+            if (isStopped) {
+                moveUp(speed + autoMoveAdditiveSteps);
+                posY -= speed;
+                isStopped = false;
+            } else {
+                moveDown(speed);
+                posY += speed;
+            }
         } else {
-            moveUp(speed);
-            posY -= speed;
+            if (isStopped) {
+                moveDown(speed + autoMoveAdditiveSteps);
+                posY += speed;
+                isStopped = false;
+            } else {
+                moveUp(speed);
+                posY -= speed;
+            }
         }
+
+
         calculateAndUpdateMiniMapPoint();
 
     }
@@ -216,7 +250,7 @@ public class Enemy {
 
     }
 
-    public void moverLeft(int distance) {
+    public void moveLeft(int distance) {
         imageView.setX(imageView.getX() - distance);
         healthLine.setStartX(healthLine.getStartX() - distance);
         healthLine.setEndX(healthLine.getEndX() - distance);
@@ -235,7 +269,7 @@ public class Enemy {
 
 
     public void calculateAndUpdateMiniMapPoint() {
-        int currentPosX = posX ;
+        int currentPosX = posX;
         int currentPosY = posY;
         int percentagePosX = currentPosX * 100 / 5120;
         int percentagePosY = currentPosY * 100 / 2560;
