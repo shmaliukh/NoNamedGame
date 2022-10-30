@@ -129,12 +129,66 @@ public class GameWorldObjects {
                 collisionRectangle.setWidth(450);
                 collisionRectangle.setHeight(250);
             }
+            case "brownHouse"->{
+                collisionRectangle.setWidth(370);
+                collisionRectangle.setHeight(250);
+            }
+            case "greenHouse"->{
+                collisionRectangle.setWidth(350);
+                collisionRectangle.setHeight(275);
+            }
+            case "smallGreenHouse"->{
+                collisionRectangle.setWidth(220);
+                collisionRectangle.setHeight(190);
+            }
+            case "griffinsHouse"->{
+                collisionRectangle.setWidth(480);
+                collisionRectangle.setHeight(250);
+            }
+            case "bigShopHorizontalPart"->{
+                collisionRectangle.setWidth(720);
+                collisionRectangle.setHeight(220);
+            }
+            case "bigShopVerticalPart"->{
+                collisionRectangle.setWidth(485);
+                collisionRectangle.setHeight(350);
+            }
+            case "factory"->{
+                collisionRectangle.setWidth(465);
+                collisionRectangle.setHeight(400);
+            }
+            case "starkTower"->{
+                collisionRectangle.setWidth(490);
+                collisionRectangle.setHeight(1100);
+            }
+            case "blueTower"->{
+                collisionRectangle.setWidth(590);
+                collisionRectangle.setHeight(780);
+            }
+
+            case "whiteTower"->{
+                collisionRectangle.setWidth(260);
+                collisionRectangle.setHeight(500);
+            }
+            case "stadium"->{
+                collisionRectangle.setWidth(1100);
+                collisionRectangle.setHeight(300);
+            }
+
+            case "ufo"->{
+                collisionRectangle.setWidth(350);
+                collisionRectangle.setHeight(350);
+            }
+            case "river1"->{
+                collisionRectangle.setWidth(330);
+                collisionRectangle.setHeight(350);
+            }
 
 
         }
 
         collisionRectangle.setFill(Color.RED);
-        collisionRectangle.setOpacity(0.3);
+        collisionRectangle.setOpacity(0);
 
         timerObjectAction = new AnimationTimer() {
             @Override

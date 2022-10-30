@@ -258,10 +258,40 @@ public class App_old extends Application {
     public static void initializeStaticObjectBound(){
         gameWorldObjects.add(new GameWorldObjects("treeV1", -400, 150));
         //gameWorldObjects.add(new GameWorldObjects("christmasTree", 300, 200));
-        gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
-        gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
+        //gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 1075, 60));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 2900, 380));
         gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
-        gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
+        gameWorldObjects.add(new GameWorldObjects("treeV1", 2960, -210));
+        gameWorldObjects.add(new GameWorldObjects("brownHouse",25,-145));
+        gameWorldObjects.add(new GameWorldObjects("brownHouse",1750,735));
+        gameWorldObjects.add(new GameWorldObjects("brownHouse",1980,870));
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",1330,510));
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",350,455));
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",2295,-25));
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",1040,1370));
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",1240,1320));
+
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",675,-390));
+        gameWorldObjects.add(new GameWorldObjects("smallGreenHouse",890,-250));
+
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",3900,-405));
+        gameWorldObjects.add(new GameWorldObjects("greenHouse",3820,-1000));
+        gameWorldObjects.add(new GameWorldObjects("griffinsHouse",3410,-660));
+
+        gameWorldObjects.add(new GameWorldObjects("bigShopHorizontalPart",1535,-380));
+        gameWorldObjects.add(new GameWorldObjects("bigShopVerticalPart",1615,-440));
+
+        gameWorldObjects.add(new GameWorldObjects("factory",-1000,1100));
+        gameWorldObjects.add(new GameWorldObjects("starkTower",-1000,-1000));
+        gameWorldObjects.add(new GameWorldObjects("blueTower",-600,-1100));
+        gameWorldObjects.add(new GameWorldObjects("whiteTower",-20,-1000));
+        gameWorldObjects.add(new GameWorldObjects("stadium",235,-1000));
+
+        gameWorldObjects.add(new GameWorldObjects("ufo",3750,1270));
+        gameWorldObjects.add(new GameWorldObjects("river1",3350,1330));
+        gameWorldObjects.add(new GameWorldObjects("river1",3230,1100));
+        gameWorldObjects.add(new GameWorldObjects("river1",3630,600));
 
     }
 
