@@ -1,40 +1,26 @@
 package com.nonamed.nonamedgame;
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+@Setter
+@Getter
 public class GameWorldObjects {
+
     private Rectangle collisionRectangle = new Rectangle();
-    private final int posX = ThreadLocalRandom.current().nextInt(100, 2500);
-    private final int posY = ThreadLocalRandom.current().nextInt(100, 2500);
+    private int posX = ThreadLocalRandom.current().nextInt(100, 2500);
+    private int posY = ThreadLocalRandom.current().nextInt(100, 2500);
 
     private Rectangle miniMapPoint;
 
     private AnimationTimer timerObjectAction;
 
-    public Rectangle getMiniMapPoint() {
-        return miniMapPoint;
-    }
-
-    public Rectangle getCollisionRectangle() {
-        return collisionRectangle;
-    }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
-    public GameWorldObjects(int variant){
+    public GameWorldObjects(int variant) {
         collisionRectangle = new Rectangle();
         collisionRectangle.setX(posX);
         collisionRectangle.setY(posY);
@@ -56,22 +42,21 @@ public class GameWorldObjects {
 
                 objectCollisionDetectWithPerson();
 
-            }};
+            }
+        };
 
         timerObjectAction.start();
-
-
 
 
         App.gamePane.getChildren().add(collisionRectangle);
         App.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
-    public GameWorldObjects(int variant, String name, int posX, int posY){
+    public GameWorldObjects(int variant, String name, int posX, int posY) {
         collisionRectangle = new Rectangle();
         collisionRectangle.setX(posX);
         collisionRectangle.setY(posY);
-        switch (name){
+        switch (name) {
             case "treeV1" -> {
                 collisionRectangle.setWidth(125);
                 collisionRectangle.setHeight(320);
@@ -110,24 +95,33 @@ public class GameWorldObjects {
 
                 objectCollisionDetectWithPerson();
 
-            }};
+            }
+        };
 
         timerObjectAction.start();
-
-
 
 
         App.gamePane.getChildren().add(collisionRectangle);
         App.gameWorld.getMiniMap().getChildren().add(miniMapPoint);
     }
 
+    public Rectangle getMiniMapPoint() {
+        return miniMapPoint;
+    }
 
+    public Rectangle getCollisionRectangle() {
+        return collisionRectangle;
+    }
 
+    public int getPosX() {
+        return posX;
+    }
 
+    public int getPosY() {
+        return posY;
+    }
 
-
-
-    public void calculateAndUpdateMiniMapPoint(){
+    public void calculateAndUpdateMiniMapPoint() {
         int currentPosX = (int) collisionRectangle.getX();
         int currentPosY = (int) collisionRectangle.getY();
         int percentagePosX = currentPosX * 100 / 2500;
@@ -140,9 +134,10 @@ public class GameWorldObjects {
 
     }
 
-    public String objectCollisionDetectWithPerson(){
-            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())){
-                return  "wrong-way";
+    public String objectCollisionDetectWithPerson() {
+        if (App.HERO.getBodyCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
+
+            return "wrong-way";
         }
         return "good-way";
     }

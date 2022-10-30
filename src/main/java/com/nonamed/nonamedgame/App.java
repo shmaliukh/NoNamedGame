@@ -25,15 +25,14 @@ import static com.nonamed.nonamedgame.StaticData.PlANE_SOUND;
 
 public class App extends Application {
 
+    public static final String WRONG_WAY = "wrong-way";
+    public static final String GOOD_WAY = "good-way";
     private static final FXMLLoader fxmlLoaderMainMenu = new FXMLLoader(App.class.getResource("fxmls/mainMenu.fxml"));
     private static final FXMLLoader fxmlLoaderGameScene = new FXMLLoader(App.class.getResource("fxmls/mainScreen.fxml"));
     private static final FXMLLoader fxmlLoaderPauseMenuScene = new FXMLLoader(App.class.getResource("fxmls/pauseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderResultMenuScene = new FXMLLoader(App.class.getResource("fxmls/loseMenu.fxml"));
     private static final FXMLLoader fxmlLoaderSettingMenuScene = new FXMLLoader(App.class.getResource("fxmls/settingsMenu.fxml"));
     private static final FXMLLoader fxmlLoaderPreviewScene = new FXMLLoader(App.class.getResource("fxmls/preview.fxml"));
-    public static final String WRONG_WAY = "wrong-way";
-    public static final String GOOD_WAY = "good-way";
-
     public static MediaPlayer MEDIA_PLAYER = new MediaPlayer(PlANE_SOUND);
     public static Pane mainMenuPane;
     public static Pane gamePane;
@@ -88,9 +87,11 @@ public class App extends Application {
         enemies.add(new Enemy());
         enemies.add(new SvinoPesHach());
 
-        for (int i = 0; i < 10; i++) {
-            enemies.add(new SvinoPesOrk());
-        }
+        gameWorldObjects.add(new GameWorldObjects(1));
+
+//        for (int i = 0; i < 10; i++) {
+//            enemies.add(new SvinoPesOrk());
+//        }
 
         Thread enemySpawn = new Thread(() -> {
             while (true) {
@@ -128,7 +129,7 @@ public class App extends Application {
         enemySpawn.start();
         gameWorldObjects.add(new GameWorldObjects(1));
         Thread gameWorldObjectSpawn = new Thread(() -> {
-            while (true){
+            while (true) {
 
                 try {
                     Thread.sleep(1000);
@@ -169,18 +170,32 @@ public class App extends Application {
     public static void updatePosition(String direction) {
         for (GameWorldObjects gameWorldObject : App.gameWorldObjects) {
             if (direction.equals("UP")) {
+                gameWorldObject.setPosY(gameWorldObject.getPosY() - Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() + Config.HERO_SPEED);
             }
             if (direction.equals("DOWN")) {
+                gameWorldObject.setPosY(gameWorldObject.getPosY() + Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setY(gameWorldObject.getCollisionRectangle().getY() - Config.HERO_SPEED);
             }
             if (direction.equals("RIGHT")) {
+                gameWorldObject.setPosX(gameWorldObject.getPosX() + Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() - Config.HERO_SPEED);
             }
             if (direction.equals("LEFT")) {
+                gameWorldObject.setPosX(gameWorldObject.getPosX() - Config.HERO_SPEED);
                 gameWorldObject.getCollisionRectangle().setX(gameWorldObject.getCollisionRectangle().getX() + Config.HERO_SPEED);
             }
         }
+    }
+
+    public static GameWorldObjects objectCollisionDetectWithHero() {
+        for (GameWorldObjects gameWorldObject : gameWorldObjects) {
+//            System.out.println("collision");
+            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getCollisionRectangle().getBoundsInParent())) {
+                return gameWorldObject;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -217,16 +232,6 @@ public class App extends Application {
             }
 
         });
-    }
-
-    public static Rectangle objectCollisionDetectWithHero(){
-        for (GameWorldObjects gameWorldObject : gameWorldObjects) {
-//            System.out.println("collision");
-            if (App.HERO.getBodyCollision().getBoundsInParent().intersects(gameWorldObject.getCollisionRectangle().getBoundsInParent())) {
-                return gameWorldObject.getCollisionRectangle();
-            }
-        }
-        return null;
     }
 
 //    public static String objectCollisionDetectWithHero(){

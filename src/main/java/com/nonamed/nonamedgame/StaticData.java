@@ -8,7 +8,7 @@ import java.io.File;
 public class StaticData {
 
     public static final Image HUD = new Image("HudFinal.png");
-    public static final Image BACKGROUND_IMAGE = new Image("MAP.png");
+    public static final Image BACKGROUND_IMAGE = new Image("MapFinal.png");
     public static final Image SCORE_IMAGE = new Image("score-image.png");
     public static final Image LOGO_IMAGE = new Image("logo.png");
 
@@ -17,9 +17,9 @@ public class StaticData {
     public static final Image USIK_FIGHT_RIGHT = new Image("UsikFightRight.gif");
     public static final Image USIK_AVATAR = new Image("Usik-Avatar.gif");
 
-    public static final Image OLHA_ANIMATED = new Image("OlgaHarlan-walk.gif");
-    public static final Image OLHA_FIGHT_LEFT = new Image("OlgaHarlan-attack-left.gif");
-    public static final Image OLHA_FIGHT_RIGHT = new Image("OlgaHarlan-attack-right.gif");
+    public static final Image OLHA_ANIMATED = new Image("OlgaGood.gif");
+    public static final Image OLHA_FIGHT_LEFT = new Image("OlgaLeft.gif");
+    public static final Image OLHA_FIGHT_RIGHT = new Image("OlgaRight.gif");
     public static final Image OLHA_AVATAR = new Image("OlgaHarlanAvatarFINAL.gif");
 
     public static final Image SVINO_PES_3_IMAGE = new Image("SvinoPes 3.gif");

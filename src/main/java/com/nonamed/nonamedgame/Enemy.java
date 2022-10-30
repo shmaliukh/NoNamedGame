@@ -203,7 +203,6 @@ public class Enemy {
         healthLine.setStartY(healthLine.getStartY() - distance);
         healthLine.setEndY(healthLine.getEndY() - distance);
         enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() - distance);
-//        posY -= distance;
         calculateAndUpdateMiniMapPoint();
     }
 
@@ -212,7 +211,6 @@ public class Enemy {
         healthLine.setStartY(healthLine.getStartY() + distance);
         healthLine.setEndY(healthLine.getEndY() + distance);
         enemyBodyCollisionRectangle.setY(enemyBodyCollisionRectangle.getY() + distance);
-//        posY += distance;
         calculateAndUpdateMiniMapPoint();
 
     }
@@ -222,7 +220,6 @@ public class Enemy {
         healthLine.setStartX(healthLine.getStartX() - distance);
         healthLine.setEndX(healthLine.getEndX() - distance);
         enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() - distance);
-
         calculateAndUpdateMiniMapPoint();
 
     }
@@ -232,9 +229,7 @@ public class Enemy {
         healthLine.setStartX(healthLine.getStartX() + distance);
         healthLine.setEndX(healthLine.getEndX() + distance);
         enemyBodyCollisionRectangle.setX(enemyBodyCollisionRectangle.getX() + distance);
-
         calculateAndUpdateMiniMapPoint();
-
     }
 
 
