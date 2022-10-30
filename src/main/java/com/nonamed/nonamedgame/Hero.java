@@ -42,7 +42,7 @@ public class Hero {
     public static MediaPlayer loseMediaPlayer = new MediaPlayer(StaticData.GAME_OVER_SOUND);
     private final double lineHealthLambda;
     private final int damage;
-    private final int speed;
+    private int speed;
     private final Image image;
     private final ImageView imageView;
     private final Group heroGroup;
@@ -362,6 +362,7 @@ public class Hero {
 
     public void move() {
         MEDIA_PLAYER.setVolume(Config.VOLUME_LEVEL);
+        speed = Config.HERO_SPEED;
         setEnergy(getEnergy() - Config.HERO_ENERGY_USAGE);
         if (getEnergy() < 0) {
             ifLoseAction();
