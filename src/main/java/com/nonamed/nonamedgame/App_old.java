@@ -260,6 +260,7 @@ public class App_old extends Application {
         gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
         gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
         gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
+        gameWorldObjects.add(new GameWorldObjects("treeV1", 3500, -300));
 
     }
 
