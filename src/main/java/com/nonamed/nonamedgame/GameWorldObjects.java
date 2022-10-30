@@ -1,5 +1,6 @@
 package com.nonamed.nonamedgame;
 
+import com.nonamed.nonamedgame.game_objects.Hud;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -34,6 +35,9 @@ public class GameWorldObjects {
         if (variant == 1){
             bonusBagImage = new ImageView(new Image("LukyBox.png"));
             bonusImage = new ImageView(new Image("Varenyk.gif"));
+        } else if (variant == 2){
+            bonusBagImage = new ImageView(new Image("LukyCan.png"));
+            bonusImage = new ImageView(new Image("apple.gif"));
         }
 
         collisionRectangle = new Rectangle();
@@ -207,12 +211,11 @@ public class GameWorldObjects {
     public void objectCollisionToGetBonus(){
         if (App_old.HERO.getBodyCollision().getBoundsInParent().intersects(bonusImage.getBoundsInParent())) {
             if (bonusBagImage.getOpacity() == 0) {
-                System.out.println("гам");
                 App_old.gamePane.getChildren().remove(collisionRectangle);
                 App_old.gamePane.getChildren().remove(bonusImage);
                 App_old.gamePane.getChildren().remove(bonusBagImage);
                 App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
-
+                Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
             }
         }
     }
@@ -222,6 +225,7 @@ public class GameWorldObjects {
             if (App_old.gameWorldObjects.get(i).getPosX() == posX) {
                 System.out.println("Видаляю обєкт за індексом");
                 App_old.gameWorldObjects.remove(App_old.gameWorldObjects.get(i));
+                Config.HERO_BONUS_HEALTH_COUNT += 1;
                 break;
             }
         }
@@ -237,6 +241,8 @@ public class GameWorldObjects {
         if (App_old.HERO.getRightKickCollision().getBoundsInParent().intersects(collisionRectangle.getBoundsInParent())) {
             if (App_old.HERO.isRightKick()) {
                 System.out.println("Bonus RIIIIGHT Geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet");
+                bonusBagImage.setOpacity(0);
+                removeByIndex();
             }
         }
 

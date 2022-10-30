@@ -141,7 +141,19 @@ public class App_old extends Application {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        gameWorldObjects.add(new GameWorldObjects(1));
+                        int nextInt = 0;
+                        int countOfSpawn = (int) (Math.random() * 10);
+
+                        for (int i = 0; i < countOfSpawn; i++) {
+                            if (!isStopped) {
+                                nextInt = RANDOM.nextInt(100);
+                                if (nextInt > 90) {
+                                    gameWorldObjects.add(new GameWorldObjects(1));
+                                } else if (nextInt < 90) {
+                                    gameWorldObjects.add(new GameWorldObjects(2));
+                                }
+                            }
+                        }
                     }
                 });
             }

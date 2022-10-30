@@ -3,6 +3,7 @@ package com.nonamed.nonamedgame;
 //import javafx.embed.swing.SwingFXUtils;
 
 import com.nonamed.nonamedgame.game_objects.Hud;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -14,10 +15,14 @@ public class GameWorld {
 
     public static Pane miniMap;
 
+
+
     public GameWorld() {
         backgroundStaticImage = new ImageView(BACKGROUND_IMAGE);
         backgroundStaticImage.setX(-1000);
         backgroundStaticImage.setY(-1000);
+
+
 
 
         App_old.gamePane.getChildren().add(backgroundStaticImage);

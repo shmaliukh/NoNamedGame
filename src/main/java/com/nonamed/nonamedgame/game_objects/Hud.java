@@ -1,7 +1,9 @@
 package com.nonamed.nonamedgame.game_objects;
 
+import com.nonamed.nonamedgame.Config;
 import com.nonamed.nonamedgame.StaticData;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -40,8 +42,11 @@ public final class Hud {
     public static Text heroNameText = new Text(HERO_NAME_UKR);
     public static ImageView hudImage = new ImageView();
     public static ImageView scoreImageFrame = new ImageView();
+    public static ImageView varenykStatusImage = new ImageView(new Image("Varenyk.gif"));
+    public static Text heroBonusHealthCount;
     public static ImageView avatar = new ImageView();
     public static Text heroName = new Text();
+
 
     private Hud() {
 
@@ -84,6 +89,9 @@ public final class Hud {
         setUpHeroNameText();
         setUpHealthText();
         setUpEnergyText();
+
+        setInfoBonusPanel();
+
 
 
         hudGroup.setLayoutX(0);
@@ -184,6 +192,23 @@ public final class Hud {
 //        hudImage.setFitHeight(300);
         hudImage.setImage(HUD);
         hudGroup.getChildren().add(hudImage);
+    }
+
+    public static void setInfoBonusPanel(){
+        varenykStatusImage.setX(1400);
+        varenykStatusImage.setY(990);
+        varenykStatusImage.setScaleX(2);
+        varenykStatusImage.setScaleY(2);
+        hudGroup.getChildren().add(varenykStatusImage);
+
+        heroBonusHealthCount = new Text();
+        heroBonusHealthCount.setX(1450);
+        heroBonusHealthCount.setY(1010);
+        heroBonusHealthCount.setFont(Font.font(32));
+        //heroBonusHealthCount.setWrappingWidth(256);
+        heroBonusHealthCount.setTextAlignment(TextAlignment.CENTER);
+        heroBonusHealthCount.setText(" x " + HERO_BONUS_ENERGY_COUNT);
+        hudGroup.getChildren().add(heroBonusHealthCount);
     }
 
     private static void setScoreFrame() {
