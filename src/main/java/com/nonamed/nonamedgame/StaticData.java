@@ -29,10 +29,10 @@ public class StaticData {
     public static final Image SVINO_PES = new Image("SvinoPes.gif");
     public static int SCORE = 0;
 
-    public static final Media PlANE_SOUND = new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/music.mp3").toURI().toString());
-    public static final Media MAIN_MENU_SOUND = new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/main-menu-music.mp3").toURI().toString());
-    public static final Media GAME_OVER_SOUND = new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/game-over.mp3").toURI().toString());
+    public static final Media PlANE_SOUND = new Media(new File("src/main/resources/music.mp3").toURI().toString());
+    public static final Media MAIN_MENU_SOUND = new Media(new File("src/main/resources/main-menu-music.mp3").toURI().toString());
+    public static final Media GAME_OVER_SOUND = new Media(new File("src/main/resources/game-over.mp3").toURI().toString());
 
-    public static final Media ON_BUTTON_PRESS_SOUND_V1 =  new Media(new File("src/main/resources/com/nonamed/nonamedgame/music/bokserskiy-silnyiy-udar.mp3").toURI().toString());
+    public static final Media ON_BUTTON_PRESS_SOUND_V1 =  new Media(new File("src/main/resources/bokserskiy-silnyiy-udar.mp3").toURI().toString());
 
 }

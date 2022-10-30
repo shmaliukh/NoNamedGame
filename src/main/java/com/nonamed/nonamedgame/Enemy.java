@@ -1,10 +1,12 @@
 package com.nonamed.nonamedgame;
 
+import com.nonamed.nonamedgame.utils.HeroSoundService;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -163,11 +165,13 @@ public class Enemy {
     public void damageFromHero() {
         setHealth(this.health - Config.HERO_DAMAGE);
         healthLine.setEndX(healthLine.getEndX() - lineHealthLambda);
+        HeroSoundService.sayIfDamaged();
         if (this.healthLine.getEndX() <= this.healthLine.getStartX()) {
             HERO.SCORE += 10;
             App_old.gamePane.getChildren().remove(groupEnemy);
             App_old.gameWorld.getMiniMap().getChildren().remove(miniMapPoint);
             timerEnemyMove.stop();
+            HeroSoundService.say();
             //TODO remove from arraylist
         }
     }

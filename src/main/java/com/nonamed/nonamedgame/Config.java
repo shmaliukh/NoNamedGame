@@ -17,7 +17,7 @@ public final class Config {
     public static Image HERO_FIGHT_RIGHT;
     public static Image HERO_AVATAR;
 
-    public static double VOLUME_LEVEL = 0.0;
+    public static double VOLUME_LEVEL = 0.5;
     public static int WINDOW_HEIGHT = 1080;
     public static int WINDOW_WIDTH = 1920;
     public static int WORLD_HEIGHT = 2560;
