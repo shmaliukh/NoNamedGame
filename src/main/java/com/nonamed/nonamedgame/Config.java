@@ -18,12 +18,8 @@ public final class Config {
     public static Image HERO_AVATAR;
 
     public static double VOLUME_LEVEL = 0.5;
-    public static int WINDOW_HEIGHT = 1080;
-    public static int WINDOW_WIDTH = 1920;
-    public static int WORLD_HEIGHT = 2560;
-    public static int WORLD_WIDTH = 5120;
     public static String HERO_NAME_STR = "";
-    public static int HERO_SPEED = 5;
+    public static int HERO_SPEED = 3;
     public static int HERO_DAMAGE = 5;
     public static int HERO_HEALTH = 10000;
     public static int HERO_ENERGY = 10000;
@@ -37,7 +33,7 @@ public final class Config {
     public static List<String> NAME_LIST = new ArrayList<>();
     public static String RIGHT_HERO_KICK = "X";
     public static String ENEMY_NAME = "!*!";
-    public static int ENEMY_HEALTH = 3000;
+    public static int ENEMY_HEALTH = 10000;
     public static int ENEMY_SPEED = 3;
 
     static {

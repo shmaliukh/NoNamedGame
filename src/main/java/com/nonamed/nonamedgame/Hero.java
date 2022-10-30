@@ -3,15 +3,25 @@ package com.nonamed.nonamedgame;
 import com.nonamed.nonamedgame.game_objects.Hud;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.*;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -268,8 +278,79 @@ public class Hero {
     private void ifLoseAction() {
         App_old.stopGame();
         MEDIA_PLAYER.stop();
-        App_old.getStage().setScene(mainMenuPane.getScene());
         loseMediaPlayer.play();
+//
+//        App_old.getStage().setFullScreen(false);
+//
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setTitle("Alert");
+//        alert.setContentText("Alert");
+//        alert.initOwner(App_old.getStage().getOwner());
+//
+//        alert.showAndWait();
+
+//        Pane rootPane = new StackPane();
+//        Scene mainScene = new Scene(rootPane);
+//        Button btn = new Button("alert");
+//
+//        Rectangle blockingRect = new Rectangle();
+//        blockingRect.widthProperty().bind(App_old.getStage().widthProperty());
+//        blockingRect.heightProperty().bind(App_old.getStage().heightProperty());
+//        blockingRect.setFill(Color.LIGHTBLUE);
+//        blockingRect.setOpacity(0.5);
+//
+//
+//        rootPane.getChildren().add(btn);
+//
+//        VBox alertPane = new VBox(10);
+//        alertPane.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+//        alertPane.setMaxWidth(400);
+//        alertPane.setMaxHeight(200);
+//        alertPane.setAlignment(Pos.CENTER);
+//        Label alertMessage = new Label("alert message");
+//        Button alertOKButton = new Button("OK");
+//        alertPane.getChildren().addAll(alertMessage, alertOKButton);
+//        btn.setOnAction(event -> {
+//            rootPane.getChildren().addAll(blockingRect, alertPane);
+//        });
+//        alertOKButton.setOnAction(event -> {
+//            rootPane.getChildren().removeAll(blockingRect, alertPane);
+//        });
+//
+//        App_old.getStage().setFullScreen(true);
+//        App_old.getStage().setScene(mainScene);
+//        App_old.getStage().show();
+
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Information Dialog");
+//        alert.setHeaderText(null);
+//        alert.setContentText("I have a great message for you!");
+//        alert.initStyle(StageStyle.UTILITY);
+//        alert.initOwner(App_old.getStage());
+//        alert.showAndWait();
+//
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        //Setting the title
+//        alert.setTitle("Result");
+//        ButtonType type = new ButtonType("Зрозумів", ButtonBar.ButtonData.OK_DONE);
+//        //Setting the content of the dialog
+//        alert.setContentText("На жаль ви прогали");
+//        //Adding buttons to the dialog pane
+//        alert.getDialogPane().getButtonTypes().add(type);
+//        //Setting the label
+//        //Creating a button
+//        alert.showAndWait();
+        //Creating a vbox to hold the button and the label
+//        HBox pane = new HBox(15);
+        //Setting the space between the nodes of a HBox pane
+//        pane.setPadding(new Insets(50, 150, 50, 60));
+//        pane.getChildren().addAll(txt, button);
+        //Creating a scene object
+//        Scene scene = new Scene(new Group(pane), 595, 300, Color.BEIGE);
+//        App_old.getStage().setScene(scene);
+
+        App_old.getStage().setScene(mainMenuPane.getScene());
+
     }
 
     public void calculateAndUpdateMiniMapPoint() {
@@ -289,6 +370,7 @@ public class Hero {
         setEnergy(getEnergy() - Config.HERO_ENERGY_USAGE);
         if (getEnergy() < 0) {
             ifLoseAction();
+
             // FIXME set result window
         }
         Hud.updateGroup();

@@ -12,7 +12,7 @@ public class SvinoPesBuryat extends Enemy {
     }
 
     protected void initMaxHealth() {
-        maxHealth = (int) (Config.ENEMY_HEALTH * 0.5);
+        maxHealth = (int) (Config.ENEMY_HEALTH * 0.8);
     }
 
     protected Image initAnimatedImage() {

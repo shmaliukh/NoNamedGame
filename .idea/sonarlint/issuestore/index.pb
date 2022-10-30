@@ -1,25 +1,13 @@
 
-k
-;src/main/java/com/nonamed/nonamedgame/enemies/SvinoPes.java,9\b\9b902c199784ccc984e62fc4f36fbc26403661d9
 d
 4src/main/java/com/nonamed/nonamedgame/InfoPanel.java,1\6\1619c69ffc4bd95b8a32061afc199801ca9fd32d
-n
->src/main/java/com/nonamed/nonamedgame/enemies/SvinoPesOrk.java,2\2\22f442e437a3426029b06c3b695452206c90e559
-o
-?src/main/java/com/nonamed/nonamedgame/enemies/SvinoPesHach.java,3\6\36f9e8998d085cb920f4f66983d6e4878717262f
-q
-Asrc/main/java/com/nonamed/nonamedgame/enemies/SvinoPesBuryat.java,8\8\888880df6a7633271aca94cd75a25f9ee76fa242
 k
 ;src/main/java/com/nonamed/nonamedgame/game_objects/Hud.java,d\b\db7fb06f0a154ed854314f508c0336fcd84d9a4c
-t
-Dsrc/main/java/com/nonamed/nonamedgame/scenes/LoseMenuController.java,5\e\5e66b8c010e5073922e23a25da1fb95c8f4c3da8
 t
 Dsrc/main/java/com/nonamed/nonamedgame/scenes/MainMenuController.java,7\f\7f1e40371e99b4583d89a89c9c6892c0db0fd871
 u
 Esrc/main/java/com/nonamed/nonamedgame/scenes/PauseMenuController.java,f\5\f598d2ff8a40b6360272ee4387e50a5f982c5697
 s
 Csrc/main/java/com/nonamed/nonamedgame/scenes/PreviewController.java,c\b\cbf235c4e1741133423c1f3456cdb2ff1b84b3e9
-x
-Hsrc/main/java/com/nonamed/nonamedgame/scenes/SettingsMenuController.java,7\e\7ea5f2c9e33c87990a8287d703b608f152b371b6
 s
 Csrc/main/java/com/nonamed/nonamedgame/scenes/WinMenuController.java,6\3\63d4f69466c50ed4df4785375acc4b0cc4fc2c4f
