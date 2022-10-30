@@ -25,6 +25,7 @@ public final class Config {
     public static int HERO_ENERGY = 10000;
 
     public static int HERO_BONUS_HEALTH_COUNT = 0;
+    public static int HERO_BONUS_BATTERY_COUNT = 0;
     public static int HERO_BONUS_ENERGY_COUNT = 0;
 
     public static int HERO_ENERGY_USAGE = 3;

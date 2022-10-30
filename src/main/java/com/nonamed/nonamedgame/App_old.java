@@ -144,12 +144,14 @@ public class App_old extends Application {
                         for (int i = 0; i < countOfSpawn; i++) {
                             if (!isStopped) {
                                 nextInt = RANDOM.nextInt(100);
-                                if (nextInt > 90) {
+                                if (nextInt > 80) {
                                     gameWorldObjects.add(new GameWorldObjects(1));
-                                } else if (nextInt > 30 && nextInt < 90) {
+                                } else if (nextInt > 60 && nextInt < 80) {
                                     gameWorldObjects.add(new GameWorldObjects(2));
-                                } else if (nextInt < 30)
+                                } else if (nextInt > 40 && nextInt < 60)
                                     gameWorldObjects.add(new GameWorldObjects(3));
+                                else
+                                    gameWorldObjects.add(new GameWorldObjects(4));
                             }
                         }
                     }

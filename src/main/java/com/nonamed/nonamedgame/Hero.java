@@ -204,21 +204,31 @@ public class Hero {
                 case Z, Q -> heroKickAction(LEFT);
                 case DIGIT1 -> eatVarenyk();
                 case DIGIT2 -> eatApple();
+                case DIGIT3 -> useBattery();
             }
         }));
     }
 
     public void eatVarenyk(){
         if (Config.HERO_BONUS_HEALTH_COUNT > 0){
-            setHealth(getHealth() + 200);
+            setHealth(getHealth() + 1000);
             Config.HERO_BONUS_HEALTH_COUNT -= 1;
             Hud.heroBonusHealthCount.setText(" x " + Config.HERO_BONUS_HEALTH_COUNT);
         }
     }
 
+    public void useBattery(){
+        if (Config.HERO_BONUS_BATTERY_COUNT > 0){
+            setEnergy(getEnergy() + 1000);
+            Config.HERO_BONUS_BATTERY_COUNT -= 1;
+            Hud.heroBonusBatteryCount.setText(" x " + Config.HERO_BONUS_BATTERY_COUNT);
+        }
+    }
+
     public void eatApple(){
         if (Config.HERO_BONUS_ENERGY_COUNT > 0){
-            setEnergy(getEnergy() + 200);
+            setEnergy(getEnergy() + 500);
+            setHealth(getHealth() + 500);
             Config.HERO_BONUS_ENERGY_COUNT -= 1;
             Hud.heroBonusEnergyCount.setText(" x " + Config.HERO_BONUS_ENERGY_COUNT);
         }
