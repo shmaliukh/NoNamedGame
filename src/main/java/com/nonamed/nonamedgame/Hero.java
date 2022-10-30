@@ -26,7 +26,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import static com.nonamed.nonamedgame.App_old.*;
-import static com.nonamed.nonamedgame.utils.HeroSoundService.sayIfDamaged;
 
 @Getter
 @Setter
@@ -85,8 +84,8 @@ public class Hero {
         this.imageView.setDisable(true);
         this.posX = 1500;
         this.posY = 1400;
-        this.imageView.setX(500);
-        this.imageView.setY(400);
+        this.imageView.setX(800);
+        this.imageView.setY(700);
         this.lineHealthLambda = 600 / (double) (Config.HERO_HEALTH / Config.ENEMY_DAMAGE);
 
         rightKickCollision = new Rectangle();
@@ -196,7 +195,6 @@ public class Hero {
 
     private void onKeyPressed(Stage scene) {
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (keyEvent -> {
-            System.out.println(keyEvent.getCode());
             switch (keyEvent.getCode()) {
                 case UP, W -> isUP = true;
                 case DOWN, S -> isDOWN = true;
@@ -230,7 +228,6 @@ public class Hero {
 //        HeroSoundService.sayIfDamaged();
 
         if (!isKick) {
-
             if (kickSide.equals(RIGHT)) {
                 imageView.setImage(Config.HERO_FIGHT_RIGHT);
                 isRightKick = true;
@@ -239,9 +236,7 @@ public class Hero {
                 isLeftKick = true;
             }
             isKick = true;
-            sayIfDamaged();
             Thread kick = new Thread(() -> {
-
                 try {
                     Thread.sleep(KICK_ANIMATION_TIME);
                 } catch (InterruptedException e) {

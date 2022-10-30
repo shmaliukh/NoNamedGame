@@ -83,14 +83,16 @@ public class App_old extends Application {
         MEDIA_PLAYER.play();
         gameWorld = new GameWorld();
         HERO = new Hero();
-        enemies.add(new Enemy());
-        enemies.add(new SvinoPesHach());
+
+        initializeStaticObjectBound();
+        //enemies.add(new Enemy());
+        //enemies.add(new SvinoPesHach());
 
 
         Thread enemySpawn = new Thread(() -> {
             while (true) {
                 try {
-                    Thread.sleep(30000);
+                    Thread.sleep(15000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -250,6 +252,15 @@ public class App_old extends Application {
 
 
         });
+    }
+
+    public static void initializeStaticObjectBound(){
+        gameWorldObjects.add(new GameWorldObjects("treeV1", -400, 150));
+        //gameWorldObjects.add(new GameWorldObjects("christmasTree", 300, 200));
+        gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
+        gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
+
     }
 
 //    public static String objectCollisionDetectWithHero(){
