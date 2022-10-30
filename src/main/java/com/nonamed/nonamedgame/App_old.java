@@ -257,7 +257,9 @@ public class App_old extends Application {
     public static void initializeStaticObjectBound(){
         gameWorldObjects.add(new GameWorldObjects("treeV1", -400, 150));
         //gameWorldObjects.add(new GameWorldObjects("christmasTree", 300, 200));
-        gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -400, 150));
+        gameWorldObjects.add(new GameWorldObjects("homeWithTesla", -50, -200));
+        gameWorldObjects.add(new GameWorldObjects("ATB", 1100, 0));
+        gameWorldObjects.add(new GameWorldObjects("treeV1", 850, 100));
 
     }
 

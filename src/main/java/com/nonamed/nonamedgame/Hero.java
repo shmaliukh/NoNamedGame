@@ -74,8 +74,8 @@ public class Hero {
         this.imageView.setDisable(true);
         this.posX = 1500;
         this.posY = 1400;
-        this.imageView.setX(500);
-        this.imageView.setY(400);
+        this.imageView.setX(800);
+        this.imageView.setY(700);
         this.lineHealthLambda = 600 / (double) (Config.HERO_HEALTH / Config.ENEMY_DAMAGE);
 
         rightKickCollision = new Rectangle();
