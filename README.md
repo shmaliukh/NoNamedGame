@@ -1,7 +1,14 @@
 # :video_game: NoNamed game ХАКАТОН 3.0 
 
    Відео та карта гри в посиланні https://drive.google.com/drive/folders/1IIh8DD20MBckVVFXlWGwOWSfGAxnbL_2
-
+   
+   Над роботою працювали:
+   -Яна Насталенко
+   -Іван Савчук 
+   -Дмитро Сокол 
+   -Артем Марущак 
+   -Влад Шмалюх
+   
   :bangbang: Для отримання гри потрібно завантажити NoNamedGame.zip->розпакувати, відкрити папку "bin" та запусити file:app.bat. 
   
  ![This is an image](/readME_File.png)
