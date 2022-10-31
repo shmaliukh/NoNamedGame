@@ -12,10 +12,6 @@
   :bangbang: Для отримання гри потрібно завантажити NoNamedGame.zip->розпакувати, відкрити папку "bin" та запусити file:app.bat. 
   
  ![This is an image](/readME_File.png)
- 
-  :bangbang::star2: Результати хакатону 3.0
-  
-  ![This is an image](/hackathon_result.jpeg)
    
   Створено прес-реліз гри, у реалізації дотримано головної концепції трьої слів: 
   
